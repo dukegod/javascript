@@ -15,3 +15,5 @@ oop.js:
 oppExtent.js:
 	js继承问题
 
+index.html:
+	入口
