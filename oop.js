@@ -20,8 +20,6 @@ var myObject = {
 	nickname:"duke"
 }
 console.log(myObject.name);
-
-
 // 自定义高级对象构造有两种方式：
 // 使用“this”关键字构造、
 // 使用原型prototype构造

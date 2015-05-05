@@ -15,7 +15,7 @@ console.log(counter2());
 console.log(counter1()); 
 console.log(counter1()); 
 console.log(counter2()); 
-console.log("the end")
+console.log("the end");
 
 // 闭包保存的是整个变量对象
 //不太明白的地方
@@ -23,7 +23,7 @@ function createrFunctions(e){
 	var result = new Array(e);
 
 	for(var i=0; i < 10 ;i++){
-		result[i]=function(){
+		result[i]= function(){
 			return i;
 		}
 	}
