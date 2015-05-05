@@ -17,3 +17,5 @@ oppExtent.js:
 
 index.html:
 	入口
+jsmodel.js:
+	js设计模型浅浅的探究	
