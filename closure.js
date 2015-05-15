@@ -1,4 +1,5 @@
 // closure  独立性
+// 类似与JAVA的静态变量
 var generateClosure = function() {
 	var count = 0;
 	var get = function() {
