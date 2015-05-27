@@ -14,3 +14,10 @@
 
 let ii = "ddd";
 console.log(ii);
+
+
+var es5 = "ecma 5";
+console.log(es5);
+
+
+
