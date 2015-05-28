@@ -1,8 +1,9 @@
-参考：http://www.w3cschool.cc/w3cnote/javascript-guide.html，
-	  http://greengerong.github.io/blog/2015/05/09/qian-duan-javascriptgui-fan
+<h1>参考：</h1>
+	http://www.w3cschool.cc/w3cnote/javascript-guide.html
+	http://greengerong.github.io/blog/2015/05/09/qian-duan-javascriptgui-fan
 
 
-文件组织：
+<h1>文件组织：</h1>
 
     所有的javascript文件都要放在项目公共的'''script'''文件夹下；
 
@@ -18,7 +19,7 @@
 
 
 
-格式化：
+<h1>格式化：</h1>
 
     <b>始终使用var定义变量，防止变量的污染</b>；
 
@@ -34,21 +35,18 @@
     定义顶级命名空间如inBike,在顶级命名空间下自定义私有命名空间，根据模块分级；
 
     所有的模块代码放在匿名自调用函数中，通过给window对象下的自定义命名空间赋值暴露出来
-
 	if (!window.inBike) {
 	    window.inBike = {};
 	}
 	window.inBike.rideway = rideway;
 
     绑定事件代码需要放置在dom ready函数中执行
-
 	$(function() {
 	     //bind function is in the init function
 	     window.inBike.rideway.init();
 	})
 
     将自定义模块方法放置在对象中，方法名紧挨":"，":"与function之间空一格，function()与后面的"{"之间空一格
-
 	var module = function() {
 	    method: function() {
 
@@ -56,18 +54,17 @@
 	};
 
     使用单引号包裹字符串
-
 	var str = 'some text';
 
-    所用的变量使用之前需要定义，定义之后立即初始化
 
+    所用的变量使用之前需要定义，定义之后立即初始化
 	var obj = null;
 	var num = 0;
 	var arr = [];
 	var isEmpty = true;
 
-    使用浏览器console工具之前先要判断是否支持
 
+    使用浏览器console工具之前先要判断是否支持
 	if (console) {
 	    console.log('this is my log');
 	}
@@ -102,9 +99,9 @@
 	  name: 'Bob Parr'
 	});
 
-    使用$name命名jquery对象，
+    <h5>使用$name命名jquery对象，
     	原生dom元素使用dom开头,
-    	对象中私有变量以下划线开头
+    	对象中私有变量以下划线开头</h5>
 	var $image = $('#cover');
 	var domImage = document.getElementById('cover');
 	var obj = {
@@ -114,7 +111,7 @@
 	    }
 	};
 
-	当命名构造函数或类时使用驼峰式大写。
+	<h4>当命名构造函数或类时使用驼峰式大写。</h4>
 	function User(options) {
 	  this.name = options.name;
 	}
@@ -137,9 +134,8 @@
 
 
 
-注释：
+<h1>注释：</h1>
 
-    通用原则可以参考[PhpGuideline PHP编码规范]
     多使用单行注释表明逻辑块的意义
 
 	// Handle the case where IE and Opera return items
@@ -176,7 +172,8 @@
 	/** @private */
 	AA_PublicClass.prototype.privateMethod_ = function() {};
 
-最佳实践：
+
+<h1>最佳实践：</h1>
 
     避免使用eval
     对于对象避免使用with，对于数组避免使用for-in
@@ -211,7 +208,9 @@
 	  var foo = function() {}
 	}
 
-对象：
+
+<h1>对象：</h1>
+
     使用字面值创建对象。
 
     // bad
@@ -236,12 +235,10 @@
       hidden: true
     };
 
-数组
+
+<h1>数组</h1>
 
     使用字面值创建数组。
-    // bad
-    var items = new Array();
-
     // good
     var items = [];
 
@@ -274,7 +271,10 @@
       var args = [].slice.apply(arguments);
       ...
     }
-字符串：
+
+
+<h1>字符串：</h1>
+
     对字符串使用单引号 ''（因为大多时候我们的字符串。特别html会出现"）。  
     var fullName = 'Bob ' + this.lastName; 
 
@@ -320,9 +320,7 @@
 	}
 
 
-
-
-存取器:
+<h1>存取器:</h1>
 
     属性的存取器函数不是必需的。
     如果你确实有存取器函数的话使用getVal() 和 setVal('hello'),java getter、setter风格或者jQuery风格。
@@ -350,7 +348,7 @@
 
 
 
-构造器
+<h1>构造器</h1>
 
     给对象原型分配方法，而不是用一个新的对象覆盖原型，覆盖原型会使继承出现问题。
 
@@ -378,7 +376,7 @@
       console.log('blocking');
     };
 
-    方法可以返回 this 帮助方法可链。
+    <h3>方法可以返回 this 帮助方法可链。</h3>
 
     // bad
     Jedi.prototype.jump = function() {
@@ -408,7 +406,7 @@
     var luke = new Jedi();
 
     luke.jump()
-      .setHeight(20);
+  		.setHeight(20);
 
     可以写一个自定义的toString()方法，但是确保它工作正常并且不会有副作用。
 
@@ -425,7 +423,8 @@
       return 'Jedi - ' + this.getName();
     };
 
-事件
+
+<h1>事件</h1>
 
     当给事件附加数据时，传入一个哈希而不是原始值，这可以让后面的贡献者加入更多数据到事件数据里而不用找出并更新那个事件的事件处理器。
 
@@ -449,7 +448,8 @@
       // do something with data.listingId
     });
 
-模块
+
+<h1>模块</h1>
 
     这个文件应该以驼峰命名，并在同名文件夹下，同时导出的时候名字一致。
     对于公开API库可以考虑加入一个名为noConflict()的方法来设置导出的模块为之前的版本并返回它。
@@ -474,7 +474,7 @@
       global.FancyInput = FancyInput;
     })(this);
 
-jQuery
+<h1>jQuery</h1>
 
     对于jQuery对象以$开头，以和原生DOM节点区分。
 
