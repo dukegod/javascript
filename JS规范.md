@@ -1,9 +1,9 @@
-<h1>参考：</h1>
+## 参考：
 	http://www.w3cschool.cc/w3cnote/javascript-guide.html
 	http://greengerong.github.io/blog/2015/05/09/qian-duan-javascriptgui-fan
 
 
-<h1>文件组织：</h1>
+## 文件组织：
 
     所有的javascript文件都要放在项目公共的'''script'''文件夹下；
 
@@ -19,14 +19,14 @@
 
 
 
-<h1>格式化：</h1>
+## 格式化：
 
     <b>始终使用var定义变量，防止变量的污染</b>；
 
-	var global = '';
-	function method() {
-	    var local = '';
-	}
+    	var global = '';
+    	function method() {
+    	    var local = '';
+    	}
 
     始终使用分号结束一行声明语句；
 
@@ -35,44 +35,44 @@
     定义顶级命名空间如inBike,在顶级命名空间下自定义私有命名空间，根据模块分级；
 
     所有的模块代码放在匿名自调用函数中，通过给window对象下的自定义命名空间赋值暴露出来
-	if (!window.inBike) {
-	    window.inBike = {};
-	}
-	window.inBike.rideway = rideway;
+    	if (!window.inBike) {
+    	    window.inBike = {};
+    	}
+    	window.inBike.rideway = rideway;
 
     绑定事件代码需要放置在dom ready函数中执行
-	$(function() {
-	     //bind function is in the init function
-	     window.inBike.rideway.init();
-	})
+    	$(function() {
+    	     //bind function is in the init function
+    	     window.inBike.rideway.init();
+    	})
 
     将自定义模块方法放置在对象中，方法名紧挨":"，":"与function之间空一格，function()与后面的"{"之间空一格
-	var module = function() {
-	    method: function() {
+    	var module = function() {
+    	    method: function() {
 
-	    }
-	};
+    	    }
+    	};
 
     使用单引号包裹字符串
-	var str = 'some text';
+	    var str = 'some text';
 
 
     所用的变量使用之前需要定义，定义之后立即初始化
-	var obj = null;
-	var num = 0;
-	var arr = [];
-	var isEmpty = true;
+  	var obj = null;
+  	var num = 0;
+  	var arr = [];
+  	var isEmpty = true;
 
 
     使用浏览器console工具之前先要判断是否支持
-	if (console) {
-	    console.log('this is my log');
-	}
+  	if (console) {
+  	    console.log('this is my log');
+  	}
 
 
 
 
-<h1>命名约定：</h1>
+## 命名约定：
 	
 	避免单个字符名，让你的变量名有描述意义。 
 	function query() {
@@ -134,9 +134,9 @@
 
 
 
-<h1>注释：</h1>
+## 注释：
 
-    多使用单行注释表明逻辑块的意义
+  多使用单行注释表明逻辑块的意义
 
 	// Handle the case where IE and Opera return items
 	// by name instead of ID
@@ -153,16 +153,16 @@
 	/**
 	 * @constructor
 	 */
-	some.long.namespace.MyClass = function() {
-	};
+  	some.long.namespace.MyClass = function() {
+  	};
 
     标注枚举常量的类型和意义
 
 	/** @enum {string} */
-	some.long.namespace.Fruit = {
-	  APPLE: 'a',
-	  BANANA: 'b'
-	};
+  	some.long.namespace.Fruit = {
+  	  APPLE: 'a',
+  	  BANANA: 'b'
+  	};
 
     使用注释标识方法或者变量的可见性，方便静态检查
 
@@ -173,7 +173,7 @@
 	AA_PublicClass.prototype.privateMethod_ = function() {};
 
 
-<h1>最佳实践：</h1>
+## 最佳实践：
 
     避免使用eval
     对于对象避免使用with，对于数组避免使用for-in
@@ -209,7 +209,7 @@
 	}
 
 
-<h1>对象：</h1>
+## 对象：
 
     使用字面值创建对象。
 
@@ -236,7 +236,7 @@
     };
 
 
-<h1>数组</h1>
+## 数组
 
     使用字面值创建数组。
     // good
@@ -273,7 +273,7 @@
     }
 
 
-<h1>字符串：</h1>
+## 字符串：
 
     对字符串使用单引号 ''（因为大多时候我们的字符串。特别html会出现"）。  
     var fullName = 'Bob ' + this.lastName; 
@@ -320,7 +320,7 @@
 	}
 
 
-<h1>存取器:</h1>
+## 存取器:
 
     属性的存取器函数不是必需的。
     如果你确实有存取器函数的话使用getVal() 和 setVal('hello'),java getter、setter风格或者jQuery风格。
@@ -348,7 +348,7 @@
 
 
 
-<h1>构造器</h1>
+## 构造器
 
     给对象原型分配方法，而不是用一个新的对象覆盖原型，覆盖原型会使继承出现问题。
 
@@ -424,7 +424,7 @@
     };
 
 
-<h1>事件</h1>
+## 事件
 
     当给事件附加数据时，传入一个哈希而不是原始值，这可以让后面的贡献者加入更多数据到事件数据里而不用找出并更新那个事件的事件处理器。
 
@@ -449,7 +449,7 @@
     });
 
 
-<h1>模块</h1>
+## 模块
 
     这个文件应该以驼峰命名，并在同名文件夹下，同时导出的时候名字一致。
     对于公开API库可以考虑加入一个名为noConflict()的方法来设置导出的模块为之前的版本并返回它。
@@ -474,7 +474,7 @@
       global.FancyInput = FancyInput;
     })(this);
 
-<h1>jQuery</h1>
+## jQuery
 
     对于jQuery对象以$开头，以和原生DOM节点区分。
 
