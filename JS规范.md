@@ -21,53 +21,50 @@
 
 ## 格式化：
 
-####  始终使用var定义变量，防止变量的污染
-
+*  始终使用var定义变量，防止变量的污染
   var global = '';
   function method() {
       var local = '';
   }
+*  始终使用分号结束一行声明语句；
 
-####  始终使用分号结束一行声明语句；
+* 对于数组和对象不要使用多余的","（兼容IE）；
 
-#### 对于数组和对象不要使用多余的","（兼容IE）；
+* 定义顶级命名空间如inBike,在顶级命名空间下自定义私有命名空间，根据模块分级；
 
-#### 定义顶级命名空间如inBike,在顶级命名空间下自定义私有命名空间，根据模块分级；
-
-#### 所有的模块代码放在匿名自调用函数中，通过给window对象下的自定义命名空间赋值暴露出来
+* 所有的模块代码放在匿名自调用函数中，通过给window对象下的自定义命名空间赋值暴露出来
 	if (!window.inBike) {
 	    window.inBike = {};
 	}
 	window.inBike.rideway = rideway;
 
-####  绑定事件代码需要放置在dom ready函数中执行
+*  绑定事件代码需要放置在dom ready函数中执行
 	$(function() {
 	     //bind function is in the init function
 	     window.inBike.rideway.init();
 	})
 
-####  将自定义模块方法放置在对象中，方法名紧挨":"，":"与function之间空一格，function()与后面的"{"之间空一格
+*  将自定义模块方法放置在对象中，方法名紧挨":"，":"与function之间空一格，function()与后面的"{"之间空一格
 	var module = function() {
 	    method: function() {
 
 	    }
 	};
 
-    使用单引号包裹字符串
-	    var str = 'some text';
+* 使用单引号包裹字符串
+	var str = 'some text';
+
+* 所用的变量使用之前需要定义，定义之后立即初始化
+	var obj = null;
+	var num = 0;
+	var arr = [];
+	var isEmpty = true;
 
 
-    所用的变量使用之前需要定义，定义之后立即初始化
-  	var obj = null;
-  	var num = 0;
-  	var arr = [];
-  	var isEmpty = true;
-
-
-    使用浏览器console工具之前先要判断是否支持
-  	if (console) {
-  	    console.log('this is my log');
-  	}
+* 使用浏览器console工具之前先要判断是否支持
+	if (console) {
+	    console.log('this is my log');
+	}
 
 
 
