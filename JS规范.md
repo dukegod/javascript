@@ -5,53 +5,53 @@
 
 ## 文件组织：
 
-    所有的javascript文件都要放在项目公共的'''script'''文件夹下；
+* 所有的javascript文件都要放在项目公共的'''script'''文件夹下；
 
-    使用的第三方库文件放置在'''script/lib'''文件夹下；
+* 使用的第三方库文件放置在'''script/lib'''文件夹下；
 
-    可以复用的自定义模块放置在'''script/commons'''夹下,复用模块如果涉及多个子文件，需要单独建立模块文件夹；
+* 可以复用的自定义模块放置在'''script/commons'''夹下,复用模块如果涉及多个子文件，需要单独建立模块文件夹；
 
-    单独页面模块使用的javascript文件放置在'''script/{module_name}'''文件夹下；
+* 单独页面模块使用的javascript文件放置在'''script/{module_name}'''文件夹下；
 
-    项目模拟的json数据放置在'''script/json'''文件夹下，按照页面单独建立子文件夹；
+* 项目模拟的json数据放置在'''script/json'''文件夹下，按照页面单独建立子文件夹；
 
-    javascript应用MVC框架时，使用的模板文件放置在'''script/templates'''文件夹下，按照页面单独建立子文件夹
+* javascript应用MVC框架时，使用的模板文件放置在'''script/templates'''文件夹下，按照页面单独建立子文件夹
 
 
 
 ## 格式化：
 
-    <b>始终使用var定义变量，防止变量的污染</b>；
+####  始终使用var定义变量，防止变量的污染
 
-    	var global = '';
-    	function method() {
-    	    var local = '';
-    	}
+  var global = '';
+  function method() {
+      var local = '';
+  }
 
-    始终使用分号结束一行声明语句；
+####  始终使用分号结束一行声明语句；
 
-    对于数组和对象不要使用多余的","（兼容IE）；
+#### 对于数组和对象不要使用多余的","（兼容IE）；
 
-    定义顶级命名空间如inBike,在顶级命名空间下自定义私有命名空间，根据模块分级；
+#### 定义顶级命名空间如inBike,在顶级命名空间下自定义私有命名空间，根据模块分级；
 
-    所有的模块代码放在匿名自调用函数中，通过给window对象下的自定义命名空间赋值暴露出来
-    	if (!window.inBike) {
-    	    window.inBike = {};
-    	}
-    	window.inBike.rideway = rideway;
+#### 所有的模块代码放在匿名自调用函数中，通过给window对象下的自定义命名空间赋值暴露出来
+	if (!window.inBike) {
+	    window.inBike = {};
+	}
+	window.inBike.rideway = rideway;
 
-    绑定事件代码需要放置在dom ready函数中执行
-    	$(function() {
-    	     //bind function is in the init function
-    	     window.inBike.rideway.init();
-    	})
+####  绑定事件代码需要放置在dom ready函数中执行
+	$(function() {
+	     //bind function is in the init function
+	     window.inBike.rideway.init();
+	})
 
-    将自定义模块方法放置在对象中，方法名紧挨":"，":"与function之间空一格，function()与后面的"{"之间空一格
-    	var module = function() {
-    	    method: function() {
+####  将自定义模块方法放置在对象中，方法名紧挨":"，":"与function之间空一格，function()与后面的"{"之间空一格
+	var module = function() {
+	    method: function() {
 
-    	    }
-    	};
+	    }
+	};
 
     使用单引号包裹字符串
 	    var str = 'some text';
