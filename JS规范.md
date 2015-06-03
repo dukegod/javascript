@@ -22,10 +22,10 @@
 ## 格式化：
 
 *  始终使用var定义变量，防止变量的污染
-    var global = '';
-    function method() {
-        var local = '';
-    }
+      var global = '';
+      function method() {
+          var local = '';
+      }
 *  始终使用分号结束一行声明语句；
 
 * 对于数组和对象不要使用多余的","（兼容IE）；
