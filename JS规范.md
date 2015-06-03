@@ -22,10 +22,10 @@
 ## 格式化：
 
 *  始终使用var定义变量，防止变量的污染
-  var global = '';
-  function method() {
-      var local = '';
-  }
+    var global = '';
+    function method() {
+        var local = '';
+    }
 *  始终使用分号结束一行声明语句；
 
 * 对于数组和对象不要使用多余的","（兼容IE）；
@@ -33,119 +33,119 @@
 * 定义顶级命名空间如inBike,在顶级命名空间下自定义私有命名空间，根据模块分级；
 
 * 所有的模块代码放在匿名自调用函数中，通过给window对象下的自定义命名空间赋值暴露出来
-	if (!window.inBike) {
-	    window.inBike = {};
-	}
-	window.inBike.rideway = rideway;
+  	if (!window.inBike) {
+  	    window.inBike = {};
+  	}
+  	window.inBike.rideway = rideway;
 
 *  绑定事件代码需要放置在dom ready函数中执行
-	$(function() {
-	     //bind function is in the init function
-	     window.inBike.rideway.init();
-	})
+  	$(function() {
+  	     //bind function is in the init function
+  	     window.inBike.rideway.init();
+  	})
 
 *  将自定义模块方法放置在对象中，方法名紧挨":"，":"与function之间空一格，function()与后面的"{"之间空一格
-	var module = function() {
-	    method: function() {
+  	var module = function() {
+  	    method: function() {
 
-	    }
-	};
+  	    }
+  	};
 
 * 使用单引号包裹字符串
-	var str = 'some text';
+	 var str = 'some text';
 
 * 所用的变量使用之前需要定义，定义之后立即初始化
-	var obj = null;
-	var num = 0;
-	var arr = [];
-	var isEmpty = true;
+  	var obj = null;
+  	var num = 0;
+  	var arr = [];
+  	var isEmpty = true;
 
 
 * 使用浏览器console工具之前先要判断是否支持
-	if (console) {
-	    console.log('this is my log');
-	}
+  	if (console) {
+  	    console.log('this is my log');
+  	}
 
 
 
 
 ## 命名约定：
 	
-	避免单个字符名，让你的变量名有描述意义。 
-	function query() {
-	  // ..stuff..
-	}；
+*	避免单个字符名，让你的变量名有描述意义。 
+  	function query() {
+  	  // ..stuff..
+  	}；
 
-	当命名对象、函数和实例时使用驼峰命名规则
-    使用驼峰法命名变量和方法名，首字母使用小写,对于类名首字母大写
-	var numberList = [1,2];
-	var util = {
-	    removeNode: function(){
-	        ....
-	    }
-	};
+*	当命名对象、函数和实例时使用驼峰命名规则
+* 使用驼峰法命名变量和方法名，首字母使用小写,对于类名首字母大写
+  	var numberList = [1,2];
+  	var util = {
+  	    removeNode: function(){
+  	        ....
+  	    }
+  	};
 
-	function Person(name, age) {
-	    this.name = name;
-	    this.age = age;
-	}
+  	function Person(name, age) {
+  	    this.name = name;
+  	    this.age = age;
+  	}
 
-	var thisIsMyObject = {};
-	function thisIsMyFunction() {};
-	var user = new User({
-	  name: 'Bob Parr'
-	});
+  	var thisIsMyObject = {};
+  	function thisIsMyFunction() {};
+  	var user = new User({
+  	  name: 'Bob Parr'
+  	});
 
-    <h5>使用$name命名jquery对象，
-    	原生dom元素使用dom开头,
-    	对象中私有变量以下划线开头</h5>
-	var $image = $('#cover');
-	var domImage = document.getElementById('cover');
-	var obj = {
-	    _privateVar: null,
-	    method: function() {
+* 使用$name命名jquery对象，
+* 原生dom元素使用dom开头,
+* 对象中私有变量以下划线开头</h5>
+  	var $image = $('#cover');
+  	var domImage = document.getElementById('cover');
+  	var obj = {
+  	    _privateVar: null,
+  	    method: function() {
 
-	    }
-	};
+  	    }
+  	};
 
-	<h4>当命名构造函数或类时使用驼峰式大写。</h4>
-	function User(options) {
-	  this.name = options.name;
-	}
+*	当命名构造函数或类时使用驼峰式大写。
+  	function User(options) {
+  	  this.name = options.name;
+  	}
 
-	var good = new User({
-	  name: 'yup'
-	});
+  	var good = new User({
+  	  name: 'yup'
+  	});
 
-	命名私有属性时前面加个下划线 _:
-	this._firstName = 'Panda';
+*	命名私有属性时前面加个下划线 _:
+  	this._firstName = 'Panda';
 
-	当保存对 this 的引用时使用 self(python 风格),避免this issue.Angular建议使用vm(MVVM模式中view-model):
+*	当保存对 this 的引用时使用 self(python 风格),避免this issue.Angular建议使用vm(MVVM模式中view-model):
 	// good
-	function() {
-	  var self = this;
-	  return function() {
-	    console.log(self);
-	  };
-	}
+  	function() {
+  	  var self = this;
+  	  return function() {
+  	    console.log(self);
+  	  };
+  	}
 
 
 
 ## 注释：
 
-  多使用单行注释表明逻辑块的意义
+* 多使用单行注释表明逻辑块的意义
 
 	// Handle the case where IE and Opera return items
 	// by name instead of ID
-	if ( elem.id !== match[2] ) {
-	    return rootjQuery.find( selector );
-	}
+  	if ( elem.id !== match[2] ) {
+  	    return rootjQuery.find( selector );
+  	}
 
 	// Otherwise, we inject the element directly into the jQuery object
-	this.length = 1;
-	this[0] = elem;
+  	this.length = 1;
+  	this[0] = elem;
 
-    指明类的构造方法
+* 指明类的构造方法
 
 	/**
 	 * @constructor
@@ -172,102 +172,85 @@
 
 ## 最佳实践：
 
-    避免使用eval
-    对于对象避免使用with，对于数组避免使用for-in
-    谨慎使用闭包，避免循环引用
-    警惕this所处的上下文
+* 避免使用eval
+* 对于对象避免使用with，对于数组避免使用for-in
+* 谨慎使用闭包，避免循环引用
+* 警惕this所处的上下文
 
-	var $button = $('#my-button');
-	$button.click(function(){
-	    var self = this;
-	    var util = {
-	       getVal: function() {
-	           return self.val();
-	       }
-	    }
-	});
+  	var $button = $('#my-button');
+  	$button.click(function(){
+  	    var self = this;
+  	    var util = {
+  	       getVal: function() {
+  	           return self.val();
+  	       }
+  	    }
+  	});
 
-    尽量使用短码，比如三目运算符，逻辑开关，自增运算等
+* 尽量使用短码，比如三目运算符，逻辑开关，自增运算等
 
-	var name = ('undefined' == typeof(name)) ? '' : name;
-	(age < 0) && (age = 0);
-	count++;
+  	var name = ('undefined' == typeof(name)) ? '' : name;
+  	(age < 0) && (age = 0);
+  	count++;
 
-	    不要在块级作用域中使用function
+* 不要在块级作用域中使用function
 
 	// 错误
-	if (x) {
-	  function foo() {}
-	}
+  	if (x) {
+  	  function foo() {}
+  	}
 
 	// 正确
-	if (x) {
-	  var foo = function() {}
-	}
+  	if (x) {
+  	  var foo = function() {}
+  	}
 
 
 ## 对象：
 
-    使用字面值创建对象。
+使用字面值创建对象。
 
-    // bad
-    var item = new Object();
+// bad
+  var item = new Object();
 
-    // good
-    var item = {};
+// good
+  var item = {};
 
-    不要使用保留字 reserved words 作为键。
-
-    // bad
-    var superman = {
-      class: 'superhero',
-      default: { clark: 'kent' },
-      private: true
-    };
-
-    // good
-    var superman = {
-      klass: 'superhero',
-      defaults: { clark: 'kent' },
-      hidden: true
-    };
+不要使用保留字 reserved words 作为键。
+// good
+  var superman = {
+    klass: 'superhero',
+    defaults: { clark: 'kent' },
+    hidden: true
+  };
 
 
 ## 数组
 
-    使用字面值创建数组。
-    // good
-    var items = [];
+使用字面值创建数组。
+// good
+  var items = [];
 
-    如果你不知道数组的长度，使用push。
-    var someStack = [];
+如果你不知道数组的长度，使用push。
+  var someStack = [];
 
-    // bad
-    someStack[someStack.length] = 'abracadabra';
+// good
+  someStack.push('abracadabra');
 
-    // good
-    someStack.push('abracadabra');
+当你需要拷贝数组时使用slice. jsPerf。
 
-    当你需要拷贝数组时使用slice. jsPerf。
+  var len = items.length,
+      itemsCopy = [],
+      i;
+// good
+  itemsCopy = items.slice();
 
-    var len = items.length,
-        itemsCopy = [],
-        i;
+使用slice将类数组的对象转成数组。
 
-    // bad
-    for (i = 0; i < len; i++) {
-      itemsCopy[i] = items[i];
-    }
-
-    // good
-    itemsCopy = items.slice();
-
-    使用slice将类数组的对象转成数组。
-
-    function trigger() {
-      var args = [].slice.apply(arguments);
-      ...
-    }
+  function trigger() {
+    var args = [].slice.apply(arguments);
+    ...
+  }
 
 
 ## 字符串：
