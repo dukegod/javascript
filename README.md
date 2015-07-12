@@ -1,9 +1,5 @@
 主要是用来测试的
 
-文件ecma6:
-	借鉴和引用了阮老师的《ECMAScript 6 入门》http://es6.ruanyifeng.com/
-	自己对于ecms6的一些了解，或许有点理解吧
-
 scope.js:
 用来测试函数的生成方式：
 	1 函数声明式
