@@ -78,15 +78,31 @@ function f(x,y,z){}
 
 
 
-function Person(name,age){
+function Person1(name,age){
 	this.name=name;
 	this.age=age;
 	this.say();
 	// 这样也行（构造方法分配成员方法），比较喜欢原型法构造函数
-	this.say=function(){
-		console.log(name+age);
-	}
+	// this.say=function(){
+	// 	console.log(name+age);
+	// }
 }
-Person.prototype.say=function(){
-	console.log(name+age);
+Person1.prototype.say=function(){
+	var self = this;
+	console.log(self+"self");
+	console.log(self.name+self.age);
 }
+new Person1('lastname',100)
+
+
+
+// 好的书写习惯
+
+function add(x,y){
+	total= x+y;
+	return total;
+}
+
+var total= 50;
+add(10,20);
+console.log(total);
