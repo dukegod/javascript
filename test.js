@@ -53,16 +53,15 @@ console.log(tt);
 function fun(a,b,c){
 	var l = arguments.length;
 	console.log('length'+l);
+	var sum = 0;
 	for(var i=0;i<l;i++){
-		var sum;
-		console.log(arguments[i]);
-		console.log(typeof(arguments) );
-		sum= sum+arguments[i];
+	 console.log(arguments[i]);
+	 sum= sum+arguments[i];
 	}
 	return sum;
 }
-var p= fun(1,2,3);
-console.log(p);
+var p= fun(1,2,3,1,1,1,1);
+console.log('p'+p);
 
 
 
