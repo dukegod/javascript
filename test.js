@@ -77,6 +77,42 @@ console.log('p'+p);
 
 
 
+function qq (argument) {
+	// console.log(this);
+	t = this;
+	b = '123';
+	function aa()
+	{
+		var tt = this;
+		// console.log(tt);
+		o = t;
+		console.log(o);
+		console.log('run');
+
+	}
+	return aa;
+}
+
+
+var obj = qq();
+obj();
+console.log(o.b);
+
+
+
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+}
+
+Person.prototype.out=function(){
+	var self=this;
+	console.log(self);
+	console.log(this.name+':'+this.age);
+}
+
+new Person('dd',90).out()
+
 
 
 
