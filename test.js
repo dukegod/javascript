@@ -2,7 +2,8 @@ var p = {};
 p.a= 90;
 var b = p;
 b.a= 89;
-console.log(p.a);
+// console.log(b instanceof p);
+console.log('first' + p.a);
 
 
 
@@ -27,15 +28,15 @@ var f = new ff();
 console.log(ff.t);
 
 
-
+console.log('second message');
 
 
 var ab = 5&4;
 console.log('ab'+ab);
 
+console.log('third message');
 
-
-
+ls 
 var x = 1;
 var y = '2';
 var c = x>y?5:4;
@@ -86,7 +87,7 @@ function qq (argument) {
 		var tt = this;
 		// console.log(tt);
 		o = t;
-		console.log(o);
+		// console.log(o);
 		console.log('run');
 
 	}
@@ -107,7 +108,7 @@ function Person(name,age){
 
 Person.prototype.out=function(){
 	var self=this;
-	console.log(self);
+	// console.log(self);
 	console.log(this.name+':'+this.age);
 }
 
