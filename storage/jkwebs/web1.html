@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>session test</title>
+	</head>
+	<body>
+		<h2>sessionstorage </h2>
+		<p id="msg"></p>
+		<input type="text" id="input" />
+		<input type="button" value="save data" onclick="saveStorage('input')"/>
+		<input type="button" value="load data" onclick="loadStorage('msg')"/>
+		<script src="session.js"></script>
+		
+		<hr />
+		<h2> localstorage </h2>
+		<p id="msg2"></p>
+		<input type="text" id="input2" />
+		<input type="button" value="save data" onclick="saveStorage2('input')"/>
+		<input type="button" value="load data" onclick="loadStorage2('msg')"/>
+		
+		<script src="localstorage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="session.js"></script>
+	</body>
+</html>
