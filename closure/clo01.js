@@ -2,7 +2,6 @@
 // 闭包中的变量不能被垃圾回收。一致存在内存中
 //
 
-
 var generateClosure = function() {
 	var count = 0;
 	var get = function() {
