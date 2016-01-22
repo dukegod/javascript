@@ -1,6 +1,7 @@
-//快速排序算法
+
 // 2016-01-13 11:55:51
 
+//快速排序算法
 Array.prototype.fastSort = function(){
     var arr = this;
 
