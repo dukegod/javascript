@@ -1,7 +1,6 @@
 //
 //数组去除重复内容
 //
-
 Array.prototype.unique = function() {
 	var json = {};
 	var res = [];
@@ -15,5 +14,5 @@ Array.prototype.unique = function() {
 	return res;
 }
 
-var a = [1,2,3,3,2,1,4,4,0,7];
+var a = [1,2,3,3,2,1,4,4,0,7,7,7,7,7];
 console.log(a.unique());
