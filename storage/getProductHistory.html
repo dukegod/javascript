@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="name" content="content">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>localstorage</title>
+  <style type="text/css" media="screen">
+    li{
+      list-style: decimal;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+<h1> local storage</h1>
+<p>
+  1 封装一个localstorage方法取代原生
+  2 通过window.location.href 获取href，
+    疑问，这个只是获取的当前，是不是需要把a链接的href替换
+         我们上线后，a链接是一个完整的href吗
+  3 跳回到本地，getItem得到value，pop()取得最后一个浏览记录
+         
+</p>  
+<ul>
+  <li>
+    <a href="1.html" title="">1.html</a>
+  </li>
+  <li>
+    <a href="2.html" title="">2.html</a>
+  </li>
+  <li>
+    <a href="3.html" title="">3.html</a>
+  </li>
+  <li>
+    <a href="4.html" title="">4.html</a>
+  </li>
+  <li>
+    <a href="5.html" title="">5.html</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>
+  <li>
+    <a href="#" title="">1.html我们是备用的链接，我们不能用嘿嘿！！！！</a>
+  </li>                        
+</ul>
+
+
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  var Storage = (function () {
+    //私有的自对象引用
+    this._storage = null;
+
+    //私有的构造方法
+    var Storage = function () {
+      //判断浏览器是否支持本地存储
+      if (!window.localStorage) {
+          console.log("当前浏览器不支持本地存储!")
+      }else{
+        console.log('ok')
+      }
+      this.storage = window.localStorage;
+      this.valueArr = null;
+    }
+
+    //开放的API调用
+    Storage.prototype ={
+      get:function (scope) {  //获取scope的值
+        var values = JSON.parse(this.storage.getItem(scope));
+        return values;
+      },
+      set:function (scope, value) { //将value存入scope
+        if(!this.has(scope)){
+            this.valueArr = new Array();
+        }else{
+            this.valueArr = this.get(scope);
+        }
+        this.valueArr.push(value);
+        this.save(scope);
+      },
+      update: function (scope,key,value){ //更新scope的值
+        this.valueArr = this.get(scope);
+        this.valueArr[key] = value;
+        this.save(scope);
+      },
+      delete: function(scope,key){ //删除scope的第key个值
+        this.valueArr = this.get(scope);
+        this.valueArr.splice(key,1);
+        this.save(scope);
+      },
+      save : function (scope) { //保存scope到本地存储器
+        this.storage.setItem(scope,JSON.stringify(this.valueArr));
+      },
+      clear: function () { //清除本地存储器
+        if (this.storage)
+            this.storage.clear();
+      },
+      hasRecord : function () { //判断本地存储器是否有记录
+        console.log(this)
+        if (this.storage.length > 0)
+            return true;
+        else
+            return false;
+      },
+      has : function (scope) { //判断本地存储器是否有名为scope的记录
+        var values = this.get(scope);
+        if (values!=null) {
+            return true;
+        } else {
+            return false;
+        }
+      },
+      isEmpty : function(scope){ //判断本地存储器名为scope的记录是否为空
+        var values = this.get(scope);
+        if(values.length==0){
+            return true
+        }else{
+            return false;
+        }
+      }
+    }
+
+    //暴露的自对象引用获取方法
+    return {
+      getInstance: function () {
+        if (this._storage == null) {
+            this._storage = new Storage();
+        }
+        return this._storage;
+      }
+    }
+  }())
+
+
+  Zepto('body').on('click', 'li', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+    var href = $(this).find('a').attr('href');
+    Storage.getInstance().set('localhref',href);
+
+    // console.log(document.URl);  
+    console.log(window.location.href);
+
+    var  gethref = Storage.getInstance().get('localhref'); 
+    var l = gethref.length;
+    console.log(l);
+    if (l && l > 5 ) {
+        // statement
+        Storage.getInstance().delete('localhref',0);
+      }  
+  });
+  
+
+
+
+
+
+</script>
+
+</body>
+</html>
