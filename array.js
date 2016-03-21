@@ -23,9 +23,7 @@ var person = {
   age: 50,
   eyeColor: "blue"
 };
-
 console.log(person);
-console.log(('hello');
 
 
 
