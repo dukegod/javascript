@@ -4,63 +4,63 @@
 
 /* model 
 
-var Singleton = (function(){
+ var Singleton = (function(){
 
-  //private Instance 
-  var _instance = null;
+ //private Instance 
+ var _instance = null;
 
-  //private constructor
-  var _Constructor = function(){
-      console.log("JavaScript Singleton");
-  }
+ //private constructor
+ var _Constructor = function(){
+ console.log("JavaScript Singleton");
+ }
 
-  //public getInstance
-  return {
-    getInstance : function(){
-      if(_instance==null){
-        _instance = new _Constructor();
-      }
-      return _instance;
-  	}
-  }
-}());
+ //public getInstance
+ return {
+ getInstance : function(){
+ if(_instance==null){
+ _instance = new _Constructor();
+ }
+ return _instance;
+ }
+ }
+ }());
 
-*/
+ */
 
 // 运用构造方法，实现继承
 
-var Singleton = (function(){
-	
-	var _instance = null;
+var Singleton = (function () {
 
-	var Person = function(name,age,nation){
-		console.log('person is not a one');
-		this.name = name;
-		this.age = age;
-		this.nation = nation;
-	}
+  var _instance = null;
 
-	Person.prototype = {
+  var Person = function (name, age, nation) {
+    console.log('person is not a one');
+    this.name = name;
+    this.age = age;
+    this.nation = nation;
+  }
 
-		init: function(){
-			console.log(this.name+':age:'+this.age+' nation '+this.nation);
-		},
-		getName: function(name){
-			console.log(this.name);
-		},
-		setName: function(name){
-			this.name = name;
-		}
-	}
+  Person.prototype = {
 
-	return {
-		getIns: function(){
-			if(_instance == null){
-				_instance = new Person('duke',18,'china');
-			}
-			return _instance;
-		}
-	}
+    init: function () {
+      console.log(this.name + ':age:' + this.age + ' nation ' + this.nation);
+    },
+    getName: function (name) {
+      console.log(this.name);
+    },
+    setName: function (name) {
+      this.name = name;
+    }
+  }
+
+  return {
+    getIns: function () {
+      if (_instance == null) {
+        _instance = new Person('duke', 18, 'china');
+      }
+      return _instance;
+    }
+  }
 }());
 // Singleton.getIns().setName('ddd');
 // Singleton.getIns().getName();

@@ -2,7 +2,7 @@
 * 给定有序数组，从中找出指定数字下标，如果没找到，返回-1
 *@dukegod  2016/1/12
 */
-
+"use strict";
 Array.prototype.searchIndex = function(n){
 	/* body... */
 	var result = [],

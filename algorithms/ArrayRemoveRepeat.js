@@ -1,6 +1,7 @@
 //
 //数组去除重复内容
 //
+"use strict";
 Array.prototype.unique = function() {
 	var json = {};
 	var res = [];
