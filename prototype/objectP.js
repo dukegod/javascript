@@ -13,5 +13,3 @@ var person = {
 
 var t = person.walk();
 console.log(t);
-
-console.log('22');
