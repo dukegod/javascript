@@ -36,18 +36,3 @@ console.log(person2.hasOwnProperty('name'));// false 在原型中
 console.log('name' in person1); // ture
 console.log('name' in person2); // ture
 
-
-out：
-
-alse
-true
-Person {
-  name: 'duke come from prototype',
-  age: 20,
-  sayName: [Function] }
-instance
-duke come from prototype
-true
-false
-true
-true
