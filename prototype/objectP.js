@@ -9,7 +9,9 @@ var person = {
     console.log(this.name);
     return 1; 
   }
-}
+};
 
 var t = person.walk();
 console.log(t);
+
+console.log('22');
