@@ -1,5 +1,5 @@
 
-var persons = new Array();
+var persons = [];
 
 persons[0] = ["zhangsan", 25];
 persons[1] = ["lisi", 21];
@@ -9,7 +9,7 @@ console.log(persons);
 console.log(persons[1][2]);
 
 
-var arr = new Array();
+var arr = [];
 
 for (var k = 0; k < persons[k].length; k++) {
   console.log(persons[k].length + "length");
