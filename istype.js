@@ -5,7 +5,6 @@
 // 2 引用类型：Object/Array/Date/Function/RegExp
 // 3 单体内置对象：Global(浏览器环境的话就是window对象)/Math
 
-
 function typeOf(arg){
     return Object.prototype.toString.call(arg).match(/\[object\s(\w+)\]/)[1];
 }
