@@ -1,7 +1,7 @@
 /**
  * Created by hui on 16/4/8.
  */
-
+ "use strict";
 var my_object = {
   '0': 'zero',
   '1': 'one',
@@ -17,8 +17,9 @@ console.log(sliced);
 
 
 function convertArray(){
-  "use strict";
   return Array.prototype.slice.call(arguments);
 }
 var i = convertArray(1,2,3,4,5);
 console.log(i);
+
+
