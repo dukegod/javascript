@@ -14,6 +14,8 @@ console.log(/a{1,4}/.exec('caaaaass'));
 
 // ? 匹配一个或者 0 个
 console.log(/a?/.exec('ssa'));
+console.log(/a?/.exec('abaaa'));
+
 
 // * 匹配多个
 console.log(/bo*/.exec('Aghostboooooed'));
