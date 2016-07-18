@@ -1,5 +1,5 @@
+'use strict';
 //函数可以用作值进行传递
-
 function addFunc(f,n){
 	return f(n);
 }
