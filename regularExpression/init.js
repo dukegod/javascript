@@ -6,3 +6,4 @@ var arr = ['abcc','abc','bbd'];
 
 console.log(arr.re);
 
+

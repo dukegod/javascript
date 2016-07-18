@@ -25,4 +25,9 @@ console.log(/\W/.exec('i9D'));
 
 
 
+var ii = ('{[{000}]}').replace(/\]}/, "0");
+console.log(ii);
+
+
+
 
