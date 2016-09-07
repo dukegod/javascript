@@ -9,7 +9,7 @@ Array
 Function
 
 #### json
-
+`
 json
 
 #### 本地存储
@@ -28,7 +28,11 @@ algorithms
 
 ### 单例模型
 
-Singleton
+jsPatterns
+
+### leetCode
+
+演练算法
 
 
 
