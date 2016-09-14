@@ -3,12 +3,16 @@
  */
 
 var arr = [1,2,3,4,5];
-
-console.log(arr instanceof Array);
-console.log(Array.isArray(arr));
-
-var b = arr.reduce(function(a,b){
-  "use strict";
+var sum = arr.reduce(function(a,b){
+  console.log('a----',a);
+  console.log('b',b);
   return a+b
 });
-console.log(b);
+console.log(sum)
+
+/**
+ * 返回的结果作为第一个参数的回调
+ *
+ */
+
+

@@ -1,7 +1,3 @@
-/**
- * Created by hui on 16/3/25.
- */
-'use strict';
 var str = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
 
 console.log(str.slice(-2,-1));

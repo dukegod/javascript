@@ -1,8 +1,6 @@
 /**
  * Created by hui on 16/5/3.
  */
-
-"use strict";
 var arr = [1,2,3];
 console.log(arr.concat(88));
 

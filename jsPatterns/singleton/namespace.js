@@ -16,4 +16,3 @@ var nameSpace = {
 console.log(nameSpace.name);
 nameSpace.showName();
 nameSpace.modifyName('dukegod');
-
