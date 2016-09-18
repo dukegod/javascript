@@ -6,7 +6,7 @@ Person.prototype.name = 'duke come from prototype';
 Person.prototype.age = 20;
 Person.prototype.sayName = function(){
 	console.log(this.name);
-}
+};
 
 var person1 = new Person();
 
@@ -35,4 +35,3 @@ console.log(person2.hasOwnProperty('name'));// false 在原型中
 // in 检测,无论在原型还是在实例中都可以检测出来
 console.log('name' in person1); // ture
 console.log('name' in person2); // ture
-
