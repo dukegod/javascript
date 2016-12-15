@@ -23,7 +23,7 @@ regularExpression
 
 ### 数据结构和算法
 
-algorithms
+algorithms  
 
 
 ### 单例模型
