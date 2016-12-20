@@ -11,7 +11,7 @@ function Person(name,age){
 
 Person.prototype.sayName = function(){
 	console.log(this.name + ':' + this.age);
-}
+};
 
 function Son(name,age,id){
 	// 继承属性
@@ -25,7 +25,7 @@ Son.prototype.constructor = Son;
 
 Son.prototype.showId = function(){
 	console.log(this.name + ':' + this.age +':'+ this.id);
-}
+};
 
 var person1 = new Person('first-name',18);
 var person2 = new Person('second-name',19);
@@ -52,7 +52,7 @@ console.log(Person.prototype.isPrototypeOf(person1));
 console.log(Person.prototype.isPrototypeOf(son1));
 
 
-//out: 
+//out:
 // first-name:18
 // second-name:19
 // [ 'b', 'f', 'v', 'table' ]

@@ -16,7 +16,6 @@ function Son(){}
 Son.prototype = new Person();
 
 // ifPrototypeOf() 判断对象之间是否存在关系
-
 console.log(Son.isPrototypeOf(Person));// false
 console.log(Person.prototype.isPrototypeOf(person1));//ture
 //获取内部的属性
