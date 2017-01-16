@@ -1,13 +1,11 @@
-
 var p = {
-	name: 'dk'
+  name: 'dk',
 }
 
-function test(p){
-	p.age = '18';
-	console.log( p);
+function test(p) {
+  p.age = '18';
+  console.log(p);
 }
-
 
 test(p);
 console.log(p);
