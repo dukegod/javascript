@@ -1,16 +1,4 @@
 /**
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-
-You may assume that each input would have exactly one solution.
-
-Example:
-Given nums = [2, 7, 11, 15], target = 9,
-
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
- */
-
-/**
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
@@ -36,7 +24,7 @@ const twoSum = (nums, target) => {
   // console.log(vj);
   // console.log('vi',vi);
   let numIndex = [];
-  nums.forEach(function(ele, index) {
+  nums.forEach(function (ele, index) {
     // statements
     if (ele === vj) {
       numIndex.push(index);
@@ -47,7 +35,7 @@ const twoSum = (nums, target) => {
   });
 
   // work out the repeat array
-  Array.prototype.unique = function() {
+  Array.prototype.unique = function () {
     var json = {};
     var res = [];
     for (var i = 0; i < this.length; i++) {
@@ -57,11 +45,11 @@ const twoSum = (nums, target) => {
       }
     }
     return res;
-  }
+  };
   console.log(numIndex.unique());
   return numIndex.unique();
-}
+};
 
-let nums = [-3,4,3,90]
+let nums = [-3, 4, 3, 90];
 twoSum(nums, 0);
 // console.log(nums);
