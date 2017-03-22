@@ -32,10 +32,11 @@
         "asyncArrow": "ignore"
     }],
     "comma-dangle": ["error", "never"],
-    "object-shorthand": ["off", "always", { "ignoreConstructors": true }]
+    "object-shorthand": ["off", "always", { "ignoreConstructors": true }],
+    "no-plusplus":["error", { "allowForLoopAfterthoughts": true }],
+    "prefer-template": 1
   },
   "globals": {
-
   },
   "sort-imports": ["error", {
     "ignoreCase": false,

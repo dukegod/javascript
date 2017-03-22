@@ -33,6 +33,10 @@ jsPatterns
 
 演练算法
 
+### 值传递与引用传递
+
+datapass
+
 
 
 

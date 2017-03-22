@@ -1,5 +1,5 @@
 var p = {
-  name: 'dk',
+  name: 'dk'
 }
 
 function test(p) {
