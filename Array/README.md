@@ -328,6 +328,10 @@ console.log(i);
 
 document.getElementsByTagName or document.querySelectorAll
 
+## random.js 生成随机数，以及随机排序
+
+[随机排序,洗牌](https://www.w3cplus.com/javascript/how-to-randomize-shuffle-a-javascript-array.html)
+
 ## 参考
 
 [array 兼容性考虑](http://www.zhangxinxu.com/wordpress/2013/04/es5%E6%96%B0%E5%A2%9E%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/#map)
