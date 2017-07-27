@@ -8,18 +8,18 @@
 
 ### json字符串格式 
 
-```
-    {
-        "id": 6,
-        "name": "brand",
-        "info": "brand brand brand brand",
-        "age": 1
-    }
+```js
+{
+    "id": 6,
+    "name": "brand",
+    "info": "brand brand brand brand",
+    "age": 1
+}
 ```
 
 ### json数组
 
-```
+```json
 [
     {
         "id": 1,
@@ -38,12 +38,12 @@
 
 ### 这是JavaScript对象
 
-```
+```js
 var peprson = {
-		"id": 6,
-		"name": "brand",
-		"info": "brand brand brand brand",
-		"age": 1
+    "id": 6,
+    "name": "brand",
+    "info": "brand brand brand brand",
+    "age": 1
 }
 
 ```
