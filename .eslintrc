@@ -7,36 +7,15 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": false,
+    "es6": true,
     "jquery": true
   },
   "rules": {
-    // 句末分号
-    "semi": [1, "always", {
-      "omitLastInOneLineBlock": true
-    }],
-    "no-extra-semi": 2,
-    // 单引号还是双引号
-    "quotes": [1, "single"],
-    // 强制使用 === ,!==
-    "eqeqeq": 2,
-    "no-console": 0,
-    "asi": 0,
-    "no-var": 0,
-    "vars-on-top": 0,
-    "func-names": ["error", "never"],
-    "prefer-arrow-callback": ["off", { "allowNamedFunctions": false }],
-    "space-before-function-paren": ["error", {
-        "anonymous": "always",
-        "named": "never",
-        "asyncArrow": "ignore"
-    }],
-    "comma-dangle": ["error", "never"],
-    "object-shorthand": ["off", "always", { "ignoreConstructors": true }],
-    "no-plusplus":["error", { "allowForLoopAfterthoughts": true }],
-    "prefer-template": 1
+    
   },
   "globals": {
+    "describe": false,
+    "it": false
   },
   "sort-imports": ["error", {
     "ignoreCase": false,
@@ -47,6 +26,7 @@
     "sourceType": "module"
   },
   "extends": "airbnb",
+  // "extends": "eslint:recommended",
   "installedESLint": true,
   "plugins": ["react"]
 }
