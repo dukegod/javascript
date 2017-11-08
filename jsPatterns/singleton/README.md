@@ -12,7 +12,7 @@
 
 环境变量中只存在一个全局变量，this指向当前对象，并进行上下文属性与方法的传递。
 
-```
+```js
 var nameSpace = {
   name: 'Liuhui',
   showName: function(){
@@ -35,7 +35,7 @@ nameSpace.modifyName('dukegod');
 
 #### 使用构造函数
 
-```
+```js
 var Singleton = (function () {
 
   var _instance = null;
@@ -75,7 +75,7 @@ Singleton.init();
 
 #### 使用函数对象
 
-```
+```js
 var Singleton = (function() {
   var _instance = null;
 
