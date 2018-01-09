@@ -2,11 +2,11 @@
 
 #### 数组
 
-Array
+array
 
 #### 函数
 
-Function
+function
 
 #### json
 
@@ -14,7 +14,7 @@ json
 
 #### 本地存储
 
-Storage
+storage
 
 ### 正则表达式
 
@@ -25,11 +25,11 @@ regularExpression
 algorithms  
 
 
-### 单例模型
+### 设计模式
 
 jsPatterns
 
-### leetCode
+### leetcode
 
 演练算法
 
