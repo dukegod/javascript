@@ -8,8 +8,9 @@ function test(arr, n) {
 
   for (var i = 0; i < arrinner.length; i++) {
     arrinner[i] += n;
+    return arrinner
   }
-  return arrinner;
+  // return arrinner;
 }
 
 
