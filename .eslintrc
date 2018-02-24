@@ -23,7 +23,8 @@
     "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
   }],
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "experimentalDecorators": true,
   },
   "extends": "airbnb",
   // "extends": "eslint:recommended",
