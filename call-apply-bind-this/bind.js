@@ -1,19 +1,23 @@
-var x = 10;
+    Function.prototype.Bbind = function (thisArgs){
+        console.log(arguments)
+        var fn = this,
+            slice = Array.prototype.slice,
+            args = slice.call(arguments, 1);
+            console.log(args)
+        return function (){
+            return fn.apply(thisArgs, args.concat(slice.call(arguments)));
+        }
+    }
 
-var obj = {
-  x: 11,
-  sum: function(){
-    return this.x
-  }
+function abc(e) {
+    console.log(this)
 }
 
-console.log(obj.sum());
+var obj = {
+  name: 90,
+  age: 89
+}
 
-var objj = obj.sum;
-console.log(objj());
+var A= abc.Bbind(obj)
 
-
-// 在node 环境中，thisz指向为node
-// 
-// 
-// 
+A();
