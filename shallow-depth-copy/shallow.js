@@ -21,18 +21,17 @@
 // }
 // console.log(result);
 
-var obj = {
+const obj = {
   name: 'wsscat',
   age: 0,
   add: {
-    a: 'beijing'
-  }
-}
+    a: 'beijing',
+  },
+};
 // var obj2 = Object.assign({}, obj);
-var obj2 = obj;
+let obj2 = obj;
 obj2.age = 18;
 obj2.add.a = 'shanghai';
-console.log(obj)
-console.log(obj2)
-
+console.log(obj);
+console.log(obj2);
 

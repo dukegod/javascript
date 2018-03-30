@@ -1,5 +1,3 @@
-浅拷贝 深拷贝 
-
 深拷贝和浅拷贝是只针对Object和Array这样的复杂类型的
 
 ### 浅拷贝
@@ -38,16 +36,40 @@ function test() {
 test();
 ```
 
-数组常用： 直接赋值
-
 ### 深拷贝
 
-按值传递
+肯定是**按值传递**，保证对象的绝对独立
 
+#### 数组
+实现的方法：
++ slice()
++ concat()
 
-#### 参考
+#### 对象
+
+######  `JSON.parse()` 能实现深度拷贝，但是有一下缺点
+
++ 无法实现对函数的，正则的等特殊的对象的克隆
++ 会抛弃对象的constructor，所有的构造函数会指向Object
++ 对象有循环引用，会报错
+
+##### 自我实现一个简单的算法
+
+```js
+function depthCopy(obj) {
+  let result = {};
+  for (let i in obj) {
+    if ( isTypeObject(obj[i]) === 'object' ) {
+      result[i] = depthCopy(obj[i])
+    } else {
+      result[i] = obj[i]
+    }
+  }
+  return result
+}
+```
+
+#### 参考文档
 
 [mozilla](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
-[1](https://github.com/Wscats/Good-text-Share/issues/57)
-[2](https://juejin.im/post/5ab23769f265da237506c845)
-[3](https://juejin.im/post/5abb55ee6fb9a028e33b7e0a?utm_source=gold_browser_extension)
+[请你实现一个深克隆](https://juejin.im/post/5abb55ee6fb9a028e33b7e0a?utm_source=gold_browser_extension#heading-3)
