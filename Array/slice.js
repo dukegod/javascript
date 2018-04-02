@@ -1,7 +1,9 @@
 /**
  * Created by hui on 16/5/3.
  */
-"use strict";
 var arr = [1,2,3,4,5,6];
+var arr2 = arr.slice(2)
 
-console.log(arr.slice(2))
+arr.push(9)
+console.log(arr)
+console.log(arr2)

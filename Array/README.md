@@ -13,9 +13,9 @@ var arr = []
 + 删除，插入，替换:splice
 + 队列操作:
 
-改变原数组的方法是 pop push shift unshift sort splice
+浅赋值：改变原数组的方法是 pop push shift unshift sort splice
 
-不改变原数组的方法是 concat join slice
+深度赋值：不改变原数组的方法是 concat join slice
 
 
 ### join

@@ -2,12 +2,23 @@
 *map
 */
 
-var users = [
-  {name: '张含韵', 'email': 'zhang@email.com'},
-  {name: '江一燕',   'email': 'jiang@email.com'},
-  {name: '李小璐',  'email': 'li@email.com'}
-];
+let arr = [2, 3, 4, 5];
 
-users.map(function(value,index) {
-	console.log(index + value.email);
-})
+let newarr = arr.map((item) => {
+  let it = item;
+  it += 6;
+  return it;
+});
+
+console.log(arr);
+console.log(newarr);
+
+
+let filterArr = arr.filter((item) => {
+  console.log(item)
+  return item;
+});
+
+console.log(arr)
+console.log(filterArr);
+
