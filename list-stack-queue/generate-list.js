@@ -22,7 +22,7 @@ Genelist.prototype.add = (val) => {
 };
 
 Genelist.prototype.find = (val) => {
-  for (let i = 0; i < this.length; i++) {
+  for (let i = 0; i < this.length; i += 1) {
     if (this.newArray[i] === val) {
       return i;
     }
@@ -43,8 +43,8 @@ Genelist.prototype.remove = (val) => {
 Genelist.prototype.insert = (beforeElement, val) => {
   const index = this.find(beforeElement);
   if (index > -1) {
-    this.newArray.splice(index+1, 0, val);
-    this.listSize ++;
+    this.newArray.splice(index + 1, 0, val);
+    this.listSize += 1;
     return true;
   }
   return false;
