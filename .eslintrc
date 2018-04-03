@@ -9,7 +9,7 @@
     "es6": true
   },
   "rules": {
-    
+    "allowForLoopAfterthoughts": true
   },
   "globals": {
     "describe": false,
@@ -19,6 +19,7 @@
     "sourceType": "module",
     "experimentalDecorators": true
   },
-  "extends": "airbnb",
-  "plugins": ["react"]
+  
+  "extends": "airbnb"
+  // "plugins": ["react"]
 }

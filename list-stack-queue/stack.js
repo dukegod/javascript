@@ -13,7 +13,6 @@ class Stack {
   push(ele) {
     this.top += 1;
     this.stackArr[this.top] = ele;
-    // return this.stackArr;
   }
   pop() {
     this.top -= 1;
@@ -28,14 +27,14 @@ class Stack {
 }
 
 
-let s = new Stack()
+const s = new Stack();
+s.push(11);
+s.push(21);
+s.push(31);
+s.push(41);
 
-s.push(11)
-s.push(21)
-s.push(31)
-s.push(41)
+console.log(s.length());
+console.log(s.pop());
+s.clear();
+console.log(s.length());
 
-console.log(s.length())
-console.log(s.pop())
-s.clear()
-console.log(s.length())
