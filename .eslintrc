@@ -9,7 +9,19 @@
     "es6": true
   },
   "rules": {
-    "allowForLoopAfterthoughts": true
+    "no-plusplus": [
+      "off",
+      { "allowForLoopAfterthoughts": true }
+    ],
+    "one-var": [
+      "error", 
+      { "var": "always", "let": "never", "const": "never" }
+    ],
+    "arrow-parens": ["error", "as-needed"],
+    "no-mixed-operators": [
+      "error", 
+      {"allowSamePrecedence": true}
+    ]
   },
   "globals": {
     "describe": false,
@@ -19,7 +31,6 @@
     "sourceType": "module",
     "experimentalDecorators": true
   },
-  
   "extends": "airbnb"
   // "plugins": ["react"]
 }
