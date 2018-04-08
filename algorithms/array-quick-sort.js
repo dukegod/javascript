@@ -18,8 +18,25 @@ const oldArray = genArr(5);
 console.log(oldArray);
 
 function quickSort(params) {
+  if (params.length === 0) {
+    return [];
+  }
   const array = params;
   const len = array.length;
-  const mid = Math.floor(len / 2);
-  
+  const arrayLeft = [];
+  const arrayRight = [];
+  const pivot = array[0];
+
+  for (let i = 0; i< len; i++) {
+    if (array[i] > pivot) {
+      arrayRight.push(array[i]);
+    } else {
+      arrayLeft.push(array[i]);
+    }
+  }
+  return quickSort(arrayLeft).concat(pivot, quickSort(arrayRight))
 }
+
+const newArray = quickSort(oldArray);
+console.log(newArray);
+

@@ -3,7 +3,6 @@
 * 2016,1,28
 * 判断另一个字符串首次出现的位置
 */
-"use strict";
 var findLocation = function(s1,s2){
   var l1 = s1.length,
       l2 = s2.length,
