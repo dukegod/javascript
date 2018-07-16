@@ -1,41 +1,26 @@
 javascript 数据结构
 
-#### 数组
 
-array
 
-#### 函数
-
-function
-
-#### json
-
-json
-
-#### 本地存储
-
-storage
-
-### 正则表达式
-
-regularExpression
-
-### 数据结构和算法
+#### 数据结构和算法
 
 algorithms  
 
-
-### 设计模式
+#### 设计模式
 
 jsPatterns
 
-### leetcode
+#### leetcode
 
 演练算法
 
-### 值传递与引用传递
 
-datapass
+### rollup config
+
+创建`rollup.config.js`文件，进行本地动态配置输出环境
+
++ cmd： 'cjs'
++ umd:  'umd'
 
 
 
