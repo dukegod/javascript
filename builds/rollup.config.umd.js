@@ -15,7 +15,8 @@ export default {
   input: '--test--/test-rollup.js',
   output: {
     file: 'dist/index.js',
-    format: 'cjs',
+    format: 'umd',
+    name: 'umddd',
     banner,
   },
   plugins: [

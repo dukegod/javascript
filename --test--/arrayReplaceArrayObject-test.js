@@ -1,5 +1,6 @@
 const assert = require('assert');
-const arrayReplaceArrayObject = require('../Array/arrayReplaceArrayObject')
+
+const arrayReplaceArrayObject = require('../src/Array/arrayReplaceArrayObject')
 
 
 const arr1 =
