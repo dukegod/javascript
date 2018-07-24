@@ -3,26 +3,26 @@
  * 2018年01月09日12:32:561 by 刘辉
  */
 function isTypeObject(s) {
-  return typeof(s) === 'object'
+  return typeof (s) === 'object';
 }
 
 function isString(s) {
-  console.log(Object.prototype.toString.call(s))
+  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object String]';
 }
 
 function isFunction(s) {
-  console.log(Object.prototype.toString.call(s))
+  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object Function]';
 }
 
 function isObject(s) {
-  console.log(Object.prototype.toString.call(s))
+  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object Object]';
 }
 
 function isArray(s) {
-  console.log(Object.prototype.toString.call(s))
+  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object Array]';
 }
 
