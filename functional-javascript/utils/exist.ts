@@ -1,6 +1,9 @@
 // 判断是不是为真
+interface X {
+    x: any
+}
 
-function existy(x:any):boolean {
+export function existy(x:X):boolean {
   return x != null
 }
-export * as existy;
+
