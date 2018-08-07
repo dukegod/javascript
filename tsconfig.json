@@ -1,0 +1,16 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noImplicitAny" : true,
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": false,
+    "types": ["lodash", "node"]
+  },
+  "include": [
+    "functional-javascript/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

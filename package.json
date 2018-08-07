@@ -7,6 +7,8 @@
   },
   "scripts": {
     "test": "mocha ./--test--/**/**",
+    "ts": "./node_modules/.bin/tsc --watch",
+    "tser": "./node_modules/.bin/tsserver",
     "build": "./node_modules/rollup/bin/rollup -c builds/rollup.config.js",
     "build:umd": "./node_modules/rollup/bin/rollup -c builds/rollup.config.umd.js"
   },
@@ -34,9 +36,12 @@
     "eslint-plugin-react": "^7.7.0",
     "mocha": "^5.2.0",
     "rollup": "^0.63.4",
-    "rollup-plugin-babel": "^3.0.7"
+    "rollup-plugin-babel": "^3.0.7",
+    "typescript": "^3.0.1"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.116",
+    "@types/node": "^10.5.7",
     "babel-runtime": "^6.26.0"
   }
 }
