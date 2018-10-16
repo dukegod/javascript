@@ -10,7 +10,7 @@
 
 ## 希望一个变量长期驻扎在内存中
 
-```
+```js
 var generateClosure = function() {
 	var count = 0;
 	var get = function() {
@@ -22,18 +22,18 @@ var generateClosure = function() {
 };
 var counter1 = generateClosure();
 var counter2 = generateClosure();
-console.log(counter1()); 
-console.log(counter2()); 
-console.log(counter1()); 
-console.log(counter1()); 
-console.log(counter2()); 
+console.log(counter1());
+console.log(counter2());
+console.log(counter1());
+console.log(counter1());
+console.log(counter2());
 console.log("the end");
 
 ```
 
-## 避免全局变量的污染  
+## 避免全局变量的污染
 
-```
+```js
 'use strict';
 function A(){
 	var i = 0;
