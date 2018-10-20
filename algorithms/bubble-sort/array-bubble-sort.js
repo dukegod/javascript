@@ -3,7 +3,7 @@
 // 最慢的算法，也是最好实现的算法，
 // 两两比较，交换位置
 
-const genArr = require('./generate-array');
+const genArr = require('../generate-array');
 
 const array = genArr(5);
 console.log(array);

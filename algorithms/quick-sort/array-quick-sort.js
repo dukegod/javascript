@@ -11,7 +11,7 @@
 // 这个操作称为分区 (partition)操作，分区操作结束后，基准元素所处的位置就是最终排序后它的位置。
 // 对”基准”左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止。
 
-const genArr = require('./generate-array');
+const genArr = require('../generate-array');
 
 console.log('select sort');
 const oldArray = genArr(5);

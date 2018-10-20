@@ -4,7 +4,7 @@
 // 2, 然后通过循环找出最小元素，
 // 3, 然后同第一个元素交换，接着假设第二个元素，重复上述操作即可
 
-const genArr = require('./generate-array');
+const genArr = require('../generate-array');
 
 console.log('select sort');
 const oldArray = genArr(5);

@@ -8,7 +8,7 @@
 // 5. 将新元素插入到该位置后
 // 6. 重复步骤 2~5
 
-const genArr = require('./generate-array');
+const genArr = require('../generate-array');
 
 const oldArray = genArr(5);
 console.log(oldArray);
