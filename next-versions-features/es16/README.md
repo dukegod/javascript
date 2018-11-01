@@ -15,3 +15,10 @@ Math.pow(7,2)
 // afteruse 
 7**2
 ```
+
+### `...` 用法
+
++ 数组拼接 : [...arr1, ...arr2]
++ 类数组转为数组方式： arguments
++ 对象浅复制 类似： `object.assign()`
++ 循环 Map，Set 数据结构 
