@@ -17,26 +17,39 @@ console.log('select sort');
 const oldArray = genArr(5);
 console.log(oldArray);
 
-function quickSort(params) {
-  if (params.length === 0) {
-    return [];
-  }
-  const array = params;
-  const len = array.length;
-  const arrayLeft = [];
-  const arrayRight = [];
-  const pivot = array[0];
+function quickSort(arr) {
 
-  for (let i = 0; i< len; i++) {
-    if (array[i] > pivot) {
-      arrayRight.push(array[i]);
-    } else {
-      arrayLeft.push(array[i]);
-    }
+  if (arr.length <= 1) {
+    return arr;
   }
-  return quickSort(arrayLeft).concat(pivot, quickSort(arrayRight))
-}
+
+  var pivotIndex = Math.floor(arr.length / 2);
+
+  var pivot = arr.splice(pivotIndex, 1)[0];
+  console.log(pivot);
+
+  var left = [];
+
+  var right = [];
+
+  for (var i = 0; i < arr.length; i++) {
+
+    if (arr[i] < pivot) {
+
+      left.push(arr[i]);
+
+    } else {
+
+      right.push(arr[i]);
+
+    }
+
+  }
+  console.log(left);
+  console.log(right);
+  return quickSort(left).concat([pivot], quickSort(right));
+
+};
 
 const newArray = quickSort(oldArray);
 console.log(newArray);
-
