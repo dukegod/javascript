@@ -35,20 +35,20 @@ const twoSum = (nums, target) => {
   });
 
   // work out the repeat array
-  Array.prototype.unique = function () {
-    var json = {};
-    var res = [];
-    for (var i = 0; i < this.length; i++) {
-      if (!json[this[i]]) {
-        res.push(this[i]);
-        json[this[i]] = true;
-      }
-    }
-    return res;
-  }
-  console.log(numIndex.unique());
-  return numIndex.unique();
-}
+  // Array.prototype.unique = function () {
+  //   var json = {};
+  //   var res = [];
+  //   for (var i = 0; i < this.length; i++) {
+  //     if (!json[this[i]]) {
+  //       res.push(this[i]);
+  //       json[this[i]] = true;
+  //     }
+  //   }
+  //   return res;
+  // }
+  console.log(...new Set(numIndex));
+  return [...new Set(numIndex)];
+};
 
 const nums = [-3, 4, 3, 90]
 twoSum(nums, 0);
