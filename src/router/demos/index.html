@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <style>
+        li {
+            width: 100vw;
+            height: 30px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1> index </h1>
+    <ul>
+        <li><a href="#/one">  one1 </a> </li>
+        <li><a href="#/one2"> one2 </a> </li>
+        <li><a href="#/one3"> one3 </a> </li>
+        <li><a href="#/one4"> one4 </a> </li>
+        <li><a href="#/one5"> one5 </a> </li>
+    </ul>
+    <button id="btn1">
+        one
+    </button>
+    <button id="btn2">
+        one555
+    </button>
+    <button id="btn3">
+        触发replace方法修改路由信息
+    </button>
+
+    <script src="../hash.js"></script>
+    <script>
+        const router = new HashRouter();
+
+        console.log(router.parameterToJson('?noe=90&ui=ok'))
+
+        document.getElementsByTagName('button')[0].addEventListener('click', ()=>{
+            router.push('/one', function() {
+                alert(9)
+            });
+        })
+        document.getElementsByTagName('button')[1].addEventListener('click', ()=>{
+            router.push('/one5?one=1&two=2&three=5', function() {
+                console.log('one5')
+            });
+        })
+        document.getElementsByTagName('button')[2].addEventListener('click', ()=>{
+            router.replace('/one89')
+        })
+
+    </script>
+</body>
+</html>

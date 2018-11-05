@@ -3,7 +3,7 @@ var str = "a=90,b=80,c=99";
 function strToJson(params) {
   // if (!!params)  return;
   if (params === '') return;
-  var strs = params.replace(/=/g, ':').replace("{", '').replace("}", '');
+  var strs = params.replace(/=/g, ':');
   var res = {};
   for (var i = 0; i < strs.split(',').length; i++) {
     var x = strs.split(',')[i].split(':');
