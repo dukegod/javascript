@@ -38,6 +38,9 @@
     <button id="btn4">
         触发push路由信息
     </button>
+    <button id="btn5">
+        刷新浏览器
+    </button>
 
     <script src="../history.js"></script>
     <script>
@@ -57,6 +60,9 @@
         })
         document.getElementsByTagName('button')[3].addEventListener('click', ()=>{
             router.push('?one=7')
+        })
+        document.getElementsByTagName('button')[4].addEventListener('click', ()=>{
+            router.refresh()
         })
 
     </script>

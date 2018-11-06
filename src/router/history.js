@@ -19,10 +19,10 @@ class HistoryRouter {
    * 初始化函数
    */
   init() {
-    // console.log(`mode: ${this.mode}`);
-    this.$win.addEventListener('popstate', function() {
+    console.log(`mode: ${this.mode}`);
+    this.$win.addEventListener('popstate', function(event) {
       // this.refresh()
-      console.log(99999)
+      console.log('触发了popstate事件', JSON.stringify(event.state))
     }.bind(this), false)
   }
 
@@ -48,6 +48,7 @@ class HistoryRouter {
     this.currentUrl = path;
     this.routers[path] = cb;
     this.$history.replaceState({}, 'replace', pathname + path)
+    console.log(this.routers)
   }
 
   /**
@@ -55,6 +56,8 @@ class HistoryRouter {
    */
   refresh() {
     const pathname = this.$win.location.pathname;
+    console.log( pathname + this.$win.location.search)
+    // debugger
     this.$win.location.href = pathname + this.$win.location.search;
     console.log(this.routers)
   }
