@@ -8,12 +8,15 @@ class BaseInstance {
     let i = 0;
     console.log(`实例化次数:: ${i++}`);
   }
+
   init() {
     console.log(this.name);
   }
+
   getName() {
     console.log(this.name);
   }
+
   setName(name) {
     this.name = name;
   }

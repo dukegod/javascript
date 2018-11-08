@@ -5,16 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Document</title>
-        <script src="./instant.js"></script>
+        <script defer src="./single-instance.js"></script>
     </head>
     <body>
+        <button id="loginBtn">loginBtn</button>
+        <p>
+            <button id="loginBtn2">loginBtn2</button>
+        </p>
         <script>
-            const a = singleTon('9090');
-            a.init();
-            a.setName('8888');
-            a.getName();
-            const b = singleTon('9092');
-            b.init();
+
         </script>
     </body>
 </html>
