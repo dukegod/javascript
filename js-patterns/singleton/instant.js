@@ -1,5 +1,8 @@
-// 运用构造方法，实现继承
-class Person {
+/**
+ * 这个是用来实现具体功能的类
+ * @param name 名称
+ */
+class BaseInstance {
   constructor(name) {
     this.name = name;
     let i = 0;
@@ -16,6 +19,9 @@ class Person {
   }
 }
 
+/**
+ * 用来对外发布，保持内部类的对立性的闭包函数
+ */
 const singleTon = (function () {
   let instance = null;
   // const instant = function (defaultOpt) {
@@ -29,7 +35,7 @@ const singleTon = (function () {
   // 优化
   return function (defaultOpt) {
     if (!instance) {
-      instance = new Person(defaultOpt);
+      instance = new BaseInstance(defaultOpt);
     }
     return instance;
   };
