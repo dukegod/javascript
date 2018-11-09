@@ -4,20 +4,11 @@
     "es6": true
   },
   "rules": {
-    "no-plusplus": [
-      "off",
-      { "allowForLoopAfterthoughts": true }
-    ],
-    "one-var": [
-      "error",
-      { "var": "always", "let": "never", "const": "never" }
-    ],
+    "no-plusplus": ["off", { "allowForLoopAfterthoughts": true }],
+    "one-var": ["error", { "var": "always", "let": "never", "const": "never" }],
     "arrow-parens": ["error", "as-needed"],
     "func-names": ["error", "never"],
-    "no-mixed-operators": [
-      "error",
-      {"allowSamePrecedence": true}
-    ]
+    "no-mixed-operators": ["error", { "allowSamePrecedence": true }]
   },
   "globals": {
     "describe": false,
