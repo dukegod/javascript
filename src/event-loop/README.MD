@@ -3,20 +3,24 @@ title: 事件运行机制
 date: 2016-02-10
 tags: [JavaScript]
 ---
-关于事件的运行机制，网上有很多的文章介绍，自己总结一下比较适合自我理解的部分，大部分人感觉把浏览器的机制与在nodejs中的运行机制搞混了，整个文章有点让人茫然，先说明下自己都参考了哪些网站，
 
-参考部分：
+关键知识点：
 
-[JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)  
-[Vue源码详解之nextTick：MutationObserver只是浮云，microtask才是核心！](https://chuckliu.me/#!/posts/58bd08a2b5187d2fb51c04f9)  
++ js单线程
++ 事件循环机制
++ job, job-task, microtasks, macrotasks, 宏任务, 微任务
++ setTimeout执行机制
++ promise 执行机制
 
-正文部分开始：
+关于事件的运行机制，网上有很多的文章介绍，大部分人感觉把浏览器的机制与在nodejs中的运行机制搞混了，整个文章有点让人茫然。
+
+### 单线程
 
 javascript 是单线程，一个时间只能做一件事情；
 
 多线程实践，HTML5提出Web Worker，允许js创建多个线程，但子线程完全受主线程控制。
 
-### 运行机制
+### 事件循环运行机制
 
 堆： 对象被分配在一个堆中，一个用以表示一个内存中大的未被组织的区域。
 
@@ -39,7 +43,7 @@ javascript 是单线程，一个时间只能做一件事情；
 从这张图中我们可以看到其中有宏任务（MacroTask）和微任务（MicroTask）之分,我们来说下这个宏任务与微任务。  
 
 宏任务(MacroTask)包括：
-+ *setTimeout
++ *setTimeout22
 + *setInterval
 + UI 渲染
 + I/O
@@ -56,6 +60,38 @@ JavaScript引擎首先从macrotask queue中取出第一个任务，执行完毕�
     
 也就是说：当前执行栈执行完毕时会立刻先处理所有微任务队列中的事件，然后再去宏任务队列中取出一个事件。同一次事件循环中，微任务永远在宏任务之前执行。
 
+
+### setTimeout执行机制
+
+setTimeout(fn, delay), `setTimeout`的执行时间永远大于等于delay的时间，还取决于是不是主线程还有其他的事件阻塞异步事件的执行。例如我们可以添加一个`sleep`函数阻塞主线程.
+
+```js
+function sleep(delay) {
+  const start = new Date()*1;
+  while (new Date()*1 - start < delay) {
+    continue;
+  }
+}
+function task(t) {
+  const t2 = new Date()*1;
+  console.log('等待了多久多久', t2 - t);
+}
+console.log(1);
+var time = new Date()*1;
+setTimeout(()=>{
+  task(time);
+}, 1000);
+sleep(5000)
+```
+
+运行以上代码，我们发现，实际执行的时候，并没有在1秒以后得到我们想要的结果，而是等了差不多5秒多时间，就是因为主线程上有阻塞，主线程一直不为空，异步队列就没有办法执行，只能等待。
+
+### promise执行机制
+
+
+
+### 具体事例分析
+
 ```js
 setTimeout(function () {
     console.log(200);
@@ -69,7 +105,7 @@ setTimeout(function () {
     console.log(500);
 }, 500);
 
-new Promise(function(resolve,reject){
+new Promise(function(resolve){
     console.log(2);
     resolve(3);
 }).then(function(val){
@@ -79,3 +115,11 @@ new Promise(function(resolve,reject){
 console.log(99999)
 ```
 // 2,99999,3,100,200,500
+
+
+参考文档：
+
+[JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)  
+[Vue源码详解之nextTick：MutationObserver只是浮云，microtask才是核心！](https://chuckliu.me/#!/posts/58bd08a2b5187d2fb51c04f9)  
+[这一次，彻底弄懂 JavaScript 执行机制](https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650585345&amp;idx=1&amp;sn=6fd112fbed64246601b48e392d1e7a0b&source=41#wechat_redirect)
+[promise 事件机制](https://github.com/creeperyang/blog/issues/21) 
