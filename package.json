@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha ./--test--/**/**",
+    "test": "mocha --recursive .test.js",
     "ts": "./node_modules/.bin/tsc --watch",
     "tser": "./node_modules/.bin/tsserver",
     "build": "./node_modules/rollup/bin/rollup -c builds/rollup.config.js",
