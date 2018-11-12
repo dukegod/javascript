@@ -4,11 +4,30 @@
     "es6": true
   },
   "rules": {
-    "no-plusplus": ["off", { "allowForLoopAfterthoughts": true }],
-    "one-var": ["error", { "var": "always", "let": "never", "const": "never" }],
+    "no-plusplus": ["off", {
+      "allowForLoopAfterthoughts": true
+    }],
+    "one-var": ["error", {
+      "var": "always",
+      "let": "never",
+      "const": "never"
+    }],
     "arrow-parens": ["error", "as-needed"],
     "func-names": ["error", "never"],
-    "no-mixed-operators": ["error", { "allowSamePrecedence": true }]
+    "no-mixed-operators": ["error", {
+      "allowSamePrecedence": true
+    }],
+    "semi": ["error", "never", {
+      "beforeStatementContinuationChars": "always"
+    }],
+    "comma-dangle": ["error", {
+      "only-multiline": "error",
+      "arrays": "never",
+      "objects": "ignore",
+      "imports": "never",
+      "exports": "never",
+      "functions": "ignore"
+    }]
   },
   "globals": {
     "describe": false,

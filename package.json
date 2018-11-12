@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --recursive .test.js",
+    "test": "mocha --recursive ./*/*/*.test.js",
     "ts": "./node_modules/.bin/tsc --watch",
     "tser": "./node_modules/.bin/tsserver",
     "build": "./node_modules/rollup/bin/rollup -c builds/rollup.config.js",
@@ -29,6 +29,7 @@
     "babel-core": "^6.26.3",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.13.0",
