@@ -6,7 +6,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --recursive .test.js",
+    "mocha": "./node_modules/.bin/mocha",
+    "babel": "./node_modules/.bin/babel-node",
     "ts": "./node_modules/.bin/tsc --watch",
     "tser": "./node_modules/.bin/tsserver",
     "build": "./node_modules/rollup/bin/rollup -c builds/rollup.config.js",
@@ -26,9 +27,12 @@
   },
   "homepage": "https://github.com/dukegod/javascript#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@types/node": "^10.5.7",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.13.0",
@@ -36,12 +40,10 @@
     "eslint-plugin-react": "^7.7.0",
     "mocha": "^5.2.0",
     "rollup": "^0.63.4",
-    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-babel": "^4.0.1",
     "typescript": "^3.0.1"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.116",
-    "@types/node": "^10.5.7",
-    "babel-runtime": "^6.26.0"
+    "@types/lodash": "^4.14.116"
   }
 }
