@@ -1,8 +1,19 @@
-const assert = require('assert');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1,2,3].indexOf(4), -1);
-    });
-  });
-});
+const {
+  assert
+} = require('chai')
+
+const sleep = require('./sleep')
+
+assert.typeOf(sleep, 'function');
+
+
+// it('should complete this test', function (done) {
+//   return new Promise(function (resolve) {
+//     assert.ok(true);
+//     resolve();
+//   })
+//     .then(sleep(3000))
+//     .then(()=>{
+//       assert.ok()
+//     });
+// });

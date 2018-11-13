@@ -12,7 +12,7 @@ const banner =
 // process.env='deverlopment'
 
 export default {
-  input: '--test--/test-rollup.js',
+  input: '',
   output: {
     file: 'dist/index.js',
     format: 'cjs',
