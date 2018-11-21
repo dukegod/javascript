@@ -1,5 +1,5 @@
 
-var aa = "false";
+var aa = false;
 
 console.log(aa);
 
