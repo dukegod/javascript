@@ -5,19 +5,22 @@ function ListNode(val) {
     this.val = val;
     this.next = null;
 }
-var addTwoNumbers = function(l1, l2) {
-  var add = 0
+const addTwoNumbers = function(l1, l2) {
+  let add = 0
     , ans
     , head;
 
   while(l1 || l2) {
-    var a = l1 ? l1.val : 0
+    let a = l1 ? l1.val : 0
       , b = l2 ? l2.val : 0;
 
     var sum = a + b + add;
+
+    // 获取进一位的数值
     add = ~~(sum / 10);
 
-    var node = new ListNode(sum % 10);
+    // 获取余数
+    let node = new ListNode(sum % 10);
 
     if (!ans)
       ans = head = node;

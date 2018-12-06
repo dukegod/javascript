@@ -39,14 +39,17 @@ class Llist {
   }
 }
 
+module.exports = Llist;
+
 const newlist = new Llist();
 
 newlist.insert('a', 'head');
 newlist.insert('b', 'a');
 newlist.insert('c', 'b');
 newlist.insert('d', 'c');
+console.log(newlist)
 newlist.display();
-
-newlist.findPrevious('c');
-newlist.remove('c');
-newlist.display()
+//
+// newlist.findPrevious('c');
+// newlist.remove('c');
+// newlist.display()

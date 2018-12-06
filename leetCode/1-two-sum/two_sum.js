@@ -34,7 +34,7 @@ const twoSum = (nums, target) => {
     }
   });
 
-  // work out the repeat array
+  // 数组去重
   // Array.prototype.unique = function () {
   //   var json = {};
   //   var res = [];

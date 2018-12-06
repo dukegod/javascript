@@ -1,4 +1,4 @@
-let lswrc = function(s) {
+const lswrc = function(s) {
   var hash = {};
   var start = 0;
   var ans = 0;
