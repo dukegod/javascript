@@ -1,5 +1,7 @@
 # javascript
 
+不断的造轮子，解析轮子，摧毁轮子，然后继续造轮子...
+
 ### 打包
 `build`文件夹中配置`rollup.config.js`
 + cmd： 'cjs'
@@ -30,5 +32,10 @@ babel@7 带来的新特征：
 npm run mocha 1.test.js
 ```
 
+### 目录说明
++ kits: 主要存放各种前端自造小轮子
++ LeetCode: leetcode 题解
++ algorithms: 算法解析
++ js-patterns: 设计模式实现
 
 
