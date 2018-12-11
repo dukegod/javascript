@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Mutation</title>
+</head>
+<body>
+
+<div id="mutationID">
+    <p style="color: red;"> first </p>
+    <div contenteditable="true"> second</div>
+    <ul id="ulID">
+        <li>1</li>
+        <li>3</li>
+        <li>
+            <span id="innerSpan"> 4444 </span>
+        </li>
+    </ul>
+    <ol contenteditable oninput="">
+        <li>Press enter</li>
+    </ol>
+</div>
+<script>
+    const MutationObserver =  window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+    let targetNode = document.querySelector(`#mutationID`);
+    // Options for the observer (which mutations to observe)
+    let config = {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        characterData: true,
+        characterDataOldValue: true,
+        attributeOldValueL: true,
+        attributeFilter : ['style']
+        // sequence
+    };
+
+    // Callback function to execute when mutations are observed
+    const mutationCallback = (mutationsList) => {
+        console.log(mutationsList);
+        for (let mutation of mutationsList) {
+            let type = mutation.type;
+            switch (type) {
+                case "childList":
+                    console.log("A child node has been added or removed.");
+                    break;
+                case "attributes":
+                    console.log(`The ${mutation.attributeName} attribute was modified.`);
+                    break;
+                case "subtree":
+                    console.log(`The subtree was modified.`);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(mutationCallback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+
+    // Later, you can stop observing
+    // observer.disconnect();
+
+    // 清空
+    // observer.takeRecords();
+
+    // 添加节点
+    // var sec = document.createElement("section");
+    // sec.innerText = "section";
+    // targetNode.appendChild(sec);
+    // 修改属性
+    // var ul = document.getElementById("ulID");
+    // ul.setAttribute("data-a", "ulid");
+    // replace
+    // targetNode.replaceChild(document.createElement('article'), targetNode.firstElementChild);
+
+</script>
+</body>
+</html>
