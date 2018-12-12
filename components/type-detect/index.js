@@ -7,26 +7,22 @@ function isTypeObject(s) {
 }
 
 function isString(s) {
-  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object String]';
 }
 
 function isFunction(s) {
-  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object Function]';
 }
 
 function isObject(s) {
-  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object Object]';
 }
 
 function isArray(s) {
-  // console.log(Object.prototype.toString.call(s))
   return Object.prototype.toString.call(s) === '[object Array]';
 }
 
-module.exports = {
+export {
   isTypeObject,
   isArray,
   isObject,

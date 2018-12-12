@@ -33,10 +33,16 @@ npm run mocha 1.test.js
 ```
 
 ### 目录说明
-+ kits: 主要存放各种前端自造小轮子
++ components: 主要存放各种前端自造小轮子
+
+```js
+    // mocha test
+    components/*/**.test.js
+```
 + LeetCode: leetcode 题解
 + algorithms: 算法解析
 + js-patterns: 设计模式实现
 + key-kits: js相关的知识点
+
 
 

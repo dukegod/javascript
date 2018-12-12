@@ -1,7 +1,5 @@
-var str = "a=90,b=80,c=99";
 
 function strToJson(params) {
-  // if (!!params)  return;
   if (params === '') return;
   var strs = params.replace(/=/g, ':');
   var res = {};
@@ -12,4 +10,4 @@ function strToJson(params) {
   return JSON.stringify(res);
 }
 
-console.log(strToJson(str));
+export default strToJson

@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "mocha": "./node_modules/.bin/mocha",
+    "mocha": "./node_modules/.bin/mocha --require @babel/register",
     "babel": "./node_modules/.bin/babel-node",
     "ts": "./node_modules/.bin/tsc --watch",
     "tser": "./node_modules/.bin/tsserver",
@@ -31,8 +31,10 @@
     "@babel/node": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "@types/node": "^10.5.7",
+    "chai": "^4.2.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.13.0",
