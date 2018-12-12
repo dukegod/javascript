@@ -2,6 +2,15 @@
  * 判断各种类型
  * 2018年01月09日12:32:561 by 刘辉
  */
+
+function isNull(params) {
+  return params === null;
+}
+
+function isUndefined(params) {
+  return params === undefined
+}
+
 function isTypeObject(s) {
   return typeof (s) === 'object';
 }
@@ -23,22 +32,11 @@ function isArray(s) {
 }
 
 export {
+  isNull,
+  isUndefined,
   isTypeObject,
   isArray,
   isObject,
   isFunction,
   isString
 };
-
-// console.log(isString('abc'));
-//
-// function isf(params) {}
-//
-// console.log(isFunction(isf));
-//
-// const arr = [];
-//
-// console.log(isArray(arr));
-//
-// const obj = {}
-// console.log(isObject(obj))

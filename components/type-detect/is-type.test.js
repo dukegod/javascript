@@ -1,4 +1,6 @@
 import {
+  isNull,
+  isUndefined,
   isTypeObject,
   isArray,
   isObject,
@@ -7,6 +9,20 @@ import {
 } from './index';
 
 import assert from 'assert';
+
+describe('isNull', ()=>{
+  it('isNull("") should be return true', ()=>{
+    assert.equal(isString(null), true)
+  })
+})
+
+
+describe('isUndefined', ()=>{
+  it('isUndefined("") should be return true', ()=>{
+    assert.equal(isString(), true)
+  })
+})
+
 
 describe('isTypeObject', function() {
   it('should return true', function() {

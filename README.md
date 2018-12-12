@@ -37,7 +37,7 @@ npm run mocha 1.test.js
 
 ```js
     // mocha test
-    components/*/**.test.js
+  npm run mocha  ./components/**.test.js
 ```
 + LeetCode: leetcode 题解
 + algorithms: 算法解析
