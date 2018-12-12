@@ -15,6 +15,10 @@ function isTypeObject(s) {
   return typeof (s) === 'object';
 }
 
+function isNumber(s) {
+  return Object.prototype.toString.call(s) === '[object Number]'
+}
+
 function isString(s) {
   return Object.prototype.toString.call(s) === '[object String]';
 }
@@ -38,5 +42,6 @@ export {
   isArray,
   isObject,
   isFunction,
-  isString
+  isString,
+  isNumber
 };
