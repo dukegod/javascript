@@ -22,7 +22,7 @@ function polyfillBind(func, target, ...params) {
   // 收集传入的参数
   const args = params;
   return function () {
-    func.apply(target, args.concat(...arguments));
+    return func.apply(target, args.concat(...arguments));
   }
 }
 
