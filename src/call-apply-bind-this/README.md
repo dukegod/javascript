@@ -1,33 +1,40 @@
-# Call Apply Bind This
+# Call, Apply, Bind
 
-如果第一个参数为null或者undefined的话，那么，实际上绑定到的是全局对象，即global。这一点对三者都适用。
+主要用来改变this的指向问题与参数的传递
 
-改变this指向
+## call, apply的基本方法
 
-## call, apply 方法
++ 不传，传入null,传递undefined， 函数中的this指向window对象，在node中为“global”
++ 传递另一个函数的函数名，函数中的this指向这个函数的引用
++ 传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如 String、Number、Boolean
++ 传递一个对象，函数中的this指向这个对象
 
-（1） 不传，或者传null,undefined， 函数中的this指向window对象，在node中为“undefined”
+## bind 基本方法
 
-（2） 传递另一个函数的函数名，函数中的this指向这个函数的引用
+最大的区别是：bind在实现改变函数this的同时又不会自动执行目标函数
 
-（3） 传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如 String、Number、Boolean
-
-（4） 传递一个对象，函数中的this指向这个对象
-
-## bind 方法
-
-ES5引入bind的真正目的是为了弥补call/apply的不足，由于call/apply会对目标函数自动执行，从而导致它无法在事件绑定函数中使用，因为事件绑定函数不需要我们手动执行，它是在事件被触发时由JS内部自动执行的。而bind在实现改变函数this的同时又不会自动执行目标函数
-
-
-## 其他的用处
+## 使用场景
 
 ### 使用toString()方法来检测对象类型
 
-可以通过toString() 来获取每个对象的类型。
+可以通过`toString()` 来获取每个对象的类型如：。
 
-为了每个对象都能通过 Object.prototype.toString() 来检测，需要以 Function.prototype.call() 或者 Function.prototype.apply() 的形式来调用，把需要检测的对象作为第一个参数传入。
+```js
+function isNumber(s) {
+  return Object.prototype.toString.call(s) === '[object Number]'
+}
+```
 
-### 类数组转成数组 
+### 类数组转成数组
+
++ 可以实现`arguments`参数转为数组
++ dom节点转为数组
+
+```js
+Array.prototype.slice.call()
+```
+
+## 深入篇
 
 
 # this
@@ -152,16 +159,9 @@ cal.controller = (function () {
     return way;
 })();
 
-cal.controller.set(123);   
+cal.controller.set(123);
 cal.controller.get();   //  123
 
 ```
 
 
-[ref1](https://segmentfault.com/a/1190000003959359)
-
-[回味JS基础:call apply 与 bind](https://segmentfault.com/a/1190000004568767)
-
-[call/apply的理解与实例分享](https://segmentfault.com/a/1190000003977826)
-
-[ apply, call ,bind 环境解析 ](http://www.cnblogs.com/onepixel/p/5143863.html)
