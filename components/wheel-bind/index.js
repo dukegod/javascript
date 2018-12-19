@@ -28,8 +28,4 @@ function polyfillBind(func, target, ...params) {
 
 export default polyfillBind;
 
-// const pb = polyfillBind(function (x, y){
-//   console.log(this)
-// }, {name: 123}, 3,4,5,6);
 
-// pb(1,2)

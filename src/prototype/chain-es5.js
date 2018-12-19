@@ -1,19 +1,22 @@
-
-
-function Person(){}
-
-Person.prototype.name = 'duke come from prototype';
-Person.prototype.age = 20;
-Person.prototype.sayName = function(){
+function Person(name, age){
+  this.name = name,
+  this.age = age
+}
+Person.prototype.showName = function(){
 	console.log(this.name);
 };
+var person1 = new Person('pson', 18);
+var person2 = new Person('pson2', 19);
 
-var person1 = new Person();
+// 继承
+function Son(name, age, number){
+  Person.call(this, name, age)
+  this.number = number;
+}
+Son.prototype = Object.create(Person.prototype)
+Son.prototype.constructor = Son;
+var son = new Son('son', 10, 1000)
 
-var person2 = new Person();
-
-function Son(){}
-Son.prototype = new Person();
 
 // ifPrototypeOf() 判断对象之间是否存在关系
 console.log(Son.isPrototypeOf(Person));// false
@@ -23,7 +26,6 @@ console.log(Object.getPrototypeOf(person1));
 
 
 person1.name = 'instance';
-
 console.log(person1.name);
 console.log(person2.name);
 
