@@ -13,6 +13,8 @@ const initObject = {
 }
 ```
 
+![proto](https://raw.githubusercontent.com/dukegod/javascript/master/src/prototype/prototype.png)
+
 从以上我们可以值，由于`initObject`的原型指向`Object`，所以我们可以直接使用`Object`相关的函数方法。
 ```js
 initObject instanceof (Object)  // true
@@ -33,6 +35,8 @@ Person.prototype.showName = function(){
 var person1 = new Person('pson', 18);
 var person2 = new Person('pson2', 19);
 ```
+
+![chains](https://raw.githubusercontent.com/dukegod/javascript/master/src/prototype/prototype-chains.png)
 
 从上图可以看出,原型链的上下文关系，最终肯定指向为`null`
 
@@ -61,7 +65,7 @@ var son = new Son('son', 10, 1000)
 
 需要注意的点：
 
-+ 使用`Object.create()`把父类的原型对象赋值给子对象。如果直接用`new Person`的做法，可以会带来父类中`constrctor`定义的方法的执行等副作用。
++ 使用`Object.create()`把父类的原型对象赋值给子对象。如果直接用`new Person`的做法，可以会带来父类中`constrctor`定义的方法的执行等副作用。也就是只取`arguments`的第二个参数，详情见[using-object-create-instead-of-new](https://stackoverflow.com/questions/2709612/using-object-create-instead-of-new)
 + 创建的对象`constructor`一开始的指向不是`Son`，需要手动修改下。这样保持了`Son`原型链的完整性。
 
 
@@ -337,3 +341,69 @@ var person2 = new Person("pson2", 19);
 var son = new Son("son", 10, 1000);
 
 ```
+
+### typescript
+
+对于js的高级语法，不得不说`typescript`，强大的静态语法，让书写js更加的类似静态语法，减少因为类型的定义带来的问题。对于类在`typescript`中是如何转译的，详细看下文：
+
+```js
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Person = /** @class */ (function () {
+    function Person(name, age) {
+        this._name = name;
+        this._age = age;
+    }
+    Object.defineProperty(Person.prototype, "upperName", {
+        // 设置getter 方法
+        get: function () {
+            return this._name.toUpperCase();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Person.prototype.showName = function () {
+        console.log(this._name);
+    };
+    Person.prototype.showAge = function () {
+        console.log(this._age);
+    };
+    return Person;
+}());
+var Son = /** @class */ (function (_super) {
+    __extends(Son, _super);
+    function Son(name, age, number) {
+        var _this = _super.call(this, name, age) || this;
+        _this._number = number;
+        return _this;
+    }
+    Son.prototype.showNumber = function () {
+        console.log(this._number);
+    };
+    return Son;
+}(Person));
+var person1 = new Person('pson', 18);
+var person2 = new Person('pson2', 19);
+var son = new Son('son', 10, 1000);
+
+```
+
+`typescript`在转译时候，对于原型的方法直接挂载，对于`getter`,`setter`方法则是通过`Object.defineProperty`进行挂载的。对于继承的做法`typescript`
+也是自己通过自我实现的方法完成的，但是原理与`babel`差不多。
+
+`(this && this.__extends)`是用来判断是不是存在`extends`方法，以免重复定义。然后依次判断浏览器支持的方法进行原型方法的拷贝，先判断是不是支持`setPrototypeOf`方法，然后判断是不是支持`_proto_`，最次通过for循环进行属性拷贝。
+
+然后创建一个空函数，修改`constructor`的指向为父类，让子类的__proto__指向父类prototype。
+
+相关的代码见[prototype](https://github.com/dukegod/javascript/tree/master/src/prototype)
