@@ -406,4 +406,5 @@ var son = new Son('son', 10, 1000);
 
 然后创建一个空函数，修改`constructor`的指向为父类，让子类的__proto__指向父类prototype。
 
+
 相关的代码见[prototype](https://github.com/dukegod/javascript/tree/master/src/prototype)
