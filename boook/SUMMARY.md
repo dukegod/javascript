@@ -17,7 +17,6 @@
     * [数据请求 XHR](chapter3/section4.md)
     * [this](chapter3/this.md)
     * [call, apply, bind](chapter3/call-apply-bind.md)
-        * [bind](chapter3/bind.md)
     * [new 关键字](chapter3/new.md)
     * [原型链](chapter3/prototype.md)
 * [第四章 异步函数](chapter4/README.md)

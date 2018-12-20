@@ -6,9 +6,10 @@ var num = {
   sum: 0,
   add: function(x,y){
     this.sum = x + y;
-    console.log(this);//{ sum: 5, add: [Function] }
+    console.log(this);
   }
 }
-num.add(2,3);
+const r =  num.add(2,3);
+console.log(r);
 console.log(num.sum);
 
