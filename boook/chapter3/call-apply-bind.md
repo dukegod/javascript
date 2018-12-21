@@ -168,3 +168,5 @@ new Point(17, 42) instanceof YAxisPoint; // true
 ```
 
 [bind 手写](https://zhuanlan.zhihu.com/p/45992705?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=544479824572522496)
+
+[Implement your own — call(), apply() and bind() method in JavaScript](https://blog.usejournal.com/implement-your-own-call-apply-and-bind-method-in-javascript-42cc85dba1b)
