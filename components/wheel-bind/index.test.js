@@ -1,27 +1,29 @@
 import polyfillBind from './index';
 
-const targetObj = {
-  name: 'object name'
-}
+// 测试用例
+const targetObj = {}
+function targetFunc() {}
 
-function targetFunc() {
-  this.name = 'targetFunc'
-}
-
-
-function testBind(...params) {
-  console.log(params);
+// to bind  函数
+function toBindFunc(name) {
+  this.name = name
+  // console.log(params);
   console.log(this.name);
 }
 
-// testBind()
+// 测试绑定1  通过
+let test1 =  polyfillBind(toBindFunc, targetObj);
+test1('test1');
+console.log(targetObj)
+console.log(targetObj.name);
+var test2 = polyfillBind(toBindFunc, targetObj, 'test2')
+test2()
+console.log(targetObj.name)
 
-// testBind.bind(targetFunc, 1,2,3,4)(5, 6);
 
-// testBind.bind(targetObj)();
+// 测试绑定2 带有参数
+// let test2 =  polyfillBind(toBindFunc, targetObj, 'test2');
+// test2();
+// console.log(test1.name);
 
-let pb =  polyfillBind(testBind, targetFunc, 2,3,4)
-let pdd = new pb('abc')
-console.log(pdd)
 
-// polyfillBind(testBind, targetFunc)

@@ -12,7 +12,7 @@ function polyfillBind(func, target, ...params) {
     throw new TypeError('it is not function!!!')
   }
   // target 判断
-  console.log(target)
+  console.log(func)
   if (isNull(target)) {
     throw new TypeError('targer may not be null!!!')
   }

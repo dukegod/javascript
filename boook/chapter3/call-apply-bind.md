@@ -83,7 +83,7 @@ a.callWheel(b, 9999)
 
 ## bind
 
-最大的区别是：bind在实现改变函数this的同时又不会自动执行目标函数
+最大的区别是：bind在实现改变函数this的同时又不会自动执行目标函数，还可以提供参数的传入，这样新创建的函数即可以拥有绑定函数的属性与方法又可以参数传递
 
 以下总结来自伟大的[mozilla-bind](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 

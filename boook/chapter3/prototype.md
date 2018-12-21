@@ -1,5 +1,21 @@
 # 原型链
 
+概念说明
+
++ _proto_: 每一个对象都有这个属性，它永远指向构造函数的原型（null没有，也就是最终的指向为null）
++ prototype: 原型
++ 构造函数
++ 原型链
+
+```js
+var obj = {}
+obj._proto_ = Object.prototype
+obj.toString()
+```
+
+`obj`对象拥有`_proto_`属性，可以指向Object(构造函数)的prototype(原型)，因而继承了对象原型上的方法，所有我们可以调用`obj.toString()`，最终`Object.prototype.__proto__指向 null`
+
+
 ## 原型
 
 javascript 中一切皆对象，也就是说都是`object`的实例，也都有一个默认的原型指向`object.prototype`。感觉关于原型链这个还是图形比较好理解。

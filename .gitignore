@@ -1,11 +1,11 @@
 #.idea
 *.idea
 
-# vscode
-.vscode
-
 node_modules/*
 
 .DS_Store
+
+# 编译文件
+.compiled/*
 
 package-lock.json
