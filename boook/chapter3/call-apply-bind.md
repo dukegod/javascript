@@ -95,8 +95,8 @@ a.callWheel(b, 9999)
 
 注意点[ecma-bind](https://www.ecma-international.org/ecma-262/9.0/index.html#sec-function.prototype.bind):
 
-+ 通过`Function.prototype.bind`创建的对象，没有`prototype`原型
-+ 当被绑定对象为箭头函数或者被函数包裹的对象，不能被子类继承（因为上下文被锁定了）
++ 使用Function.prototype.bind创建的函数对象是外来对象。 他们也没有原型属性。
++ 如果Target是箭头函数或绑定函数，那么传递给此方法的thisArg将不会被后续调用F使用。
 
 ```js
 Function.prototype.bindWheel = function(oThis) {
@@ -166,3 +166,5 @@ axisPoint instanceof Point; // true
 axisPoint instanceof YAxisPoint; // true
 new Point(17, 42) instanceof YAxisPoint; // true
 ```
+
+[bind 手写](https://zhuanlan.zhihu.com/p/45992705?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=544479824572522496)
