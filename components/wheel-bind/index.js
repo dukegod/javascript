@@ -20,10 +20,16 @@ function polyfillBind(func, target, ...params) {
     throw new TypeError('targer may not be undefined!!!')
   }
   // 收集传入的参数
-  const args = params;
-  return function () {
-    return func.apply(target, args.concat(...arguments));
+  const Bfunction = function () {
+
+    const _this = this instanceof func ? this : target;
+
+    return func.apply(_this, args.concat(...arguments));
   }
+
+  Bfunction.prototype = func.prototype;
+
+  return Bfunction;
 }
 
 export default polyfillBind;

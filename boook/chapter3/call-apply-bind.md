@@ -95,8 +95,31 @@ a.callWheel(b, 9999)
 
 注意点[ecma-bind](https://www.ecma-international.org/ecma-262/9.0/index.html#sec-function.prototype.bind):
 
-+ 使用Function.prototype.bind创建的函数对象是外来对象。 他们也没有原型属性。
-+ 如果Target是箭头函数或绑定函数，那么传递给此方法的thisArg将不会被后续调用F使用。
+1. 使用Function.prototype.bind创建的函数对象是外来对象。 他们也没有原型属性。
+
+```js
+const bound = (function(){}).bind();
+console.log(bound instanceof Function);   // true
+console.log(!("prototype" in bound));     // false
+```
+
+2. 如果Target是箭头函数或绑定函数，那么传递给此方法的thisArg将不会被后续调用F使用。
+
+    也许你会被人问题，一个函数连续链式绑定，最终返回值的问题。只会返回最开始绑定的参数。
+
+```js
+function example() { "use strict"; console.log(this); }
+const bound = example.bind("Hello");
+const boundAgain = bound.bind("World");
+console.log(bound(), boundAgain()); // Hello Hello
+
+function makeArrow() { "use strict"; return () => console.log(this); }
+const arrow = makeArrow.call("Hello");
+const boundArrow = bound.bind("World");
+console.log(arrow(), boundArrow()); // Hello Hello
+```
+
+3. 对于bind的实现，MDN实现的确实很好，其实主要的考虑就是要`new`的实例对象带来的原型链的丢失的问题。以下代码来自MDN:
 
 ```js
 Function.prototype.bindWheel = function(oThis) {
@@ -128,7 +151,7 @@ Function.prototype.bindWheel = function(oThis) {
     );
   };
 
-  // 维护原型关系
+  // 维护原型关系, 也就是把Point的原型
   if (this.prototype) {
     // Function.prototype doesn't have a prototype property
     fNOP.prototype = this.prototype;
@@ -139,8 +162,6 @@ Function.prototype.bindWheel = function(oThis) {
 
   return fBound;
 };
-
-
 
 // test
 
@@ -158,7 +179,7 @@ p.toString(); // '1,2'
 var emptyObj = {};
 
 //  YAxisPoint 没有prototype
-var YAxisPoint = Point.bind(emptyObj, 0);
+var YAxisPoint = Point.bindWheel(emptyObj, 0);
 
 var axisPoint = new YAxisPoint(5);
 axisPoint.toString(); // '0,5'
@@ -167,6 +188,8 @@ axisPoint instanceof YAxisPoint; // true
 new Point(17, 42) instanceof YAxisPoint; // true
 ```
 
-[bind 手写](https://zhuanlan.zhihu.com/p/45992705?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=544479824572522496)
+### 参考文档
 
 [Implement your own — call(), apply() and bind() method in JavaScript](https://blog.usejournal.com/implement-your-own-call-apply-and-bind-method-in-javascript-42cc85dba1b)
+
+[mozilla-bind](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)

@@ -4,9 +4,18 @@ function polyfillBind(func, target, ...params) {
   // console.log(func)
   // 收集传入的参数
   const args = params;
-  return function () {
-    return func.apply(target, args.concat(...arguments));
+
+
+  var Bfunction = function () {
+    //  用来判断是不是new对象传递过来的
+    var _this = this instanceof func ? this : target;
+
+    return func.apply(_this, args.concat(...arguments));
   }
+
+  Bfunction.prototype = func.prototype;
+
+  return Bfunction;
 }
 
 
