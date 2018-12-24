@@ -9,8 +9,6 @@
     "mocha": "./node_modules/.bin/mocha --require @babel/register",
     "babel": "./node_modules/.bin/babel-node",
     "compile": "./node_modules/.bin/babel ./components --out-dir .compiled --source-maps --watch",
-    "ts": "./node_modules/.bin/tsc --watch",
-    "tser": "./node_modules/.bin/tsserver",
     "build": "./node_modules/rollup/bin/rollup -c builds/rollup.config.js",
     "build:umd": "./node_modules/rollup/bin/rollup -c builds/rollup.config.umd.js"
   },
