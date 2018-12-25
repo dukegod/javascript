@@ -190,9 +190,16 @@ Node 规定，process.nextTick和Promise的回调函数，追加在本轮循环�
 
 主线程 > process.nextTick > micro-task[promise.then] > macro-task
 
-[阮一峰](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+### 参考资料
+
+[阮一峰 event-loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+
 [Event Loop的规范和实现](https://juejin.im/post/5a6155126fb9a01cb64edb45?utm_source=gold_browser_extension#heading-1)
+
 [Node.js源码解析：深入Libuv理解事件循环](https://zhuanlan.zhihu.com/p/35039878)
+
 [The Node.js Event Loop, Timers, and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+
 [nodejs源码-事件循环](https://yjhjstz.gitbooks.io/deep-into-node/content/chapter5/chapter5-1.html)
+
 [javascript事件循环（浏览器端、node端）](https://juejin.im/post/5c0cb3acf265da61362248f3)
