@@ -5,18 +5,19 @@ js是*单线程*的语言，一次只能执行一个任务。有了事件循环�
 ## js的引擎
 
 + 谷歌浏览器的V8引擎的构造
-
-  - Memory Heap--内存分配区
-  - Call Stack--代码运行时栈
+  + Memory Heap--内存分配区
+  + Call Stack--代码运行时栈
 
 + Nodejs
 
 :::
+
 注意点：
 
 + 执行栈
 + 虽然`Google Browser`与`nodejs`都是`V8`引擎，但是实际的`runtime`还是有区别的，不能认为是一个统一的概念
 + js的执行机制为：`同步执行`+`异步执行`
+
 :::
 
 
@@ -188,7 +189,6 @@ Node 规定，process.nextTick和Promise的回调函数，追加在本轮循环�
 一次循环的执行先后顺序：
 
 主线程 > process.nextTick > micro-task[promise.then] > macro-task
-
 
 [阮一峰](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
 [Event Loop的规范和实现](https://juejin.im/post/5a6155126fb9a01cb64edb45?utm_source=gold_browser_extension#heading-1)
