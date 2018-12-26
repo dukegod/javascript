@@ -6,12 +6,13 @@ charset = utf-8
 indent_style = space
 end_of_line = lf
 insert_final_newline = true
-trim_trailing_whitespace = true
 
-[{README.md,package.json,.travis.yml,*.sh,*.js}]
+[{package.json,.travis.yml,*.sh,*.js}]
 indent_style = space
 indent_size = 2
+trim_trailing_whitespace = true
 
 [{.jshintrc,*.py,*.html}]
 indent_style = space
 indent_size = 4
+trim_trailing_whitespace = true

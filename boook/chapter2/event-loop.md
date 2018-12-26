@@ -7,12 +7,9 @@ js是*单线程*的语言，一次只能执行一个任务。有了事件循环�
 + 谷歌浏览器的V8引擎的构造
   + Memory Heap--内存分配区
   + Call Stack--代码运行时栈
-
 + Nodejs
 
-:::
-
-注意点：
+::: warning
 
 + 执行栈
 + 虽然`Google Browser`与`nodejs`都是`V8`引擎，但是实际的`runtime`还是有区别的，不能认为是一个统一的概念
@@ -30,7 +27,7 @@ js是*单线程*的语言，一次只能执行一个任务。有了事件循环�
 
 ![task-loop](https://img14.360buyimg.com/devfe/jfs/t1/22000/30/947/125791/5c0e2ffbE32dc43ab/57a69433a6bddd93.png)
 
-:::
+:::   
 注意点：
 
 "回调函数"（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。
@@ -192,14 +189,9 @@ Node 规定，process.nextTick和Promise的回调函数，追加在本轮循环�
 
 ### 参考资料
 
-[阮一峰 event-loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
-
-[Event Loop的规范和实现](https://juejin.im/post/5a6155126fb9a01cb64edb45?utm_source=gold_browser_extension#heading-1)
-
-[Node.js源码解析：深入Libuv理解事件循环](https://zhuanlan.zhihu.com/p/35039878)
-
-[The Node.js Event Loop, Timers, and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
-
-[nodejs源码-事件循环](https://yjhjstz.gitbooks.io/deep-into-node/content/chapter5/chapter5-1.html)
-
-[javascript事件循环（浏览器端、node端）](https://juejin.im/post/5c0cb3acf265da61362248f3)
+[阮一峰 event-loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)   
+[Event Loop的规范和实现](https://juejin.im/post/5a6155126fb9a01cb64edb45?utm_source=gold_browser_extension#heading-1)   
+[Node.js源码解析：深入Libuv理解事件循环](https://zhuanlan.zhihu.com/p/35039878)   
+[The Node.js Event Loop, Timers, and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)   
+[nodejs源码-事件循环](https://yjhjstz.gitbooks.io/deep-into-node/content/chapter5/chapter5-1.html)    
+[javascript事件循环（浏览器端、node端）](https://juejin.im/post/5c0cb3acf265da61362248f3)   
