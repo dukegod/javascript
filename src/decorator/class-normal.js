@@ -7,7 +7,7 @@ class Person{
   }
 }
 
-
+// 等价于如下代码
 function Person() {}
 Object.defineProperty(Person, "name", {
   value: name,
