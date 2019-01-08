@@ -35,6 +35,10 @@ function isArray(s) {
   return Object.prototype.toString.call(s) === '[object Array]';
 }
 
+function isSymbol(s) {
+  return Object.prototype.toString.call(s) === '[object Symbol]'
+}
+
 export {
   isNull,
   isUndefined,
@@ -43,5 +47,6 @@ export {
   isObject,
   isFunction,
   isString,
-  isNumber
+  isNumber,
+  isSymbol
 };
