@@ -11,6 +11,8 @@
 + NULL
 + Symbol
 
+对于[undefined与null的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html),可以参考链接中的解释。
+
 ### 对象类型：
 
 + Object
@@ -36,3 +38,28 @@ typeof undefined // undefined
 Object.prototype.toString.call(null)  // [object Null]
 Object.prototype.toString.call(undefined);  //"[object Undefined]"
 ```
+
+### 比较运算符
+
++ 严格比较运算符: '==='
++ 转换类型比较运算符: '=='
+
+对于`==`会先执行类型转化
+
+如果操作数的类型不同，则按照这样的情况来判断:
+
++ null和undefined相等
++ 其中一个是数字，另一个是字符串，则将字符串转换为数字，在做比较
++ 其中一个是true，先转换成1(false则转换为0)在做比较
++ 如果一个值是对象，另一个是数字/字符串，则将对象转换为原始值(通过 toString()或者 valueOf()方法)
++ 其他情况，则直接返回false
+
+严格比较运算符
+
+如果操作数的类型不同，则不进行值的判断，直接返回 false 如果操作数的类型相同，分下列情况来判断:
+
++ 都是数字的情况，如果值相同，则两者等同(有一个例外，就是 NaN，NaN 与其本身也不相等)，否则不等同
++ 都是字符串的情况，与其他程序设计语言一样，如果串的值不等，则不等同，否则等同
++ 都是布尔值，且值均为true/false，则等同，否则不等同
++ 如果两个操作数引用同一个对象(数组，函数)，则两者完全等同，否则不等同
++ 如果两个操作数均为null/undefined，则等同，否则不等同
