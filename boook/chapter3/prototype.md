@@ -84,7 +84,6 @@ var son = new Son('son', 10, 1000)
 + 使用`Object.create()`把父类的原型对象赋值给子对象。如果直接用`new Person`的做法，可以会带来父类中`constrctor`定义的方法的执行等副作用。也就是只取`arguments`的第二个参数，详情见[using-object-create-instead-of-new](https://stackoverflow.com/questions/2709612/using-object-create-instead-of-new)
 + 创建的对象`constructor`一开始的指向不是`Son`，需要手动修改下。这样保持了`Son`原型链的完整性。
 
-
 原型检测：
 
 ```js
@@ -187,6 +186,7 @@ var person1 = new Person("pson", 18);
 var person2 = new Person("pson2", 19);
 
 ```
+
 先建立一个构造函数，然后通过`Object.defineProperty`把原型与`setter`,`getter`方法通过遍历的方式定义到构造函数的原型上。
 
 关于继承相关的es6代码：
@@ -421,6 +421,5 @@ var son = new Son('son', 10, 1000);
 `(this && this.__extends)`是用来判断是不是存在`extends`方法，以免重复定义。然后依次判断浏览器支持的方法进行原型方法的拷贝，先判断是不是支持`setPrototypeOf`方法，然后判断是不是支持`_proto_`，最次通过for循环进行属性拷贝。
 
 然后创建一个空函数，修改`constructor`的指向为父类，让子类的__proto__指向父类prototype。
-
 
 相关的代码见[prototype](https://github.com/dukegod/javascript/tree/master/src/prototype)
