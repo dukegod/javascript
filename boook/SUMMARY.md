@@ -34,6 +34,7 @@
 * [附录 - es6简写](AppendixA/README.md)
 * [附录 - Typescript](AppendixB/README.md)
 * [附录 - 轮子](AppendixC/README.md)
+  * [防抖与节流](de.md)
 * [附录 - Typescript](AppendixD/README.md)
   * [basic](basic.md)
 
