@@ -1,13 +1,9 @@
 
-[各种算法的演示图](https://visualgo.net/zh)
-
-[简单的算法总结](http://blog.csdn.net/owen1190/article/details/76215932)
+[算法演示图](https://visualgo.net/zh)
 
 [常见的算法](http://bubkoo.com/tags/algorithm/)
 
-[AlgorithmVisualizer](https://github.com/parkjs814/AlgorithmVisualizer)
-
-[面试算法](https://juejin.im/entry/5979bed7f265da3e13573e8c)
+[AlgorithmVisualizer](https://algorithm-visualizer.org/)
 
 基本排序算法：
 

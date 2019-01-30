@@ -10,6 +10,7 @@
     "babel": "./node_modules/.bin/babel-node",
     "components": "./node_modules/.bin/babel ./components --out-dir .components --source-maps --watch",
     "src": "./node_modules/.bin/babel ./src --out-dir .src --source-maps --watch",
+    "src": "./node_modules/.bin/babel ./src --out-dir .src --source-maps --watch",
     "build": "./node_modules/rollup/bin/rollup -c builds/rollup.config.js",
     "build:umd": "./node_modules/rollup/bin/rollup -c builds/rollup.config.umd.js"
   },

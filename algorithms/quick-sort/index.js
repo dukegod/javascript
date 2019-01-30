@@ -1,3 +1,4 @@
+
 // 默认状态下的比较函数
 function compare(a, b) {
   if (a === b) {
@@ -62,10 +63,12 @@ function quickSort(array) {
   return quick(array, 0, array.length - 1);
 }
 
+export {
+  quickSort
+}
 
+// const genArr = require('../generate-array');
 
-const genArr = require('../generate-array');
-
-const oldArray = genArr(7);
-console.log(`oldArray::::${oldArray}`);
-console.log(quickSort(oldArray));
+// const oldArray = genArr(7);
+// console.log(`oldArray::::${oldArray}`);
+// console.log(quickSort(oldArray));

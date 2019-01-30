@@ -30,6 +30,7 @@
 * [第八章 优秀的前端框架解析](chapter8/README.md)
 * [第九章 dom](chapter9/README.md)
 * [第十章 算法](chapter10/README.md)
+  * [快速排序](chapter10/quick-sort.md)
 * [第十一章 性能优化](chapter11/README.md)
 * [附录 - es6语法总结](AppendixA/README.md)
   * [解构](destructure.md)
