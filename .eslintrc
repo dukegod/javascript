@@ -4,30 +4,39 @@
     "es6": true
   },
   "rules": {
-    "no-plusplus": ["off", {
-      "allowForLoopAfterthoughts": true
-    }],
-    "one-var": ["error", {
-      "var": "always",
-      "let": "never",
-      "const": "never"
-    }],
-    "arrow-parens": ["error", "as-needed"],
-    "func-names": ["error", "never"],
-    "no-mixed-operators": ["error", {
-      "allowSamePrecedence": true
-    }],
-    "semi": ["error", "never", {
-      "beforeStatementContinuationChars": "always"
-    }],
-    "comma-dangle": ["error", {
-      "only-multiline": "error",
-      "arrays": "never",
-      "objects": "ignore",
-      "imports": "never",
-      "exports": "never",
-      "functions": "ignore"
-    }]
+    "no-plusplus": [
+      "off",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "one-var": [
+      "error",
+      {
+        "var": "always",
+        "let": "never",
+        "const": "never"
+      }
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "func-names": [
+      "error",
+      "never"
+    ],
+    "no-mixed-operators": [
+      "error",
+      {
+        "allowSamePrecedence": true
+      }
+    ],
+    "semi": "error",
+    "no-extra-semi": "error",
+    "comma-dangle": [
+      "warn"
+    ]
   },
   "globals": {
     "describe": false,
@@ -38,5 +47,7 @@
     "experimentalDecorators": true
   },
   "extends": "airbnb",
-  "plugins": ["react"]
+  "plugins": [
+    "react"
+  ]
 }
