@@ -26,3 +26,16 @@ arr1.concat(arr2, arr3);
 [...arr1, ...arr2, ...arr3]
 // [ 'a', 'b', 'c', 'd', 'e' ]
 ```
+
+## 函数参数解构
+
+```js
+function destructure(...args) {
+  console.log(args)
+}
+destructure(1,2,3,5);
+```
+
+## 对象结构
+
+与数组结构类似

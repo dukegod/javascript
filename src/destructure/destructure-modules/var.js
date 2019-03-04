@@ -4,6 +4,6 @@ const vars = {
     one: 1
   },
   last: [{},{}]
-}
+};
 
-export default vars;
+export default vars

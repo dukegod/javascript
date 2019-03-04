@@ -1,6 +1,6 @@
-import vars as {header, middle, last} from './var.js';
+import { header, middle, last } from './var';
 
 // console.log(vars);
 
 // const {header, middle, last} = vars;
-console.log(header)
+console.log(header);
