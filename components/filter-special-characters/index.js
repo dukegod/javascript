@@ -10,4 +10,4 @@ function clearString(s) {
   return rs;
 }
 
-module.exports = clearString;
+export default clearString;
