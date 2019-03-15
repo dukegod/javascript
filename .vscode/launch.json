@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch App.js",
-      "program": "${workspaceRoot}/components/wheel-bind/index.test.js",
+      "program": "${workspaceRoot}/js-patterns/public-submite/index.js",
       "outFiles": [ "${workspaceRoot}/.compiled/**/*.js" ]
     },
     {

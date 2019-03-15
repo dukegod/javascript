@@ -1,16 +1,13 @@
 /*
 * 观察者模式
-* 时间监听不同的key的效果
+*
 */
 
 class Observer {
   constructor() {
     this.queue = []
   }
-  addListen(key, fn) {
-    if (condition) {
-
-    }
+  addListen(fn) {
     this.queue.push(fn)
   }
   trigger() {
@@ -43,5 +40,5 @@ publicer.removeListen(function name3() {})
 
 setTimeout(() => {
   publicer.trigger('从接口获取的数据')
-}, 500);
+}, 1000);
 
