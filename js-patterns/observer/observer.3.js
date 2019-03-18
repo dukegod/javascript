@@ -33,9 +33,6 @@ const observer =  {
       fns && (fns.length = 0)
     }
     this.queue[key] = fns.filter(item => item.name !== fn.name);
-  },
-  updata() {
-
   }
 }
 
@@ -67,7 +64,7 @@ publicer.addListen('trigger', function name3(params) {
 publicer.addListen('trigger', function name4(params) {
   console.log(`trigger2---${JSON.stringify(params)}`)
 })
-// publicer.removeListen('trigger')
+publicer.removeListen('trigger')
 
 // 触发者
 
@@ -84,15 +81,3 @@ setTimeout(() => {
   publicer.trigger('trigger', data)
 }, 500);
 
-
-publicer.trigger('update', {
-  name: 'update',
-  age: 2018
-})
-
-publicer.addListen('update', function name(params) {
-  console.log(`update---${JSON.stringify(params)}`)
-})
-publicer.updata('update', function name(params) {
-  console.log(`update---${JSON.stringify(params)}`)
-})

@@ -31,3 +31,6 @@ $id.removeEventListener('click')
 + public的数组的循环取出
 + 移除监听者
 
+
+如果先发布了，后订阅又会带来什么变化？
++ 需要一个update函数

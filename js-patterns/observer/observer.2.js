@@ -2,14 +2,17 @@
 * 观察者模式
 * 时间监听不同的订阅类型
 */
-const observer =  {
-  queue: [],
+
+class Observer {
+  constructor() {
+    this.queue = []
+  }
   addListen(key, fn) {
     if (!this.queue[key]) {
       this.queue[key] = []
     }
     this.queue[key].push(fn)
-  },
+  }
   trigger() {
     const [ key, message ] = [...arguments];
     const fns = this.queue[key];
@@ -21,39 +24,28 @@ const observer =  {
     if (!fns) {
       return
     }
+    // console.log(key);
+    // console.log(message);
+    // console.log(fns)
     fns.map( fn => fn.call(null, message))
-  },
+  }
   removeListen(key, fn) {
-    let fns;
     if (!key) {
       return
     }
-    fns = this.queue[key];
+    const fns = this.queue[key];
     if (!fn) {
       fns && (fns.length = 0)
     }
+
     this.queue[key] = fns.filter(item => item.name !== fn.name);
-  },
-  updata() {
-
+    console.log(this.queue)
   }
 }
 
 
-const EventInstall = function (obj) {
-  const object = observer;
-  for (const key in object) {
-    if (object.hasOwnProperty(key)) {
-      obj[key] = object[key];
-    }
-  }
-  return obj;
-}
 
-
-// 设定订阅者身份
-const publicer = {};
-EventInstall(publicer)
+const publicer = new Observer();
 publicer.addListen('click', function name1(params) {
   console.log(`打电话给给订阅者1---${JSON.stringify(params)}`)
 })
@@ -71,6 +63,7 @@ publicer.addListen('trigger', function name4(params) {
 
 // 触发者
 
+
 publicer.trigger('click', {
   name: 'click',
   age: 1998
@@ -84,15 +77,3 @@ setTimeout(() => {
   publicer.trigger('trigger', data)
 }, 500);
 
-
-publicer.trigger('update', {
-  name: 'update',
-  age: 2018
-})
-
-publicer.addListen('update', function name(params) {
-  console.log(`update---${JSON.stringify(params)}`)
-})
-publicer.updata('update', function name(params) {
-  console.log(`update---${JSON.stringify(params)}`)
-})
