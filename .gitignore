@@ -7,4 +7,5 @@ node_modules/*
 # 编译文件
 .compiled/*
 .src/*
+.components/*
 
