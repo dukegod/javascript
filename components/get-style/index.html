@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #styleId {
+            color: red;
+            height: 100px;
+        }
+        #styleId::after {
+            display: table
+        }
+    </style>
+</head>
+<body>
+    <div id="styleId">
+        获取样式
+    </div>
+    <script src="./index.js"></script>
+    <script>
+        const id = document.getElementById('styleId');
+
+        const style = getStyle(id, null, 'height');
+        const peuse = getStyle(id, 'after', 'display');
+
+        console.log(style);
+        console.log(peuse);
+
+    </script>
+</body>
+</html>

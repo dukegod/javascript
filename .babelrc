@@ -5,9 +5,7 @@
       {
         "targets": {
          "browsers": "last 2 versions, > 1%, ie >= 6, Android >= 4, iOS >= 6, and_uc > 9",
-        },
-        "modules": false,
-        "loose": false
+        }
       }
     ]
   ]
