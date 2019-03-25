@@ -42,7 +42,7 @@
   * [web-worker](AppendixB/web-worker.md)
   * [service-work](AppendixB/service-work.md)
 * [附录 - 轮子](AppendixC/README.md)
-  * [防抖与节流](AppendixC/de.md)
+  * [防抖](AppendixC/debounce.md)
 * [附录 - Typescript](AppendixD/README.md)
   * [basic](AppendixD/basic.md)
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale = 1.0" />
+    <title>Title</title>
+</head>
+<style>
+    div {
+        width: 100%;
+        height: 100px;
+        background-color: #eeeeee;
+        text-align: center;
+        line-height: 100px;
+        color: black;
+        font-size: 24px;
+    }
+
+    div:nth-child(2n) {
+        background-color: #3c3c3c;
+    }
+</style>
+
+<body>
+<div>text1</div>
+<div>text2</div>
+<div>text3</div>
+<div>text4</div>
+<div>text</div>
+<div>text</div>
+<div>text</div>
+<div>text1</div>
+<div>text2</div>
+<div>text3</div>
+<div>text4</div>
+<div>text</div>
+<div>text</div>
+<div>text</div>
+<div>text1</div>
+<div>text2</div>
+<div>text3</div>
+<div>text4</div>
+<div>text</div>
+<div>text</div>
+<div>text</div>
+<div>text1</div>
+<div>text2</div>
+<div>text3</div>
+<div>text4</div>
+<div>text</div>
+<div>text</div>
+<div>text</div>
+<div>text1</div>
+<div>text2</div>
+<div>text3</div>
+<div>text4</div>
+<div>text</div>
+<div>text</div>
+<div>text</div>
+<div>text1</div>
+<div>text2</div>
+<div>text3</div>
+<div>text4</div>
+<div>text</div>
+<div>text</div>
+<div>text</div>
+<div>text1</div>
+<div>text2</div>
+<div>text3</div>
+<div>text4</div>
+
+<!--<script src="debounce.js"></script>-->
+<script src="index.js"></script>
+<script type="text/javascript">
+    function log() {
+        console.log(
+            '直到滚动结束了，才会触发下一步操作',
+            new Date().getSeconds()
+        );
+    }
+    window.onscroll= ()=>{console.log(`alway scroll1......`)}
+
+    // lodash实例
+    // document
+    //   .addEventListener('scroll', _.debounce(log, 1000), false);
+
+    document
+    .addEventListener('scroll', debounce(log, 500), false);
+
+</script>
+</body>
+</html>
