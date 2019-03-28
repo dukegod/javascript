@@ -9,40 +9,40 @@
 const longestCommonPrefix = function(strs) {
 
   if (strs.length < 0) {
-    return ''
+    return "";
   }
 
   let minLength;
   let len;
-  let commandStrs;
   len = strs[0].length;
-  commandStrs = strs[0];
+  // 通过循环遍历出最小的长度
   for (let i = 1; i < strs.length; i++) {
     if (strs[i].length < len) {
       minLength = i;
       len = strs[i].length;
-      commandStrs = strs[i];
     }
   }
-  console.log(minLength, len, commandStrs);
+  // console.log(minLength, len, commandStrs);
 
-  let i = 1;
-  while (i <= len) {
-    let str = commandStrs.slice(-len, i);
-    console.log(str);
-    if( strs.every(item => item.indexOf(str) !== -1)) {
-      return str
-    }
-    i ++;
+  let ans = "";
+  for (let i = 0; i < len; i++) {
+    const a = strs[0][i];
+    let f = strs.every(function(item) {
+      return item[i] === a;
+    });
+
+    if (!f) break;
+    ans += a;
   }
-  // console.log(99)
-  return '99'
+
+  return ans;
+
 };
 
 
-// const st = longestCommonPrefix(["flower","dddflow","flight", "fl333o"]);
-const st2 = longestCommonPrefix(["ca","a"]);
+const st = longestCommonPrefix(["flower","flow","flight", "fl333o"]);
+// const st2 = longestCommonPrefix(["caa", "aa"]);
 // const st3 = longestCommonPrefix(["dog","racecar","car"]);
-// console.log(st);
-console.log(st2);
+console.log(st);
+// console.log(st2);
 // console.log(st3);
