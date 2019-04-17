@@ -1,9 +1,10 @@
 
 function urlToJson(s) {
   if (!s || s === '') return {};
-  let params = s.split('?')[1];
-  params = params.replace(/=/ig, '":"');
-  params = params.replace(/&/ig, '"},{"');
+  let params = decodeURIComponent(s).split('?')[1];
+  params = params.replace(/"/gi, '');
+  params = params.replace(/=/gi, '":"');
+  params = params.replace(/&/gi, '"},{"');
   params = `[{"${params}"}]`;
   params = JSON.parse(params);
   const obj = {};
