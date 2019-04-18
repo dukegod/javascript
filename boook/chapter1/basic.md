@@ -40,6 +40,31 @@ Object.prototype.toString.call(null)  // [object Null]
 Object.prototype.toString.call(undefined);  //"[object Undefined]"
 ```
 
+### 算数运算
+
+true 转为 1，false 转为 0
+
+```js
+// Boolean + Number -> addition
+true + 1 // 2
+
+// Boolean + Boolean -> addition
+false + false // 0
+
+// Number + String -> concatenation
+5 + 'foo' // "5foo"
+
+// String + Boolean -> concatenation
+'foo' + false // "foofalse"
+
+// String + String -> concatenation
+'foo' + 'bar' // "foobar"
+
+Infinity * 0 // NaN
+Infinity * Infinity // Infinity
+'foo' * 2 // NaN
+```
+
 ### 比较运算符
 
 + 严格比较运算符: '==='
@@ -61,6 +86,31 @@ Object.prototype.toString.call(undefined);  //"[object Undefined]"
 0 == ' '  // true
 null == undefined // true
 [1] == true // true
+```
+
+#### 算数运算
+
+true 转为 1，false 转为 0
+
+```js
+// Boolean + Number -> addition
+true + 1 // 2
+
+// Boolean + Boolean -> addition
+false + false // 0
+
+// Number + String -> concatenation
+5 + 'foo' // "5foo"
+
+// String + Boolean -> concatenation
+'foo' + false // "foofalse"
+
+// String + String -> concatenation
+'foo' + 'bar' // "foobar"
+
+Infinity * 0 // NaN
+Infinity * Infinity // Infinity
+'foo' * 2 // NaN
 ```
 
 严格比较运算符
@@ -93,7 +143,7 @@ Object.is = Object.is || function (x, y) {
   return x !== x && y !== y
 }
 
-export default function shallowEqual (obj1, obj2) {
+function shallowEqual (obj1, obj2) {
   if (obj1 === null && obj2 === null) {
     return true
   }

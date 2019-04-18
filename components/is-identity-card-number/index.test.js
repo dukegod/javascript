@@ -1,0 +1,2 @@
+import isCard from './index';
+
