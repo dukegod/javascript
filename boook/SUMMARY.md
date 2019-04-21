@@ -48,6 +48,3 @@
 * [附录 - 轮子](AppendixC/README.md)
   * [防抖](AppendixC/debounce.md)
   * [节流](AppendixC/throttle.md)
-* [附录 - Typescript](AppendixD/README.md)
-  * [basic](AppendixD/basic.md)
-
