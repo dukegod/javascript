@@ -40,56 +40,19 @@ function shallowEqual (obj1, obj2) {
   return true
 }
 
-function isEqualObject(paramsA, paramsB) {
-  // 过滤 undefined，null, ''
-  if (paramsA === null && paramsB === null) {
-    return true
-  }
-  if (paramsA === null || paramsB === null) {
-    return false
-  }
-
-  if (paramsA === '' && paramsB === '') {
-    return true
-  }
-
-  // if (paramsA === '' ||  paramsB === '') {
-  //   return true
-  // }
-
-  // if (is(paramsA, paramsB)) {
-  //   return true
-  // }
-
-  const keysA = paramsA ? Object.keys(paramsA) : [];
-  const keysB = paramsB ? Object.keys(paramsB) : [];
-  console.log(keysA);
-  for (let i = 0; i< keysA.length; i++) {
-    const item = keysA[i];
-    console.log(item);
-    console.log(keysA['a']);
-    console.log(keysB[item]);
-    console.log(keysB.hasOwnProperty(item));
-    // console.log(item);
-    if (keysB.hasOwnProperty(item) || !is(keysA[item], keysB[item])) {
-      return false
-    }
-  }
-  return true
-}
 
 // console.log(is(-0,+0));
 // console.log(is(-0,+0));
-// console.log(isEqualObject(NaN, NaN));
-// console.log(isEqualObject(0, -0));
-// console.log(isEqualObject('',[]));
-// console.log(isEqualObject([],[]));
-// console.log(isEqualObject('',''));
-// console.log(isEqualObject({},{}));
+// console.log(shallowEqual(NaN, NaN));
+// console.log(shallowEqual(0, -0));
+console.log(shallowEqual('',[]));
+// console.log(shallowEqual([],[]));
+console.log(shallowEqual('',''));
+// console.log(shallowEqual({},{}));
 console.log(shallowEqual({
   a: 90,
   b: 90,
-  c: []
+  c: 9
 },{
   a: 90,
   b: 90,
