@@ -1,4 +1,10 @@
-const provice = {
+/**
+ * 身份证组成： 省份（第一位非零，6位） + 出生年与（8）+ 随机码（3位）+ 校验码（1位）= 18位
+ * @param s
+ * @returns {boolean}
+ */
+function isCard(s) {
+  const provice = {
   11: "北京",
   12: "天津",
   13: "河北",
@@ -49,12 +55,6 @@ function provinceVerify(val) {
   return keys.indexOf(val) !== -1;
 }
 
-/**
- * 身份证组成： 省份（第一位非零，6位） + 出生年与（8）+ 随机码（3位）+ 校验码（1位）= 18位
- * @param s
- * @returns {boolean}
- */
-function isCard(s) {
   // 针对18位身份证
   const regex = /^[1-9]\d{5}(20|18|19)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9x]/gi;
   // 去除 '', null, undefined

@@ -1,5 +1,4 @@
 function isMobileNumber(s) {
-  // 针对18位身份证
   const regex = /^[1]\d{10}/gi;
   // 去除 '', null, undefined
   if (!s) {
