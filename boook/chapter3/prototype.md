@@ -2,18 +2,18 @@
 
 概念说明
 
-+ _proto_: 每一个对象都有这个属性，它永远指向构造函数的原型（null没有，也就是最终的指向为null）
++ __proto__: 每一个对象都有这个属性，它永远指向构造函数的原型（null没有，也就是最终的指向为null）
 + prototype: 原型
 + 构造函数
 + 原型链
 
 ```js
 var obj = {}
-obj._proto_ = Object.prototype
+obj.__proto__ = Object.prototype
 obj.toString()
 ```
 
-`obj`对象拥有`_proto_`属性，可以指向Object(构造函数)的prototype(原型)，因而继承了对象原型上的方法，所有我们可以调用`obj.toString()`，最终`Object.prototype.__proto__指向 null`
+`obj`对象拥有`__proto__`属性，可以指向Object(构造函数)的prototype(原型)，因而继承了对象原型上的方法，所有我们可以调用`obj.toString()`，最终`Object.prototype.__proto__指向 null`
 
 
 ## 原型
@@ -418,7 +418,7 @@ var son = new Son('son', 10, 1000);
 `typescript`在转译时候，对于原型的方法直接挂载，对于`getter`,`setter`方法则是通过`Object.defineProperty`进行挂载的。对于继承的做法`typescript`
 也是自己通过自我实现的方法完成的，但是原理与`babel`差不多。
 
-`(this && this.__extends)`是用来判断是不是存在`extends`方法，以免重复定义。然后依次判断浏览器支持的方法进行原型方法的拷贝，先判断是不是支持`setPrototypeOf`方法，然后判断是不是支持`_proto_`，最次通过for循环进行属性拷贝。
+`(this && this.__extends)`是用来判断是不是存在`extends`方法，以免重复定义。然后依次判断浏览器支持的方法进行原型方法的拷贝，先判断是不是支持`setPrototypeOf`方法，然后判断是不是支持`__proto__`，最次通过for循环进行属性拷贝。
 
 然后创建一个空函数，修改`constructor`的指向为父类，让子类的__proto__指向父类prototype。
 
