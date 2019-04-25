@@ -1,5 +1,16 @@
 # 原型链
 
+知识点分析：
+
+* 原型优点与缺点
+* 如何处理原型共享性问题--组合构造函数
+* 实例，原型，构造函数继承
+* new 关键字实现原理
+* instanceOf 原理
+* in 关键字与 hasOwnPrototype 判断属性在原型上还是在属性上
+* 原型继承，使用对象字面量定义原型方法带来的原型重写问题 
+* Object.create(person) 使用现有的对象(person)来提供新创建的对象的__proto__
+
 概念说明
 
 + __proto__: 每一个对象都有这个属性，它永远指向构造函数的原型（null没有，也就是最终的指向为null）
@@ -7,14 +18,15 @@
 + 构造函数
 + 原型链
 
+
 ```js
 var obj = {}
 obj.__proto__ = Object.prototype
 obj.toString()
 ```
 
-`obj`对象拥有`__proto__`属性，可以指向Object(构造函数)的prototype(原型)，因而继承了对象原型上的方法，所有我们可以调用`obj.toString()`，最终`Object.prototype.__proto__指向 null`
-
+`obj`对象拥有`__proto__`属性，可以指向Object(构造函数)的prototype(原型)，因而继承了对象原型上的方法，所有我们可以调用`obj.toString()`，
+最终`Object.prototype.__proto__指向 null`
 
 ## 原型
 
