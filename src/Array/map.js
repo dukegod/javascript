@@ -13,12 +13,12 @@ let newarr = arr.map((item) => {
 console.log(arr);
 console.log(newarr);
 
-
-let filterArr = arr.filter((item) => {
-  console.log(item)
-  return item;
-});
-
-console.log(arr)
-console.log(filterArr);
+//
+// let filterArr = arr.filter((item) => {
+//   console.log(item)
+//   return item;
+// });
+//
+// console.log(arr)
+// console.log(filterArr);
 

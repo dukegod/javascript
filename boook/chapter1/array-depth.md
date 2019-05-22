@@ -13,8 +13,25 @@ var arr = []
 + 删除，插入，替换:splice
 + 队列操作:
 
-浅赋值(改变原数组)： pop push shift unshift sort splice    
-深度赋值(不改变原数组，生成新数组)： concat join slice
+浅赋值(改变原数组)： 
+
+* [pop]() 
+* [push]() 
+* [shift]() 
+* [unshift]() 
+* [sort](#sort) 
+* [splice]()
+    
+深度赋值(不改变原数组，生成新数组)： 
+
+* [concat]() 
+* [join]() 
+* [slice]()
+
+数组方法对比
+
+* [for-in vs for-of vs forEach]()
+
 
 ### join
 
