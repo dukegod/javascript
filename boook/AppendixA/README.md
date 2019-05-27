@@ -25,5 +25,5 @@
 - [promises](#promises)
 - [math + number + string + array + object APIs](#math--number--string--array--object-apis)
 - [binary and octal literals](#binary-and-octal-literals)
-- [reflect api](#reflect-api)
+- [reflect api](reflect.md)
 - [tail calls](#tail-calls)
