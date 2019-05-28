@@ -3,6 +3,7 @@
 字面量命名发法则：
 ```js
 var arr = []
+var obj = {}
 ````
 ## 数组的基础用法：
 
@@ -20,6 +21,7 @@ var arr = []
 * [shift]() 
 * [unshift]() 
 * [sort](#sort) 
+* [slice]()
 * [splice]()
     
 深度赋值(不改变原数组，生成新数组)： 
@@ -28,9 +30,34 @@ var arr = []
 * [join]() 
 * [slice]()
 
-数组方法对比
+## 对象的基本用法
 
-* [for-in vs for-of vs forEach]()
++ is
++ keys
+
+## 常规的方法使用对比
+
+### for vs for-in vs for-of vs forEach vs map
+  - for 循环可以打断，无返回值
+  - forEach 不可打断，无返回值
+  - map 有返回值，返回一个新数组，不可打断
+  
+  for-in vs for-of 
+  
+  for-in ：遍历可枚举属性（包括原型链的属性）
+  - 不适合遍历数组，数组遍历不一定按次序访问元素
+  - 可以配合break使用
+  
+  for-of：遍历可迭代对象  
+
+  - 可以由break, throw  continue    或return终止
+  - 不可迭代`object`对象
+  
+  可迭代对象：
+  
+  + String, Array, TypedArray, Map and Set 是所有内置可迭代对象， 因为它们的原型对象都有一个 @@iterator 方法.
+  + 自定义 generator函数 
+ 
 
 
 ### join
@@ -41,19 +68,11 @@ var arr = []
 
 String.split()的逆运算.
 
-### reverse
-
-数组中的元素颠倒顺序
-
 ### sort
 
 排序,默认是按照字母排序的.可以通过传入参数进行比较.
 
 传入匿名函数比较好,只用一次罢了.
-
-### concat
-
-链接数组
 
 ### slice
 
@@ -87,9 +106,8 @@ shift 在数组头部删除第一个元素
 
 ### foreach
 
-遍历数组
-
-不能在中间使用break语句,想要终止只有使用 try-catch
++ 没有返回值，只能用一个新的数组进行接收
++ 不能在中间使用break语句,想要终止只有使用 try-catch
 
 ```
 
@@ -108,9 +126,11 @@ if (typeof Array.prototype.forEach != "function") {
 
 ### map
 
++ 不能打断循环
++ 返回一个新的数组
+
 ```
 [].map(function(value, index, array){});
-
 ```
 兼容IE8以下
 
@@ -142,7 +162,7 @@ arr.filter(function(){
 
 ```
 
-filter()压缩空间并删除undefined与null
+filter()**压缩空间并删除undefined与null**
 
 ```
 
@@ -212,7 +232,7 @@ if (typeof Array.prototype.some != "function") {
 
 ```
 
-### ruduce reduceRight
+### reduce && reduceRight
 
 指定的函数将数组元素进行组合,生成单个值.
 
@@ -261,7 +281,6 @@ console.log(ii)
 
 ```
 
-
 ### indexOf 与 lastIndexOf
 
 返回一个数组中是否有给定的参数
@@ -293,9 +312,9 @@ if (typeof Array.prototype.indexOf != "function") {
 
 ## 数组类型检测
 
-intanceof Array
+instanceof
 
-在es5中使用isAarry()
+在es5中使用isArray()
 
 ```
 var arr = [];
@@ -343,9 +362,6 @@ console.log(i);
 
 document.getElementsByTagName or document.querySelectorAll
 
-## random.js 生成随机数，以及随机排序
-
-[随机排序,洗牌](https://www.w3cplus.com/javascript/how-to-randomize-shuffle-a-javascript-array.html)
 
 ## 参考
 

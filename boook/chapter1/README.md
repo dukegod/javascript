@@ -9,3 +9,7 @@
 基本数据类型的深入分析
 + 值传递，引用传递
 + 深浅赋值
+
+数组方法的深入对比
+
++ for-in vs for-of vs forEach vs map
