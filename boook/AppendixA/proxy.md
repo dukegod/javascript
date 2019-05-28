@@ -37,3 +37,4 @@ console.log(obj.y);  // 由于y不在obj对象上，需要向上查找原型链
 + get
 + set
 + has
++ apply： 代理的对象必须是一个函数
