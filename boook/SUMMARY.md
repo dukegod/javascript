@@ -43,6 +43,7 @@
   * [解构](AppendixA/destructure.md)
   * [reflect](AppendixA/reflect.md)
   * [箭头函数](AppendixA/arrow-function.md)
+  * [装饰器](AppendixA/arrow-function.md)
 * [附录 - 浏览器API](AppendixB/README.md)
   * [web-worker](AppendixB/web-worker.md)
   * [service-work](AppendixB/service-work.md)
