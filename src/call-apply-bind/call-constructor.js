@@ -10,7 +10,7 @@ Function.prototype.applyWheel = function (thisAry) {
   let context = thisAry || {};
   context.fn = this;
   const result = context.fn(...arguments);
-  delete context.fn;
+  // delete context.fn;
   return result;
 }
 

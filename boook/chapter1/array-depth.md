@@ -50,7 +50,7 @@ var obj = {}
   
   for-of：遍历可迭代对象  
 
-  - 可以由break, throw  continue    或return终止
+  - 可以由break, throw  continue 或 return 终止
   - 不可迭代`object`对象
   
   可迭代对象：

@@ -11,6 +11,6 @@ console.log(person);
 
 
 //  与下面的作用相同
-var person = {};
-person._proto_ = Person.prototype;
-Person.call(person, "personperson");
+var person2 = {};
+person2._proto_ = Person.prototype;
+Person.call(person2, "personperson");

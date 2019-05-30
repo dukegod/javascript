@@ -19,7 +19,7 @@ Function.prototype.callWheel = function (context) {
   const self = this || window;
   ct.fn = self;
   ct.fn(...arguments);
-  delete fu;
+  // delete fu;
 }
 
 o.m.callWheel();

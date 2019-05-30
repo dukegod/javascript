@@ -6,7 +6,7 @@
 
 [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/) for full specification of the ECMAScript 6 language.
 
-- [arrows](#arrows)
+- [arrows](arrow-function.md)
 - [classes](#classes)
 - [enhanced object literals](#enhanced-object-literals)
 - [template strings](#template-strings)

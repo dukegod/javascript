@@ -4,8 +4,22 @@
       "@babel/preset-env",
       {
         "targets": {
-         "browsers": "last 2 versions, > 1%, ie >= 6, Android >= 4, iOS >= 6, and_uc > 9",
+          "browsers": "last 2 versions, > 1%"
         }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
       }
     ]
   ]

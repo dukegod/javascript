@@ -7,7 +7,7 @@ Function.prototype.callWheel = function (context) {
   const self = this || global;
   ct.fn = self;
   let re =  ct.fn(...arguments);
-  delete fu;
+  // delete fu;
   return re;
 }
 
