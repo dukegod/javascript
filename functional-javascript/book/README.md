@@ -11,3 +11,7 @@
 + redux
 + redux-thunk
 + underscore
+
+参考资料
+
+[getify/Functional-Light-JS](https://github.com/getify/Functional-Light-JS)
