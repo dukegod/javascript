@@ -1,6 +1,17 @@
 # 数据结构
 
-## 数据类型
+## 目录
+
++ [基本数据类型](#基本数据类型)
+  + 6种基本类型
+  + undefined与null的区别
++ [对象类型](#对象类型)
++ [类型判断](#类型判断)
+  + instanceof 原理分析
++ [算数运算](#算数运算)
++ [比较运算](#比较运算)
+  + 特殊运算符 NAN, -0, +0
++ [运算符优先级](#运算符优先级)
 
 ### 基本数据类型
 
@@ -11,34 +22,58 @@
 + NULL
 + Symbol
 
-对于[undefined与null的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html),可以参考链接中的解释。
+#### undefined与null的区别
 
-### 对象类型：
++ null 表示没有值，真实的空，函数或者对象标识为null，便于垃圾回收释放内存
++ undefined 可能是缺省，或者还没有定义
+
+### 对象类型
+
+又名引用类型
 
 + Object
 + Function
 + Array
 
-### 类型判断：
+### 类型判断
 
 + typeof
 + instanceof
++ Array.isArray
 + Object.prototype.toString.call()
 
-`typeof`可以用来判断String，Number，Boolean，Undefined，在对于null, 数组, 对象上判断不准确    
-`instanceof`可以用来区分数组与对象   
+`typeof`可以用来判断String，Number，Boolean，Undefined，在对于null, 数组, 对象上判断不准确  
+`instanceof`可以用来区分数组与对象  
 `Object.prototype.toString.call()` 借助js原型链继承，每一个对象有拥有`toString`默认方法，可以返回默认的类型，作为最终的类型判断
 
 ```js
 typeof null // object
-typeof undefined // undefined 
+typeof undefined // undefined
 
 [] instanceof Array  // true
-{} instanceof Object // true 
+{} instanceof Object // true
 
 Object.prototype.toString.call(null)  // [object Null]
 Object.prototype.toString.call(undefined);  //"[object Undefined]"
 ```
+
+#### instanceof 原理分析
+
+instanceof 主要判断构造函数的prototype属性是否出现在对象的原型链中，通过不断的溯源一个实例对象的`__proto__`的指向判断一个实例是不是构造函数原型(constructor.prototype)的对象
+
+```js
+[] instanceof Array // true
+[] instanceof Object // true
+[].__proto__ === Array.prototype // true
+[].__proto__ === Object.prototype // false
+[].__proto__.__proto__ === Object.prototype // true
+```
+
+在js中一起都是对象，故而最终都是`Object`的原型对象
+
+#### Array.isArray
+
+用来检测数组，是es5新增的方法，内部是通过`Object.prototype.toString`实现兼容处理
 
 ### 算数运算
 
@@ -65,7 +100,7 @@ Infinity * Infinity // Infinity
 'foo' * 2 // NaN
 ```
 
-### 比较运算符
+### 比较运算
 
 + 严格比较运算符: '==='
 + 转换类型比较运算符: '=='
@@ -88,32 +123,7 @@ null == undefined // true
 [1] == true // true
 ```
 
-#### 算数运算
-
-true 转为 1，false 转为 0
-
-```js
-// Boolean + Number -> addition
-true + 1 // 2
-
-// Boolean + Boolean -> addition
-false + false // 0
-
-// Number + String -> concatenation
-5 + 'foo' // "5foo"
-
-// String + Boolean -> concatenation
-'foo' + false // "foofalse"
-
-// String + String -> concatenation
-'foo' + 'bar' // "foobar"
-
-Infinity * 0 // NaN
-Infinity * Infinity // Infinity
-'foo' * 2 // NaN
-```
-
-严格比较运算符
+#### 严格比较运算符
 
 如果操作数的类型不同，则不进行值的判断，直接返回 false 如果操作数的类型相同，分下列情况来判断:
 
@@ -128,9 +138,9 @@ Infinity * Infinity // Infinity
 ```js
 +0 === -0 // true，但我们期待它返回false
 NaN === NaN // false，我们期待它返回true
-````
+```
 
-综上一个，react源码有个判断两个值是不是相等的判断：
+综上一个，react源码有个判断两个值是不是相等的判断
 
 ```js
 /* eslint-disable */
@@ -169,6 +179,14 @@ function shallowEqual (obj1, obj2) {
   return true
 }
 
-````
+```
 
+### 运算符优先级
 
+常用的运算符：
+
+圆括号 > ++, -- > 乘，除，取模 > 加减 > 大,小,等于 > & > ^> | > 条件运算 > 赋值运算 > 展开（...）> 逗号
+
+#### 参考文档
+
++ [undefined与null的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)
