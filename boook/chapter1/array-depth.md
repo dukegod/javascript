@@ -1,34 +1,39 @@
 # 数组&对象的相关的操作
 
-字面量命名发法则：
-```js
-var arr = []
-var obj = {}
-````
-## 数组的基础用法：
+目录
+
++ [数组](#数组的基础用法)
+  + [浅赋值](#浅赋值)
+  + [深度赋值](#深度赋值)
++ [对象](#对象)
+
+## 数组的基础用法
 
 + 栈和队列：pop,push & shift() unshift()
 + 转换：concat()合并数组，join(",")合并成字符串
 + 排序从小到大：sort() resort()逆序排列。sort()，默认是按照字符串编码顺序排列，而不是数字大小
 + 复制&截取：slice(0)
 + 删除，插入，替换:splice
-+ 队列操作:
 
-浅赋值(改变原数组)： 
+### 浅赋值
 
-* [pop]() 
-* [push]() 
-* [shift]() 
-* [unshift]() 
-* [sort](#sort) 
-* [slice]()
-* [splice]()
-    
-深度赋值(不改变原数组，生成新数组)： 
+改变原数组
 
-* [concat]() 
-* [join]() 
-* [slice]()
++ push
++ pop
++ shift
++ unshift
++ sort
++ slice
++ splice
+
+### 深度赋值
+
+不改变原数组，生成新数组
+
++ concat
++ join
++ slice
 
 ## 对象的基本用法
 
@@ -38,27 +43,36 @@ var obj = {}
 ## 常规的方法使用对比
 
 ### for vs for-in vs for-of vs forEach vs map
-  - for 循环可以打断，无返回值
-  - forEach 不可打断，无返回值
-  - map 有返回值，返回一个新数组，不可打断
-  
-  for-in vs for-of 
-  
-  for-in ：遍历可枚举属性（包括原型链的属性）
-  - 不适合遍历数组，数组遍历不一定按次序访问元素
-  - 可以配合break使用
-  
-  for-of：遍历可迭代对象  
 
-  - 可以由break, throw  continue 或 return 终止
-  - 不可迭代`object`对象
-  
-  可迭代对象：
-  
-  + String, Array, TypedArray, Map and Set 是所有内置可迭代对象， 因为它们的原型对象都有一个 @@iterator 方法.
-  + 自定义 generator函数 
- 
+for 循环
 
++ 可以打断，配合 `break`
++ 无返回值
+
+forEach
+
++ 不可打断
++ 无返回值
+
+map
+
++ 不可打断
++ 有返回值，返回一个新数组，
+  
+for-in ：遍历可枚举属性（包括原型链的属性）
+
++ 不适合遍历数组，数组遍历不一定按次序访问元素
++ 可以配合break使用
+  
+for-of：遍历可迭代对象  
+
++ 可以由break, throw  continue 或 return 终止
++ 不可迭代`object`对象
+  
+可迭代对象：
+  
++ String, Array, TypedArray, Map and Set 是所有内置可迭代对象， 因为它们的原型对象都有一个 @@iterator 方法.
++ 自定义 generator函数
 
 ### join
 
