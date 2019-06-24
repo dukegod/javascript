@@ -45,7 +45,7 @@ console.log(b1);
 
 如果我们修改b的内容，b的指向变化了，重新指向一个新的地址，这种情况也叫做*变异*
 
-对象
+之前看到过一个这样的问题, javascript 连等赋值问题
 
 ```js
 var a = {n:1}
@@ -56,7 +56,18 @@ console.log(a)
 console.log(a.x)
 console.log(b)
 console.log(b.x)
+
+out:
+{ n: 2 }
+undefined
+{ n: 1, x: { n: 2 } }
+{ n: 2 }
 ```
+
+关键点：
+
++ 运算符的优先性，`.`运算符优先性大于赋值运算
++ 赋值运算符从右往左运算
 
 ### 数据拷贝
 
@@ -99,4 +110,5 @@ console.log(clonedObj)
 
 #### 参考
 
-[segmentfault 问题](https://segmentfault.com/q/1010000003023316?_ea=4756282)
+[segmentfault 问题](https://segmentfault.com/q/1010000003023316?_ea=4756282)  
+[javascript 连等赋值问题](https://segmentfault.com/q/1010000002637728)  
