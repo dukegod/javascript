@@ -30,7 +30,6 @@
 + null 表示没有值，真实的空，函数或者对象标识为null，便于垃圾回收释放内存
 + undefined 可能是缺省，或者还没有定义
 
-<<<<<<< HEAD
 #### 判断一个数值是不是为null的最佳方法
 
 直接用null进行判断
@@ -39,8 +38,6 @@
 console.log(value===null);
 ```
 
-=======
->>>>>>> basic (+3 squashed commits)
 ### 对象类型
 
 又名引用类型

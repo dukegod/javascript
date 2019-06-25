@@ -45,29 +45,18 @@
 
 ## 常规的方法使用对比
 
-<<<<<<< HEAD
 ### 循环方法对比
 
 #### for 循环
-=======
-### for vs for-in vs for-of vs forEach vs map
-
-for 循环
->>>>>>> basic (+3 squashed commits)
 
 + 可以打断，配合 `break`
 + 无返回值
 
-<<<<<<< HEAD
 #### forEach
-=======
-forEach
->>>>>>> basic (+3 squashed commits)
 
 + 不可打断
 + 无返回值
 
-<<<<<<< HEAD
 ```js
 // 对于古董浏览器，如IE6-IE8
 if (typeof Array.prototype.forEach != "function") {
@@ -82,27 +71,16 @@ if (typeof Array.prototype.forEach != "function") {
 ```
 
 #### map
-=======
-map
->>>>>>> basic (+3 squashed commits)
 
 + 不可打断
 + 有返回值，返回一个新数组，
   
-<<<<<<< HEAD
 #### for-in ：遍历可枚举属性（包括原型链的属性）
-=======
-for-in ：遍历可枚举属性（包括原型链的属性）
->>>>>>> basic (+3 squashed commits)
 
 + 不适合遍历数组，数组遍历不一定按次序访问元素
 + 可以配合break使用
   
-<<<<<<< HEAD
 #### for-of：遍历可迭代对象  
-=======
-for-of：遍历可迭代对象  
->>>>>>> basic (+3 squashed commits)
 
 + 可以由break, throw  continue 或 return 终止
 + 不可迭代`object`对象
