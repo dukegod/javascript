@@ -7,7 +7,10 @@
   + undefined与null的区别
 + [对象类型](#对象类型)
 + [类型判断](#类型判断)
-  + instanceof 原理分析
+  + typeof
+  + instanceof
+  + Array.isArray
+  + Object.prototype.toString.call()
 + [算数运算](#算数运算)
 + [比较运算](#比较运算)
   + 特殊运算符 NAN, -0, +0
@@ -26,6 +29,14 @@
 
 + null 表示没有值，真实的空，函数或者对象标识为null，便于垃圾回收释放内存
 + undefined 可能是缺省，或者还没有定义
+
+#### 判断一个数值是不是为null的最佳方法
+
+直接用null进行判断
+
+```js
+console.log(value===null);
+```
 
 ### 对象类型
 
