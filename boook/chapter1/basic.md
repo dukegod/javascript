@@ -5,6 +5,7 @@
 + [基本数据类型](#基本数据类型)
   + 6种基本类型
   + undefined与null的区别
+  + 原型封装
 + [对象类型](#对象类型)
 + [类型判断](#类型判断)
   + typeof
@@ -37,6 +38,55 @@
 ```js
 console.log(value===null);
 ```
+
+#### 原型封装
+
+主要参考`尼古拉斯（Nicholas C.Zakas）. JavaScript面向对象精要`
+
+```js
+var name="Nicholas";
+name.last="Zakas";
+console.log(name.last);  // undefined　
+```
+
+这段代码试图给字符串name添加last属性。代码运行时没有错误，但是属性却消失了。到底发生了什么？你可以在任何时候给一个真的对象添加属性，属性会保留至你手动删除它们。原始封装类型的属性会消失是因为被添加属性的对象立刻就被销毁了。
+
+js 引擎实际上运行如下：
+
+```js
+//whattheJavaScriptenginedoes
+var name="Nicholas";
+var temp= new String(name);
+temp.last="Zakas";
+temp=null;　　　　　　　//temporaryobjectdestroyed
+
+var temp= new String(name);
+console.log(temp.last);　　//undefined
+temp=null;
+```
+
+实际上是在一个立刻就被销毁的临时对象上而不是字符串上添加了新的属性。之后当你试图访问该属性时，另一个不同的临时对象被创建，而新属性并不存在。虽然原始封装类型会被自动创建，在这些值上进行instanceof检查对应类型的返回值却都是false。
+
+```js
+var name="Nicholas";
+console.log(name instanceof String);　　　//false
+```
+
+这是因为临时对象仅在值被读取时创建。instanceof操作符并没有真的读取任何东西，也就没有临时对象的创建，于是它告诉我们这些值并不属于原始封装类型。
+
+手动创建临时对象，会有副作用
+
+```js
+var name=new String("Nicholas");
+console.log(typeof name) // object
+var bl = new Boolean(false);
+console.log(bl) // 
+if (bl) {
+  console.log(111)
+}
+```
+
+虽然可以创建为一个对象，但是`typeof` 并不能完全检测出来实际的类型。如我们去实例一个`Boolean`你会发现永远返回`true`
 
 ### 对象类型
 
