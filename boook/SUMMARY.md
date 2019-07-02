@@ -12,10 +12,20 @@
 * [第三章 基本语法](chapter3/README.md)
   * [对象](chapter3/section2.md)
   * [函数](chapter3/section3.md)
+  * [原型](chapter3/prototype.md)
+    * 什么是原型
+    * 构造函数
+    * 原型链
+    * 原型链继承
+    * 借用构造函数继承
+    * 组合继承
+    * 原型式继承
+    * 寄生式继承
+    * 寄生组合式继承
+    * es6 类继承
   * [this](chapter3/this.md)
   * [call, apply, bind](chapter3/call-apply-bind.md)
   * [new 关键字](chapter3/new.md)
-  * [原型链](chapter3/prototype.md)
 * [第四章 异步函数](chapter4/README.md)
   * [callback](chapter4/callback.md)
   * [promise](chapter4/promise.md)
