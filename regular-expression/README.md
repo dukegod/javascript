@@ -1,26 +1,56 @@
-# regular Expression
+# 正则表达式
 
-## 创建一个正则表达式
+各个语言基本通用的规则
+
+## 目录结构
+
+* [创建规则](#创建规则)
+* [执行规则](#执行规则)
+
+### 创建规则
 
 字面量创建
 
-```
+```js
 var re = /abc/;
 ```
 
-调用RegExp对象的构造函数创建
+或者用RegExp对象的构造函数创建
 
-```
+```js
 var re = new RegExp('abc');
 ```
 
-## 正则表达式的执行
+### 执行规则
 
-exec	一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回null）。
+#### exec	
 
-test	一个在字符串中测试是否匹配的RegExp方法，它返回true或false。
+正则去匹配字符串，返回是数组，没有匹配返回`null`
 
-match	一个在字符串中执行查找匹配的String方法，它返回一个数组或者在未匹配到时返回null。
+```js
+const str = 'abc123';
+const t = /\w/.exec(str);
+```
+
+#### test
+
+正则匹配字符创，返回的是`true`或`false`
+
+```js
+const str = 'abc';
+console.log(/d/.test(str));
+```
+
+#### match
+
+字符创匹配正则表达式，默认返回数组，未匹配返回`null`
+
+```js
+const str = 'abcdefghijklmn';
+console.log(str.match(/ij/));
+```
+
+#### search
 
 search	一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1。
 
@@ -63,7 +93,6 @@ console.log(bb);
 
 ## 重复
 
-
 字符 | 匹配
 --- | ---
 {n,m} | 匹配前一项至少n次,但不能超过m次
@@ -92,15 +121,3 @@ console.log(bb);
 + 当做子单元
 + 在完整的模式下定义子模式
 + 作为引用表达式
-
-
-
-
-
-
-
-
-
-
-
-
