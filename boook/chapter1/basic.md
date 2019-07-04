@@ -12,6 +12,8 @@
   + instanceof
   + Array.isArray
   + Object.prototype.toString.call()
+  + 字符串 null, '',  undefined 判断
+  + 对象 null, '',  undefined 判断
 + [算数运算](#算数运算)
 + [比较运算](#比较运算)
   + 特殊运算符 NAN, -0, +0
