@@ -28,54 +28,54 @@ console.log(p1.say == p2.say);
 //
 
 //  优化
-
-function Person(id){
-	this.id = id;
-	this.say = say;
-}
-
-function say(){
-		console.log('inner:' + this.id);
-		return this.id;
-}
-
-var p1 = new Person('11');
-var p2 = new Person('22');
-
-console.log(p1.say());
-console.log(p2.say());
-console.log(p1.say == p2.say);
-
-// output:
-// inner:11
-// 11
-// inner:22
-// 22
-// true
-
-
-// 进一步优化，用原型链
-
-function Person(id){
-	this.id = id;
-}
-Person.prototype.say = function(){
-	console.log('inner:' + this.id);
-		return this.id;
-}
-
-var p1 = new Person('11');
-var p2 = new Person('22');
-
-console.log(p1.say());
-console.log(p2.say());
-console.log(p1.say == p2.say);
-
-// output:
-// inner:11
-// 11
-// inner:22
-// 22
-// true
-
-
+//
+// function Person(id){
+// 	this.id = id;
+// 	this.say = say;
+// }
+//
+// function say(){
+// 		console.log('inner:' + this.id);
+// 		return this.id;
+// }
+//
+// var p1 = new Person('11');
+// var p2 = new Person('22');
+//
+// console.log(p1.say());
+// console.log(p2.say());
+// console.log(p1.say == p2.say);
+//
+// // output:
+// // inner:11
+// // 11
+// // inner:22
+// // 22
+// // true
+//
+//
+// // 进一步优化，用原型链
+//
+// function Person(id){
+// 	this.id = id;
+// }
+// Person.prototype.say = function(){
+// 	console.log('inner:' + this.id);
+// 		return this.id;
+// }
+//
+// var p1 = new Person('11');
+// var p2 = new Person('22');
+//
+// console.log(p1.say());
+// console.log(p2.say());
+// console.log(p1.say == p2.say);
+//
+// // output:
+// // inner:11
+// // 11
+// // inner:22
+// // 22
+// // true
+//
+//

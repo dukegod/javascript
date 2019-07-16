@@ -10,11 +10,11 @@ function readonly(target, name, descriptor) {
 }
 
 @readonly
-class Person {
+class PersonDec {
 
 }
 
-console.log(Person.staticpp)  // true
+console.log(PersonDec.staticpp)  // true
 
 // 以上代码一本等同于
 // Person = readonly(function Cat(){})
