@@ -9,6 +9,5 @@
 + export default
 + export const
 + export { A as B }
-+ export * from ''
-
++ export * from '' ：忽略默认的default属性 
 
