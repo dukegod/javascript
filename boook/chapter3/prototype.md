@@ -11,13 +11,27 @@
 * 原型继承，使用对象字面量定义原型方法带来的原型重写问题 
 * Object.create(person) 使用现有的对象(person)来提供新创建的对象的__proto__
 
-概念说明
+## 目录
 
-+ __proto__: 每一个对象都有这个属性，它永远指向构造函数的原型（null没有，也就是最终的指向为null）
-+ prototype: 原型
-+ 构造函数
-+ 原型链
+* [什么是原型](#什么是原型)
+* [构造函数](#构造函数)
+* [原型检测方法](#原型检测)
+* 原型链
+* 原型链继承方法
+  * 借用构造函数继承
+  * 组合继承
+  * 原型式继承
+  * 寄生式继承
+  * 寄生组合式继承
+  * es6 类继承
+* [对比不同语言打包原型的方法](#对比)
 
+### 什么是原型
+
+* __proto__: 每一个对象都有这个属性，它永远指向构造函数的原型（null没有，也就是最终的指向为null）
+* prototype: 原型
+* 构造函数
+* 原型链
 
 ```js
 var obj = {}
@@ -27,8 +41,6 @@ obj.toString()
 
 `obj`对象拥有`__proto__`属性，可以指向Object(构造函数)的prototype(原型)，因而继承了对象原型上的方法，所有我们可以调用`obj.toString()`，
 最终`Object.prototype.__proto__指向 null`
-
-## 原型
 
 javascript 中一切皆对象，也就是说都是`object`的实例，也都有一个默认的原型指向`object.prototype`。感觉关于原型链这个还是图形比较好理解。
 
@@ -44,11 +56,23 @@ const initObject = {
 ![proto](https://raw.githubusercontent.com/dukegod/javascript/master/src/prototype/prototype.png)
 
 从以上我们可以值，由于`initObject`的原型指向`Object`，所以我们可以直接使用`Object`相关的函数方法。
+
 ```js
 initObject instanceof (Object)  // true
 ```
 
-## 原型链
+### 构造函数
+
+使用构造函数的目的是为了轻松创建许多拥有相同属性和方法的对象
+
+### 原型检测 
+
+方法：
+
+* instanceof
+* Object.isPrototypeOf
+
+### 原型链
 
 JavaScript中实现继承的方式，就是通过原型链实现的。 我们可以看一个构造函数的实例化的图解：
 

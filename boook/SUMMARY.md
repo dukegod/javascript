@@ -10,42 +10,33 @@
   * [堆栈](chapter2/stack.md)
   * [事件循环](chapter2/event-loop.md)
 * [第三章 基本语法](chapter3/README.md)
-  * [对象](chapter3/section2.md)
-  * [函数](chapter3/section3.md)
+  * [对象](chapter3/object.md)
   * [原型](chapter3/prototype.md)
-    * 什么是原型
-    * 构造函数
-    * 原型链
-    * 原型链继承
-    * 借用构造函数继承
-    * 组合继承
-    * 原型式继承
-    * 寄生式继承
-    * 寄生组合式继承
-    * es6 类继承
+  * [原型链](#/)
   * [this](chapter3/this.md)
   * [call, apply, bind](chapter3/call-apply-bind.md)
   * [new 关键字](chapter3/new.md)
-* [第四章 异步函数](chapter4/README.md)
+  * [函数](chapter3/section3.md)  
+* [异步函数](chapter4/README.md)
   * [callback](chapter4/callback.md)
   * [promise](chapter4/promise.md)
   * [async](chapter4/async.md)
-* [第五章 设计模式](chapter5/README.md)
+* [设计模式](chapter5/README.md)
   * [单例模型-singleton](chapter5/README.md)
   * [观察者模型](chapter5/README.md)
-* [第六章 模块加载](chapter6/README.md)
+* [模块加载](chapter6/README.md)
   * [常见模块加载总结](chapter6/section1.md)
-* [第七章 优秀的前端框架](chapter7/README.md)
-* [第八章 前端数据请求](chapter8/README.md)
+* [优秀的前端框架](chapter7/README.md)
+* [前端数据请求](chapter8/README.md)
   * [XHR](chapter8/XHR.md)
   * [Fetch](chapter8/Fetch.md)
   * [JSONP](chapter8/JSONP.md)
   * [CORS解决跨域的方案](chapter8/CORS.md)
-* [第九章 dom](chapter9/README.md)
-* [第十章 算法](chapter10/README.md)
+* [dom](chapter9/README.md)
+* [算法](chapter10/README.md)
   * [快速排序](chapter10/quick-sort.md)
-* [第十一章 性能优化](chapter11/README.md)
-* [第十二章 HTTP性能优化](chapter12/README.md)
+* [性能优化](chapter11/README.md)
+* [HTTP性能优化](chapter12/README.md)
     * [HTTP 缓存](chapter12/section.1.md)
 * [附录 - es6语法总结](AppendixA/README.md)
   * [解构](AppendixA/destructure.md)
