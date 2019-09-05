@@ -5,6 +5,7 @@ function add(arr,num){
       arr2[i]+= num;
   }
 }
+
 var arr1 =[1,2,3,4,5];
 add(arr1,5);
 console.log(arr1);//[6, 7, 8, 9, 10]
