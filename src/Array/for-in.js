@@ -8,9 +8,9 @@ const obj = {
   y: 2
 };
 
-for (let prop in arr) {
-  console.log('obj.' + prop + ' = ' + arr[prop]);
-}
+// for (let prop in arr) {
+//   console.log('obj.' + prop + ' = ' + arr[prop]);
+// }
 
 for (let prop in obj) {
   if (prop === 'y') {
