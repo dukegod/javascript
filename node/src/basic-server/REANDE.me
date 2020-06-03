@@ -1,0 +1,39 @@
+服务器开始
+
+最简单的页面分析
+
+
+在服务端，对于前端的各种请求，我们做个处理就可以了；
+
+```
+req.url  
+```
+
+XMLHttpRequest 解析
+
+
+###　同步请求：
+
+open(a,b,c)接受三个参数，
+
++ a : 代表请求而的方法
++ b : 请求的url
++ c : 同步 or 异步
+
+```
+var XML = new XMLHttpRequest();
+console.log(XML);
+XML.open('get', '/one', false);
+XML.send(null);
+if ((XML.status >= 200 && XML.status < 300) || XML.status === 304) {
+  console.log(XML.status);
+  console.log(XML.responseText);
+  document.getElementById('Daid').innerHTML = XML.responseText;
+}
+
+```
+同步请求浏览器不需要通过XML中的readyState状态，直接通过XML.status的状态就可以直接使用了;
+
+
+###　异步请求
+

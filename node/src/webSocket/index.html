@@ -1,0 +1,67 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+      <title> socket </title>
+      <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+  
+  
+  <section class="row">
+      <div class="container">
+          <h2> 收到的相关信息： </h2>
+  
+          <ul class="list-group" id="messageList">
+          </ul>
+      </div>
+  </section>
+  
+  <section class="row">
+      <div class="container">
+          <h2> 发送的相关信息： </h2>
+          <form action="/">
+              <div class="input-group">
+                  <input id="m" type="text" class="form-control" placeholder="type...">
+                  <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">submit</button>
+                  </span>
+              </div>
+          </form>
+      </div>
+  </section>
+  
+  
+  <script type="template" id="messageListTemp">
+      <li class="list-group-item">{{=it}}</li>
+  </script>
+  
+  <script src="https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="//cdn.bootcss.com/dot/2.0.0-beta.0/doT.js"></script>
+  <script>
+  
+      var listItem = doT.template($('#messageListTemp').html());
+      var renderHtml = listItem();
+      $('#messageList').html(renderHtml);
+  
+  
+      window.onload = function () {
+        var socket = io.connect('/');
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+  
+        socket.on('chat message', function(msg){
+          console.log(msg)
+          var renderHtml = listItem(msg);
+          $('#messageList').append(renderHtml);
+        });
+  
+      };
+  </script>
+  </body>
+  </html>

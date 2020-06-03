@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>index</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		p{
+			font-size: 16px;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+    跨域请求，服务器做一个转发
+
+    <script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    <script>
+      $.ajax({
+        url:'./baidu/',
+        type:'GET',
+        success: function(data){
+          console.log(data);
+        },
+        error :function(xhr,msg,err){
+          console.log(msg);
+        },
+        timeout:3000
+      });
+  </script>
+</body>
+
+</html>
