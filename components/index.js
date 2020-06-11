@@ -12,4 +12,4 @@ export {
   isObject,
   isFunction,
   isString
-} from './type-detect';
+} from './is-type-detect';

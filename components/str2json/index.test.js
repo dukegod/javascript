@@ -5,7 +5,6 @@ import {
 } from 'chai';
 
 const str = "a=90,b=80,c=99";
-console.log(strToJson(str));
 describe('strTojson', ()=>{
   it('out should be function ', () => {
     assert.typeOf( strToJson, 'function')

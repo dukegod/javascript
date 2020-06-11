@@ -6,7 +6,7 @@
  *  ascii码大于128的是汉字
  *  replace(/[^\x00-\xff]/g, "**");
  */
-import { isNull, isUndefined, isString } from '../type-detect';
+import { isNull, isUndefined, isString } from '../is-type-detect';
 
 function isChinese(params) {
   if (isNull(params)) {

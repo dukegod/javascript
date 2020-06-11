@@ -1,7 +1,7 @@
 /**
  * @argument
  */
-const { isTypeObject } = require('../type-detect/is_type');
+const { isTypeObject } = require('../is-type-detect/is_type');
 
 const obj = {
   firstLable: 'name',

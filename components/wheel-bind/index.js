@@ -4,7 +4,7 @@
  * @param {*} target this指向的对象
  * @param {*} params 参数
  */
-import { isFunction, isUndefined, isNull } from '../type-detect';
+import { isFunction, isUndefined, isNull } from '../is-type-detect';
 
 function polyfillBind(func, target, ...params) {
   // func 是不是函数

@@ -8,7 +8,7 @@ function isNull(params) {
 }
 
 function isUndefined(params) {
-  return params === undefined
+  return params === undefined;
 }
 
 function isTypeObject(s) {
@@ -16,7 +16,7 @@ function isTypeObject(s) {
 }
 
 function isNumber(s) {
-  return Object.prototype.toString.call(s) === '[object Number]'
+  return Object.prototype.toString.call(s) === '[object Number]';
 }
 
 function isString(s) {
@@ -36,7 +36,7 @@ function isArray(s) {
 }
 
 function isSymbol(s) {
-  return Object.prototype.toString.call(s) === '[object Symbol]'
+  return Object.prototype.toString.call(s) === '[object Symbol]';
 }
 
 export {

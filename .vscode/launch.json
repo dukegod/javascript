@@ -7,17 +7,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch App.js",
-      "program": "${workspaceRoot}/js-patterns/public-submite/index.js",
-      "outFiles": [ "${workspaceRoot}/.compiled/**/*.js" ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "preLaunchTask": "npm run compile",
-      "name": "Launch Current File",
-      "program": "${file}",
-      "outFiles": [ "${workspaceRoot}/.compiled/**/*.js" ]
+      "name": "Launch Program",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/components/event-emit/index.js"
     }
   ]
 }
