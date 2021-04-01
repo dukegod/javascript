@@ -3,8 +3,7 @@
  * @author hui
  * @date 2019-10-25
  */
-function promiseFunc(e) {
-  console.log(e);
+function promiseFunc() {
   return new Promise((resolve, reject) => {
     if (true) {
       setTimeout(() => {
@@ -20,8 +19,8 @@ function promiseFunc(e) {
 promiseFunc()
   .then(resolve => {
     console.log(resolve);
-  }, reject => {
-    console.log(reject);
+    Promise.reject('90')
+    throw '9999'
   })
   .catch(err => {
     console.log(err);
