@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/dukegod/javascript#readme",
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
+    "@babel/cli": "^7.14.8",
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
