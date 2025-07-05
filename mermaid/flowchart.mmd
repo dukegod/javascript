@@ -1,0 +1,9 @@
+flowchart LR
+  user(95BdVFvowzzT97Kd: master_agent<br>father_node_id: -<br>pre_node_ids: []<br>post_node_ids: [7AfVpVjybuz4dr2F]):::user --> master_agent(7AfVpVjybuz4dr2F: qwen32b<br>father_node_id: 95BdVFvowzzT97Kd<br>pre_node_ids: []<br>post_node_ids: [7vW4LQNpkj8hscbz]):::master_agent --> math_agent(7vW4LQNpkj8hscbz: math_agent<br>father_node_id: 95BdVFvowzzT97Kd<br>pre_node_ids: [7AfVpVjybuz4dr2F]<br>post_node_ids: [dfmWPATDFBohrySy]):::math_agent --> time_agent(dfmWPATDFBohrySy: time_agent<br>father_node_id: 7vW4LQNpkj8hscbz<br>pre_node_ids: []<br>post_node_ids: [JNVCe4gXohVBu4cB]):::time_agent --> time_agent_1(JNVCe4gXohVBu4cB: time_agent_1<br>father_node_id: dfmWPATDFBohrySy<br>pre_node_ids: []<br>post_node_ids: [iHCfdSZXPmzeaFPs]):::time_agent_1 --> time_agent_2(kzdeHex8YLt8xH3k: time_agent_2<br>father_node_id: dfmWPATDFBohrySy<br>pre_node_ids: []<br>post_node_ids: [iHCfdSZXPmzeaFPs]):::time_agent_2
+  classDef user fill:#f9f,stroke:#333
+  classDef master_agent fill:#bbf,stroke:#333
+  classDef math_agent fill:#bfb,stroke:#333
+  classDef time_agent fill:#fbb,stroke:#333
+  classDef time_agent_1 fill:#fbb,stroke:#333
+  classDef time_agent_2 fill:#fbb,stroke:#333
+  
