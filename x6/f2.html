@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可折叠流程图 - AntV X6 最新版</title>
+  <script src="https://unpkg.com/@antv/x6@latest/dist/index.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #eee;
+      background: #f9f9f9;
+    }
+    .x6-node [data-collapse-btn] {
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      margin-left: 10px;
+    }
+    .main-flow-node {
+      background: #FF6B6B !important;
+      border-color: #cc0000 !important;
+    }
+  </style>
+</head>
+<body>
+<h1>可折叠流程图（AntV X6 最新 API）</h1>
+<div>
+  <button id="expand-all">全部展开</button>
+  <button id="collapse-all">全部收起</button>
+</div>
+<div id="container"></div>
+
+<script>
+  // 1. 初始化画布（使用最新 API）
+  const graph = new X6.Graph({
+    container: document.getElementById('container'),
+    grid: { size: 10 },
+    panning: true,
+    mousewheel: true,
+    connecting: {
+      router: 'orth',       // 正交连线
+      connector: 'rounded', // 圆角连接
+      anchor: 'center',     // 连接点居中
+      connectionPoint: 'boundary'
+    }
+  });
+
+  // 2. 自定义可折叠节点（使用 HTML 渲染）
+  X6.Shape.HTML.register({
+    shape: 'collapse-rect',
+    width: 160,
+    height: 60,
+    effect: ['data'],
+    html(cell) {
+      const data = cell.getData();
+      const collapsed = data.collapsed || false;
+      const hasChildren = data.children && data.children.length > 0;
+
+      return `
+          <div style="
+            width: 100%;
+            height: 100%;
+            background: ${data.color || '#fff'};
+            border: 2px solid #333;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+          ">
+            <div style="
+              padding: 8px;
+              background: #333;
+              color: white;
+              display: flex;
+              align-items: center;
+            ">
+              <span style="flex-grow: 1">${data.label}</span>
+              ${hasChildren ? `
+                <span data-collapse-btn>${collapsed ? '▶ 展开' : '▼ 收起'}</span>
+              ` : ''}
+            </div>
+            <div style="padding: 8px; flex-grow: 1;">
+              ${data.description || ''}
+            </div>
+          </div>
+        `;
+    }
+  });
+
+  // 3. 测试数据（含嵌套关系）
+  const flowData = {
+    id: 'start',
+    label: '开始',
+    color: '#4D9DE0',
+    children: [
+      {
+        id: 'step1',
+        label: '数据预处理',
+        color: '#FF6B6B',
+        children: [
+          { id: 'step1-1', label: '数据清洗' },
+          { id: 'step1-2', label: '特征工程' }
+        ]
+      },
+      {
+        id: 'step2',
+        label: '模型训练',
+        color: '#59CD90',
+        children: [
+          { id: 'step2-1', label: '参数调优' }
+        ]
+      }
+    ]
+  };
+
+  // 4. 递归渲染节点和连接（使用最新 API）
+  function renderNode(parentNode, nodeData, position) {
+    const isParent = nodeData.children && nodeData.children.length > 0;
+
+    // 创建当前节点
+    const node = graph.addNode({
+      id: nodeData.id,
+      shape: 'collapse-rect',
+      x: position.x,
+      y: position.y,
+      data: {
+        ...nodeData,
+        collapsed: false
+      },
+      ports: {
+        groups: {
+          out: { position: 'right' }, // 输出端口
+          in: { position: 'left' }    // 输入端口
+        },
+        items: [
+          { id: `${nodeData.id}-out`, group: 'out' },
+          { id: `${nodeData.id}-in`, group: 'in' }
+        ]
+      }
+    });
+
+    // 连接父节点
+    if (parentNode) {
+      graph.addEdge({
+        source: { cell: parentNode.id, port: `${parentNode.id}-out` },
+        target: { cell: node.id, port: `${node.id}-in` },
+        attrs: {
+          line: {
+            stroke: '#333',
+            strokeWidth: 2,
+            targetMarker: { name: 'block', size: 6 }
+          }
+        }
+      });
+    }
+
+    // 递归渲染子节点（如果未折叠）
+    if (isParent && !nodeData.collapsed) {
+      const children = nodeData.children || [];
+      children.forEach((child, i) => {
+        renderNode(node, child, {
+          x: position.x + 200, // 水平排列子节点
+          y: position.y + (i * 80) // 垂直间隔
+        });
+      });
+    }
+
+    return node;
+  }
+
+  // 5. 折叠/展开交互（使用 graph.findView 替代 findViewByCell）
+  graph.on('cell:click', ({ cell }) => {
+    const view = graph.findView(cell); // 使用最新 API 获取视图
+    if (!view) return;
+
+    const collapseBtn = view.container.querySelector('[data-collapse-btn]');
+    if (collapseBtn) {
+      const data = cell.getData();
+      const collapsed = !data.collapsed;
+
+      // 更新节点状态
+      cell.setData({ ...data, collapsed });
+      collapseBtn.textContent = collapsed ? '▶ 展开' : '▼ 收起';
+
+      // 显示/隐藏子节点
+      toggleChildren(cell, collapsed);
+    }
+  });
+
+  function toggleChildren(parentCell, collapsed) {
+    const parentData = parentCell.getData();
+    if (!parentData.children) return;
+
+    parentData.children.forEach(child => {
+      const childCell = graph.getCellById(child.id);
+      if (childCell) {
+        childCell.setVisible(!collapsed);
+        if (child.children) toggleChildren(childCell, collapsed);
+      }
+    });
+  }
+
+  // 6. 控制按钮（全部展开/收起）
+  document.getElementById('expand-all').addEventListener('click', () => {
+    graph.getNodes().forEach(node => {
+      const data = node.getData();
+      if (data.children) {
+        node.setData({ ...data, collapsed: false });
+        const view = graph.findView(node);
+        if (view) {
+          const btn = view.container.querySelector('[data-collapse-btn]');
+          if (btn) btn.textContent = '▼ 收起';
+        }
+        toggleChildren(node, false);
+      }
+    });
+  });
+
+  document.getElementById('collapse-all').addEventListener('click', () => {
+    graph.getNodes().forEach(node => {
+      const data = node.getData();
+      if (data.children) {
+        node.setData({ ...data, collapsed: true });
+        const view = graph.findView(node);
+        if (view) {
+          const btn = view.container.querySelector('[data-collapse-btn]');
+          if (btn) btn.textContent = '▶ 展开';
+        }
+        toggleChildren(node, true);
+      }
+    });
+  });
+
+  // 初始渲染
+  renderNode(null, flowData, { x: 100, y: 100 });
+  graph.zoomToFit({ padding: 50 });
+</script>
+</body>
+</html>

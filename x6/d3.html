@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>瀑布流甘特图 - AntV X6</title>
+  <script src="https://unpkg.com/@antv/x6/dist/index.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #eee;
+      margin-bottom: 20px;
+    }
+    .controls {
+      margin: 15px 0;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .task-legend {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+    }
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+<h1>瀑布流式多时间段甘特图</h1>
+<div class="controls">
+  <div>
+    <label>缩放:
+      <input type="range" id="zoom-slider" min="0.1" max="2" step="0.1" value="0.5">
+      <span id="zoom-value">0.5</span>x
+    </label>
+  </div>
+  <button id="add-task">添加任务</button>
+</div>
+<div class="task-legend" id="legend"></div>
+<div id="container"></div>
+
+<script>
+  // 1. 初始化画布
+  const graph = new X6.Graph({
+    container: document.getElementById('container'),
+    grid: { visible: true },
+    panning: { enabled: true },
+    mousewheel: { enabled: true }
+  });
+
+  // 2. 时间处理工具
+  const parseTime = (timeStr) => {
+    const [datePart, timePart] = timeStr.split(' ');
+    const [hh, mm, ss] = timePart.split(':');
+    const [seconds, milliseconds] = ss.split('.');
+    return new Date(`${datePart}T${hh}:${mm}:${seconds}.${milliseconds}Z`);
+  };
+
+  const formatTime = (date) => {
+    return date.toISOString()
+      .replace('T', ' ')
+      .replace('Z', '')
+      .slice(0, 23);
+  };
+
+  // 3. 生成测试数据
+  const colors = ['#FF6B6B', '#4D9DE0', '#59CD90', '#FAC05E', '#7D6B7D'];
+  let colorIndex = 0;
+
+  const generateTask = (name) => {
+    const task = {
+      id: 'task-' + Date.now(),
+      name: name || `Task-${Math.floor(Math.random() * 1000)}`,
+      color: colors[colorIndex++ % colors.length],
+      ranges: []
+    };
+
+    // 生成1-3个随机时间段
+    const rangeCount = 1 + Math.floor(Math.random() * 3);
+    let lastEnd = 0;
+
+    for (let i = 0; i < rangeCount; i++) {
+      const start = lastEnd + (i > 0 ? Math.random() * 300 : 0);
+      const duration = 200 + Math.random() * 800;
+      task.ranges.push({
+        start: formatTime(new Date(baseTime.getTime() + start)),
+        end: formatTime(new Date(baseTime.getTime() + start + duration))
+      });
+      lastEnd = start + duration;
+    }
+
+    return task;
+  };
+
+
+
+
+  const baseTime = parseTime('2023-01-01 00:00:00.000');
+  let tasks = [
+    generateTask('主线程'),
+    generateTask('JS 执行'),
+    generateTask('渲染')
+  ];
+
+
+
+  // 4. 比例尺控制
+  let pixelsPerMillisecond = 0.5;
+  const updateZoomValue = () => {
+    document.getElementById('zoom-value').textContent = pixelsPerMillisecond.toFixed(1);
+  };
+
+  // 5. 更新图例
+  const updateLegend = () => {
+    const legend = document.getElementById('legend');
+    legend.innerHTML = '';
+    tasks.forEach(task => {
+      const item = document.createElement('div');
+      item.className = 'legend-item';
+      item.innerHTML = `
+          <div class="legend-color" style="background:${task.color}"></div>
+          <span>${task.name}</span>
+        `;
+      legend.appendChild(item);
+    });
+  };
+
+
+
+  // 6. 主渲染函数（瀑布流布局）
+  function renderWaterfall() {
+    graph.clearCells();
+
+    // 计算总时间范围
+    const allTimes = tasks.flatMap(t => t.ranges.flatMap(r => [
+      parseTime(r.start),
+      parseTime(r.end)
+    ]));
+    const minTime = new Date(Math.min(...allTimes));
+    const maxTime = new Date(Math.max(...allTimes));
+    const totalMs = maxTime - minTime;
+
+    // 绘制时间轴
+    for (let ms = 0; ms <= totalMs; ms += 100) {
+      const time = new Date(minTime.getTime() + ms);
+      const x = (time - baseTime) * pixelsPerMillisecond;
+
+      // 刻度线
+      graph.addNode({
+        shape: 'rect',
+        x,
+        y: -20,
+        width: 1,
+        height: tasks.length * 120 + 40,
+        attrs: { body: { fill: ms % 500 === 0 ? '#666' : '#999' } }
+      });
+
+      // 刻度标签（每500ms）
+      if (ms % 500 === 0) {
+        graph.addNode({
+          shape: 'rect',
+          x,
+          y: -25,
+          label: `${ms}ms`,
+          attrs: {
+            label: {
+              fontSize: 10,
+              fill: '#666'
+            }
+          }
+        });
+      }
+    }
+
+    // 绘制任务（每个任务单独一列）
+    tasks.forEach((task, taskIndex) => {
+      const colX = 100 * taskIndex; // 每任务固定偏移量
+
+      // 绘制任务名称
+      graph.addNode({
+        shape: 'rect',
+        x: colX - 10,
+        y: -10,
+        label: task.name,
+        attrs: {
+          label: {
+            fontSize: 12,
+            fontWeight: 'bold',
+            textAnchor: 'end'
+          }
+        }
+      });
+
+      // 绘制该任务的所有时间段（垂直堆叠）
+      task.ranges.forEach((range, rangeIndex) => {
+        const startX = colX + (parseTime(range.start) - baseTime) * pixelsPerMillisecond;
+        const endX = colX + (parseTime(range.end) - baseTime) * pixelsPerMillisecond;
+        const width = endX - startX;
+
+        graph.addNode({
+          id: `${task.id}-${rangeIndex}`,
+          shape: 'rect',
+          x: startX,
+          y: rangeIndex * 30,
+          width,
+          height: 25,
+          attrs: {
+            body: {
+              fill: task.color,
+              stroke: '#333',
+              rx: 3,
+              ry: 3,
+              cursor: 'move'
+            },
+            label: {
+              text: `${(width / pixelsPerMillisecond).toFixed(0)}ms`,
+              fill: '#fff',
+              fontSize: 10,
+              x: width / 2,
+              y: 12,
+              textAnchor: 'middle'
+            }
+          },
+          data: {
+            taskId: task.id,
+            rangeIndex,
+            start: range.start,
+            end: range.end
+          }
+        });
+      });
+    });
+  }
+
+  // 7. 交互功能
+  graph.on('node:moved', ({ node }) => {
+    if (!node.data('start')) return;
+
+    const duration = parseTime(node.data('end')) - parseTime(node.data('start'));
+    const newStart = new Date(baseTime.getTime() + (node.position().x - 100 * tasks.findIndex(t => t.id === node.data('taskId'))) / pixelsPerMillisecond);
+    const newEnd = new Date(newStart.getTime() + duration);
+
+    // 更新数据
+    const task = tasks.find(t => t.id === node.data('taskId'));
+    if (task) {
+      task.ranges[node.data('rangeIndex')] = {
+        start: formatTime(newStart),
+        end: formatTime(newEnd)
+      };
+    }
+
+    renderWaterfall();
+  });
+
+  // 8. 缩放控制
+  document.getElementById('zoom-slider').addEventListener('input', (e) => {
+    pixelsPerMillisecond = parseFloat(e.target.value);
+    updateZoomValue();
+    renderWaterfall();
+  });
+
+  // 9. 添加任务
+  document.getElementById('add-task').addEventListener('click', () => {
+    tasks.push(generateTask());
+    updateLegend();
+    renderWaterfall();
+  });
+
+  // 初始渲染
+  updateZoomValue();
+  updateLegend();
+  renderWaterfall();
+</script>
+</body>
+</html>

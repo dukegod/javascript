@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mermaid风格嵌套流程图 - AntV X6</title>
+  <script src="https://unpkg.com/@antv/x6/dist/index.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      width: 100%;
+      height: 700px;
+      border: 1px solid #eee;
+      background: #f9f9f9;
+    }
+    .group {
+      border: 2px solid #4D9DE0;
+      border-radius: 8px;
+      background: rgba(77, 157, 224, 0.05);
+    }
+    .group-label {
+      position: absolute;
+      top: -12px;
+      left: 10px;
+      background: white;
+      padding: 0 5px;
+      font-size: 12px;
+      color: #4D9DE0;
+    }
+    .master-node {
+      background: #FF6B6B !important;
+      border-color: #cc0000 !important;
+    }
+    .end-node {
+      background: #7D6B7D !important;
+      border-color: #5a4d5a !important;
+    }
+  </style>
+</head>
+<body>
+<h1>Mermaid风格嵌套流程图</h1>
+<div id="container"></div>
+
+<script>
+  // 1. 初始化画布
+  const graph = new X6.Graph({
+    container: document.getElementById('container'),
+    grid: { size: 10 },
+    panning: true,
+    mousewheel: true,
+    connecting: {
+      router: 'orth',
+      connector: 'rounded',
+      anchor: 'center',
+      connectionPoint: 'boundary'
+    }
+  });
+
+  // 2. 自定义群组节点
+  function createGroup(id, label, x, y, width, height) {
+    const group = graph.addNode({
+      id: id,
+      shape: 'rect',
+      x: x,
+      y: y,
+      width: width,
+      height: height,
+      attrs: {
+        body: {
+          class: 'group',
+          rx: 8,
+          ry: 8
+        }
+      },
+      zIndex: -1 // 确保在子节点下方
+    });
+
+    // 添加群组标签
+    graph.addNode({
+      shape: 'text-block',
+      x: x + 10,
+      y: y - 6,
+      label: label,
+      attrs: {
+        label: {
+          class: 'group-label',
+          fontSize: 12
+        }
+      }
+    });
+
+    return group;
+  }
+
+  // 3. 创建标准节点
+  function createNode(id, label, x, y, isMaster = false, isEnd = false) {
+    return graph.addNode({
+      id: id,
+      shape: 'rect',
+      x: x,
+      y: y,
+      width: 80,
+      height: 40,
+      attrs: {
+        body: {
+          class: isMaster ? 'master-node' : isEnd ? 'end-node' : '',
+          rx: 4,
+          ry: 4
+        },
+        label: {
+          text: label,
+          fill: 'white',
+          fontSize: 12
+        }
+      },
+      ports: {
+        groups: {
+          out: { position: 'right' },
+          in: { position: 'left' }
+        },
+        items: [
+          { id: `${id}-out`, group: 'out' },
+          { id: `${id}-in`, group: 'in' }
+        ]
+      }
+    });
+  }
+
+  // 4. 创建连接线
+  function connect(source, target) {
+    graph.addEdge({
+      source: { cell: source, port: `${source}-out` },
+      target: { cell: target, port: `${target}-in` },
+      attrs: {
+        line: {
+          stroke: '#333',
+          strokeWidth: 2,
+          targetMarker: {
+            name: 'block',
+            size: 6
+          }
+        }
+      }
+    });
+  }
+
+  // 5. 构建流程图（完全还原Mermaid示例）
+  // 主节点
+  const master = createNode('master', 'master', 100, 300, true);
+  const end = createNode('e', 'e', 1000, 300, false, true);
+
+  // one 群组
+  const oneGroup = createGroup('one', 'one', 200, 200, 600, 200);
+  const a1 = createNode('a1', 'a1', 250, 300);
+  const a2 = createNode('a2', 'a2', 400, 300);
+  connect('a1', 'a2');
+
+  // two 群组（嵌套在one内）
+  const twoGroup = createGroup('two', 'two', 350, 150, 400, 200);
+  const b1 = createNode('b1', 'b1', 450, 200);
+  const b3 = createNode('b3', 'b3', 650, 200);
+
+  // two1 群组
+  const two1Group = createGroup('two1', 'two1', 500, 100, 120, 80);
+  const b11 = createNode('b11', 'b11', 520, 130);
+  const b21 = createNode('b21', 'b21', 580, 130);
+  connect('b11', 'b21');
+
+  // two2 群组
+  const two2Group = createGroup('two2', 'two2', 500, 180, 120, 80);
+  const b12 = createNode('b12', 'b12', 520, 210);
+  const b22 = createNode('b22', 'b22', 580, 210);
+  connect('b12', 'b22');
+
+  // 连接所有节点
+  connect('master', 'a1');
+  connect('a2', 'b1');
+  connect('b1', 'b11');
+  connect('b1', 'b12');
+  connect('b21', 'b3');
+  connect('b22', 'b3');
+  connect('b3', 'e');
+
+  // 6. 自动调整视图
+  graph.zoomToFit({ padding: 50 });
+</script>
+</body>
+</html>

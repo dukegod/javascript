@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可折叠流程图 - AntV X6</title>
+<!--  <script src="https://unpkg.com/@antv/x6/dist/x6.js"></script>-->
+  <script src="https://unpkg.com/@antv/x6/dist/index.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #eee;
+      background: #f9f9f9;
+    }
+    .x6-node [data-collapse-button] {
+      cursor: pointer;
+      fill: #666;
+    }
+    .controls {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+<h1>中轴线对齐流程图</h1>
+<div class="controls">
+  <button id="expand-all">全部展开</button>
+  <button id="collapse-all">全部收起</button>
+  <button id="layout">重新布局</button>
+</div>
+<div id="container"></div>
+
+<script>
+  // 1. 初始化画布
+  const graph = new X6.Graph({
+    container: document.getElementById('container'),
+    grid: { size: 10 },
+    panning: true,
+    mousewheel: true,
+    connecting: {
+      router: 'orth',
+      connector: 'rounded',
+      anchor: 'center',
+      connectionPoint: 'boundary'
+    }
+  });
+
+  // 2. 自定义可折叠节点
+  X6.Shape.HTML.register({
+    shape: 'flow-rect',
+    width: 160,
+    height: 60,
+    effect: ['data'],
+    html(cell) {
+      const data = cell.getData();
+      const collapsed = data.collapsed || false;
+      const hasChildren = data.children && data.children.length > 0;
+
+      return `
+          <div style="
+            width: 100%;
+            height: 100%;
+            background: ${data.color || '#fff'};
+            border: 2px solid #333;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+          ">
+            <div style="
+              padding: 8px;
+              background: #333;
+              color: white;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            ">
+              <span>${data.label}</span>
+              ${hasChildren ? `
+                <svg
+                  data-collapse-button
+                  width="16" height="16"
+                  viewBox="0 0 24 24"
+                  style="transform: rotate(${collapsed ? '-90deg' : '0deg'})"
+                >
+                  <path d="M10 17l5-5-5-5v10z" fill="currentColor"/>
+                </svg>
+              ` : ''}
+            </div>
+            <div style="padding: 8px; flex-grow: 1;">
+              ${data.description || ''}
+            </div>
+          </div>
+        `;
+    }
+  });
+
+  // 3. 测试数据
+  const flowData = {
+    id: 'start',
+    label: '开始',
+    color: '#4D9DE0',
+    children: [
+      {
+        id: 'step1',
+        label: '需求分析',
+        color: '#FF6B6B',
+        children: [
+          {
+            id: 'step1-1',
+            label: '用户调研',
+            color: '#FAC05E'
+          },
+          {
+            id: 'step1-2',
+            label: '需求评审',
+            color: '#59CD90'
+          }
+        ]
+      },
+      {
+        id: 'step2',
+        label: '开发',
+        color: '#7D6B7D',
+        children: [
+          {
+            id: 'step2-1',
+            label: '前端开发',
+            color: '#EE6352',
+            children: [
+              { id: 'step2-1-1', label: 'UI组件', color: '#3FA7D6' },
+              { id: 'step2-1-2', label: '页面开发', color: '#F79D84' }
+            ]
+          },
+          {
+            id: 'step2-2',
+            label: '后端开发',
+            color: '#59CD90'
+          }
+        ]
+      }
+    ]
+  };
+
+  // 4. 布局配置
+  const layoutConfig = {
+    nodeWidth: 160,
+    nodeHeight: 60,
+    horizontalGap: 200, // 水平间距
+    verticalGap: 100,   // 垂直间距
+    direction: 'LR'     // Left-to-Right
+  };
+
+  // 5. 递归计算节点位置（中轴线对齐）
+  function calculateLayout(nodeData, startX, startY) {
+    if (!nodeData) return;
+
+    // 当前节点位置
+    nodeData.x = startX;
+    nodeData.y = startY;
+
+    // 如果有子节点且未折叠
+    if (nodeData.children && !nodeData.collapsed) {
+      const children = nodeData.children;
+      const totalHeight = children.reduce((acc, child) => {
+        const childLayout = calculateLayout(child, startX + layoutConfig.horizontalGap, 0);
+        return acc + (childLayout?.totalHeight || layoutConfig.nodeHeight);
+      }, 0);
+
+      // 计算子节点起始Y位置（垂直居中）
+      let currentY = startY - totalHeight / 2 + layoutConfig.nodeHeight / 2;
+
+      children.forEach(child => {
+        const childHeight = calculateLayout(child, startX + layoutConfig.horizontalGap, currentY)?.totalHeight || layoutConfig.nodeHeight;
+        currentY += childHeight + layoutConfig.verticalGap;
+      });
+
+      return { totalHeight };
+    }
+
+    return { totalHeight: layoutConfig.nodeHeight };
+  }
+
+  // 6. 渲染节点和连接
+  function renderNode(parentNode, nodeData) {
+    const isParent = nodeData.children && nodeData.children.length > 0;
+
+    // 创建当前节点
+    const node = graph.addNode({
+      id: nodeData.id,
+      shape: 'flow-rect',
+      x: nodeData.x,
+      y: nodeData.y,
+      data: {
+        ...nodeData,
+        collapsed: false,
+        originalSize: { width: layoutConfig.nodeWidth, height: layoutConfig.nodeHeight }
+      },
+      ports: {
+        groups: {
+          right: { position: 'right' },
+          left: { position: 'left' }
+        },
+        items: [
+          { id: `${nodeData.id}-in`, group: 'left' },
+          { id: `${nodeData.id}-out`, group: 'right' }
+        ]
+      }
+    });
+
+    // 连接父节点
+    if (parentNode) {
+      graph.addEdge({
+        source: { cell: parentNode.id, port: `${parentNode.id}-out` },
+        target: { cell: node.id, port: `${node.id}-in` }
+      });
+    }
+
+    // 递归渲染子节点
+    if (isParent && !nodeData.collapsed) {
+      nodeData.children.forEach(child => {
+        renderNode(node, child);
+      });
+    }
+
+    return node;
+  }
+
+  // 7. 执行布局和渲染
+  function doLayout() {
+    graph.clearCells();
+    calculateLayout(flowData, 100, 300);
+    renderNode(null, flowData);
+    graph.zoomToFit({ padding: 50, maxZoom: 1 });
+  }
+
+  // 8. 折叠/展开功能
+  graph.on('cell:click', ({ cell }) => {
+    const collapseBtn = cell.findView(document).querySelector('[data-collapse-button]');
+    if (collapseBtn) {
+      const data = cell.getData();
+      const collapsed = !data.collapsed;
+
+      cell.setData({ ...data, collapsed });
+      collapseBtn.style.transform = `rotate(${collapsed ? '-90deg' : '0deg'})`;
+
+      // 重新计算布局
+      doLayout();
+    }
+  });
+
+  // 9. 控制按钮
+  document.getElementById('expand-all').addEventListener('click', () => {
+    setAllCollapsed(false);
+    doLayout();
+  });
+
+  document.getElementById('collapse-all').addEventListener('click', () => {
+    setAllCollapsed(true);
+    doLayout();
+  });
+
+  document.getElementById('layout').addEventListener('click', doLayout);
+
+  function setAllCollapsed(collapsed) {
+    function traverse(node) {
+      if (node.children) {
+        node.collapsed = collapsed;
+        node.children.forEach(traverse);
+      }
+    }
+    traverse(flowData);
+  }
+
+  // 初始渲染
+  doLayout();
+</script>
+</body>
+</html>

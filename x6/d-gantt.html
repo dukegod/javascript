@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height">
+    <title>时间条形图</title>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;margin:0;}</style>
+</head>
+<body>
+<div id="mountNode"></div>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.5.1/dist/g2.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.10.1/dist/data-set.min.js"></script>
+<script src="./util.js"></script>
+<script>
+
+
+
+
+
+  // console.log(rawData);
+  var data = formatRawData(rawData);
+
+  var values = ['运行成功', '运行失败'];
+  data.forEach(function(obj) {
+    obj.range = [obj.startTime, obj.endTime];
+    obj.status = values[obj.status];
+  });
+
+  console.log(data);
+
+  var chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(data);
+
+  chart.coord().transpose().scale(1, -1);
+  chart.interval().position('task*range').color('status', ['#2FC25B', '#F04864']);
+  chart.render();
+
+
+
+</script>
+</body>
+</html>

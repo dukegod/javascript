@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/@antv/x6/dist/index.js"></script>
+  <script src="./util.js"></script>
+  <style>
+    #gantt-container {
+      margin: 20px;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+<div id="gantt-container"></div>
+<script>
+
+
+  // 上述代码
+  const tasks11 = [
+    {
+      id: "task1",
+      name: "任务A",
+      color: "#4e79a7",
+      ranges: [
+        {start: "2023-01-01 ", end: "2023-01-05"},
+        {start: "2023-01-10", end: "2023-01-15"} // 任务A有多个时间段
+      ]
+    },
+    {
+      id: "task2",
+      name: "任务B",
+      color: "#f28e2b",
+      ranges: [
+        {start: "2023-01-03", end: "2023-01-08"}
+      ]
+    }
+  ];
+
+
+  function renderGanttData(nodesDatas) {
+    const callerArray = nodesDatas.map(({caller}) => caller);
+    const unionNamecallerArray = unionName(callerArray);
+
+    const transformData = nodesDatas.map(_data => {
+      return {
+        ..._data,
+        id: _data.node_id,
+        next: _data.child_node_ids.filter(i => i),
+        name: _data.callee,
+        start: formatTimeWithMilliseconds(_data.create_time),
+        end: formatTimeWithMilliseconds(_data.update_time),
+      }
+    })
+
+    const transformDataSection = unionNamecallerArray.map((_caller) => {
+      return {
+        sectionName: _caller,
+        data: transformData.filter(i => i.caller === _caller),
+        ranges: transformData.filter(i => i.caller === _caller),
+      }
+    })
+    return transformDataSection;
+  }
+
+
+
+  const _renderGanttData = renderGanttData(window.rawData)
+  console.log('renderGanttData', _renderGanttData);
+  const tasks = _renderGanttData
+
+
+  const graph = new X6.Graph({
+    container: document.getElementById("gantt-container"),
+    width: 800,
+    height: 400,
+    grid: true, // 显示网格
+    translating: {restrict: true} // 限制拖拽范围
+  });
+  const timeToPixel = (dateStr) => {
+    const startDate = new Date("2023-01-01");
+    const currentDate = new Date(dateStr);
+    return (currentDate - startDate) / (24 * 3600 * 1000) * 50; // 每天50像素
+  };
+  tasks.forEach((task, yIndex) => {
+    task.ranges.forEach((range, i) => {
+      const x = timeToPixel(range.start);
+      const width = timeToPixel(range.end) - x;
+      console.log('width', width, x);
+
+      graph.addNode({
+        id: `${task.id}-${i}`,
+        x,
+        y: yIndex * 40, // 纵向间隔
+        width,
+        height: 30,
+        attrs: {
+          body: {
+            fill: task.color,
+            stroke: "#333"
+          },
+          label: {
+            text: i === 0 ? task.name : "", // 只在第一个矩形显示任务名
+            fill: "#fff"
+          }
+        }
+      });
+    });
+  });
+  // 横向时间轴
+  graph.addEdge({
+    source: {x: 0, y: tasks.length * 40 + 20},
+    target: {x: 800, y: tasks.length * 40 + 20},
+    attrs: {line: {stroke: "#333", strokeWidth: 2}}
+  });
+
+  // 时间刻度（示例：每5天一个刻度）
+  // for (let day = 0; day <= 30; day += 5) {
+  //   const x = day * 50;
+  //   graph.addNode({
+  //     x,
+  //     y: tasks.length * 40 + 10,
+  //     width: 1,
+  //     height: 10,
+  //     attrs: {body: {fill: "#333"}}
+  //   });
+  //   graph.addNode({
+  //     x,
+  //     y: tasks.length * 40 + 30,
+  //     label: `Day ${day}`,
+  //     attrs: {label: {fontSize: 12}}
+  //   });
+  // }
+
+  graph.on("node:change:position", ({node}) => {
+    const x = node.position().x;
+    // 更新数据中的时间逻辑...
+  });
+
+</script>
+</body>
+</html>
