@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <h2>数据结构定义脑图</h2>
+     <!-- 数据结构定义脑图 -->
+    <pre class="mermaid">
+        flowchart LR
+          A ----> B
+          B ----> C
+          C ----> C1
+          C ----> C2
+          C ----> C3
+          C1 ----> D
+          C2 ----> D
+          C3 ----> D
+          D ----> E
+    </pre>
+    <h2> 甘特图 </h2>
+    <pre class="mermaid">
+    gantt
+      %% This is a comment
+      dateFormat YYYY-MM-DD
+      section Section
+          A task          :a1, 2014-01-01, 30d
+          Another task    :after a1, 20d
+      section Another
+          Task in Another :2014-01-12, 12d
+          another task    :24d
+
+    </pre>
+
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+      // 等待 Mermaid 渲染完成
+      setTimeout(() => {
+        const svgElements = document.querySelectorAll("svg");
+        svgElements.forEach((element) => {
+          element.addEventListener("click", function (event) {
+            console.log("当前元素:", event.currentTarget);
+            console.log("触发事件的元素:", event.target);
+          });
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>
